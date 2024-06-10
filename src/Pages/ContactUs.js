@@ -23,7 +23,7 @@ function ContactUs() {
 
       // Handle successful submission
       // e.g., show a success message, close the modal, etc.
-      handleClose();
+    //   handleClose();
     } catch (error) {
       console.error(error);
 
