@@ -7,6 +7,7 @@ import OurServices from "./Pages/OurServices";
 import ContactUs from "./Pages/ContactUs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./Pages/NotFound";
 
 export const AppRoutes = () => {
   return (
@@ -36,6 +37,7 @@ export const AppRoutes = () => {
           path="/contact-us"
           element={<Layout component={<ContactUs />} />}
         />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
   );

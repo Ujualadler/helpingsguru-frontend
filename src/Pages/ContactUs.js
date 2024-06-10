@@ -12,8 +12,8 @@ function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!name.trim() || !email.trim() || !phone || message.trim()) {
-        toast.error("Fill all the fields");
+      if (!name.trim() || !email.trim() || !phone.trim() || !message.trim()) {
+        toast.error("Please fill all the fields.");
         return;
       }
       const formData = {
@@ -24,7 +24,14 @@ function ContactUs() {
       };
 
       const result = await contactUsService.postContactUs(formData);
-      console.log(result);
+
+      if (result.data.success === true) {
+        toast.success(result.data.message);
+      } else {
+        toast.error("Something went wrong");
+      }
+
+      
     } catch (error) {
       console.error(error);
 

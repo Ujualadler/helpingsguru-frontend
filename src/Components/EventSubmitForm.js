@@ -10,20 +10,20 @@ import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
-  top: "50%",
+  top: "55%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "60vw",
   bgcolor: "background.paper",
   borderRadius: 3,
   boxShadow: 24,
-  p: 4,
+  overflow: "hidden",
 };
 
 export default function EventSubmitModal({ open, show, data }) {
   const handleClose = () => show(false);
 
-
+  console.log(data);
 
   // State variables to manage form input values
   const [name, setName] = React.useState("");
@@ -34,10 +34,11 @@ export default function EventSubmitModal({ open, show, data }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!name.trim() || !email.trim() || !phone || address.trim()) {
-        toast.error("Fill all the fields");
+      if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
+        toast.error("Please fill all the fields.");
         return;
       }
+
       const formData = {
         name,
         email,
@@ -49,9 +50,12 @@ export default function EventSubmitModal({ open, show, data }) {
 
       const result = await BookingService.postBooking(formData);
       console.log(result);
+      if (result.data.success === true) {
+        toast.success(result.data.message);
+      } else {
+        toast.error("Something went wrong");
+      }
 
-      // Handle successful submission
-      // e.g., show a success message, close the modal, etc.
       handleClose();
     } catch (error) {
       console.error(error);
@@ -75,15 +79,27 @@ export default function EventSubmitModal({ open, show, data }) {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
+              sx={{ background: "#FF8126" }}
+              p={2}
+              color={"white"}
             >
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Book Now
               </Typography>
               <IconButton onClick={handleClose}>
-                <Close />
+                <Close sx={{ color: "white" }} />
               </IconButton>
             </Box>
-            <Grid container p={3} spacing={2}>
+            <Grid container p={4} spacing={2}>
+              <Grid item xs={12}>
+                <Typography
+                  fontWeight={600}
+                  fontSize={"20px"}
+                  color={"#FF8126"}
+                >
+                  {data?.name}
+                </Typography>
+              </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
                   fullWidth

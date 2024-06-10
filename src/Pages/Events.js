@@ -119,10 +119,13 @@ const eventData = [
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState("upcoming");
   const [eventsData, setEventsData] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [previousEvents, setPreviousEvents] = useState([]);
   const scrollRefs = useRef(new Map());
+  const currentDate = new Date();
 
   const handleScroll = (direction, categoryId) => {
-    console.log(categoryId)
+    console.log(categoryId);
     const container = scrollRefs.current.get(categoryId);
     if (container) {
       const cardWidth = container.querySelector("[data-card]").offsetWidth;
@@ -142,7 +145,6 @@ function Events() {
       try {
         const result = await eventService.getEvents();
         if (result.data.success === true) {
-          // Transform the data to group by category with full event details
           const aggregatedData = result.data.data.reduce((acc, event) => {
             const categoryIndex = acc.findIndex(
               (item) => item.category === event.category
@@ -158,7 +160,33 @@ function Events() {
             return acc;
           }, []);
 
-          setEventsData(aggregatedData);
+          const upcomingEvents = [];
+          const previousEvents = [];
+
+          aggregatedData.forEach((category) => {
+            const upcoming = category.data.filter(
+              (event) => new Date(event.startDate) >= currentDate
+            );
+            const previous = category.data.filter(
+              (event) => new Date(event.startDate) < currentDate
+            );
+
+            if (upcoming.length) {
+              upcomingEvents.push({
+                category: category.category,
+                data: upcoming,
+              });
+            }
+            if (previous.length) {
+              previousEvents.push({
+                category: category.category,
+                data: previous,
+              });
+            }
+          });
+
+          setUpcomingEvents(upcomingEvents);
+          setPreviousEvents(previousEvents);
         }
       } catch (error) {
         console.error(error);
@@ -168,7 +196,15 @@ function Events() {
     getEvents();
   }, []);
 
-  console.log(eventsData);
+  useEffect(() => {
+    if (selectedEvent === "upcoming" && upcomingEvents.length > 0) {
+      setEventsData(upcomingEvents);
+    } else if (selectedEvent === "previous" && previousEvents.length > 0) {
+      setEventsData(previousEvents);
+    }
+  });
+
+  console.log(upcomingEvents);
 
   const fadeInAnimation = keyframes`
   0% {
@@ -296,7 +332,7 @@ function Events() {
                     className="fade-in"
                   >
                     <Box width={"80%"}>
-                      <EventCard data={data} />
+                      <EventCard data={data} type={selectedEvent}/>
                     </Box>
                   </Box>
                 ))}

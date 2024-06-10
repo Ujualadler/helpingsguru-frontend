@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 
 function OurServices() {
@@ -115,15 +115,13 @@ function OurServices() {
                 display={"flex"}
                 flexDirection={"column"}
                 borderRadius={2}
-                maxHeight={"430px"}
-                pb={2}
                 overflow={"hidden"}
                 sx={{
                   boxShadow:
                     "0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1)", // Adjust the values as needed for the desired shadow effect
                 }}
               >
-                <img width={"100%"} height={"200px"} src={data.img} />
+                <img width={"100%"} style={{objectFit:'cover'}}  height={"200px"} src={data.img} />
                 <Box p={3}>
                   <Typography
                     fontWeight={600}
@@ -139,9 +137,23 @@ function OurServices() {
                     fontSize={"15px"}
                     my={1}
                     textAlign={"left"}
+                    sx={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      WebkitLineClamp: 6, // Set the number of lines before ellipsis
+                    }}
                   >
                     {data.description}
                   </Typography>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ width: "100%", bgcolor: "#FF8126" }}
+                  >
+                    Read more
+                  </Button>
                 </Box>
               </Box>
             </Grid>

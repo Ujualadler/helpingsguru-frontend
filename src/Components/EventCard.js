@@ -4,14 +4,14 @@ import EventDetails from "./EventDetails";
 import EventSubmitModal from "./EventSubmitForm";
 import { API_URL, formatDate } from "../Services/url";
 
-function EventCard({ data }) {
+function EventCard({ data, type }) {
   const [eventDetails, setEventDetails] = useState(false);
   const [eventbook, setEventBook] = useState(false);
 
   return (
     <>
       {eventDetails && (
-        <EventDetails data={data} open={eventDetails} show={setEventDetails} />
+        <EventDetails data={data} open={eventDetails} type={type} show={setEventDetails} />
       )}
       {eventbook && (
         <EventSubmitModal data={data} open={eventbook} show={setEventBook} />
@@ -62,26 +62,28 @@ function EventCard({ data }) {
             sx={{
               textTransform: "none",
               borderRadius: 2,
-              width: "50%",
+              width:type !== "previous"? "50%":'100%',
               color: "black",
             }}
           >
             Know More
           </Button>
-          <Button
-          variant="contained"
-            onClick={() => setEventBook(true)}
-            sx={{
-              textTransform: "none",
-              borderRadius: 2,
-              width: "45%",
-              fontSize:'13px',
-              background: "#FF8126",
-              color: "white",
-            }}
-          >
-            Book Now
-          </Button>
+          {type !== "previous" && (
+            <Button
+              variant="contained"
+              onClick={() => setEventBook(true)}
+              sx={{
+                textTransform: "none",
+                borderRadius: 2,
+                width: "45%",
+                fontSize: "13px",
+                background: "#FF8126",
+                color: "white",
+              }}
+            >
+              Book Now
+            </Button>
+          )}
         </Box>
       </Box>
     </>

@@ -238,7 +238,7 @@ function Testimonials() {
                       height: "220px",
                       borderRadius: "190px",
                     }}
-                    src="https://s3-alpha-sig.figma.com/img/b220/54ac/3fcf29a0776a645093bbda2fc2666665?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=EYCOfF1FgjuNv4IH8dvn7muSBSb8GZOLmDA7qE0HFzSimqYj99raLPbbQMF49VJXIoQL8I6L4xiM8U0pQla0QuoyRbO3xPa8EGBxk2YBo9bN9GEotc35pv3BvRq-D~EHU3u5OuqVQ6Ky8eOxlRvrDVRyZMJ1nD~-2XrQi5pjJomXW8K4ynGg-JWc9FCOr5vCD7ztUerUBauQNGxtBH1qts1VJnKDVgtgr6ICLn9khbWqpkQeqS5SDnW6zGTQBCHGrHyuiIgYh3etQegJ6DfCFJpZMpQZv5zaQ3YZ~aB6pjOxmsCOvQqXVlswuj3J5G5mbSQ6uoNbihIkDapxQCs4Rw__"
+                    src="/images/about3.jpg"
                   />
                   <Typography fontWeight={700} fontSize={"25px"}>
                     Felbin

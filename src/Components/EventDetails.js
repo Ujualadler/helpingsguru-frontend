@@ -1,10 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -19,7 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EventDetails({ open, show, data }) {
+export default function EventDetails({ open, show, data, type }) {
   const [eventbook, setEventBook] = React.useState(false);
 
   const handleClose = () => {
@@ -28,7 +24,9 @@ export default function EventDetails({ open, show, data }) {
 
   return (
     <React.Fragment>
-      {eventbook && <EventSubmitModal open={eventbook} show={setEventBook} />}
+      {eventbook && (
+        <EventSubmitModal data={data} open={eventbook} show={setEventBook} />
+      )}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -165,20 +163,22 @@ export default function EventDetails({ open, show, data }) {
                     {formatDate(data?.startDate)} - {formatDate(data?.endDate)}
                   </Typography>
                 </Box>
-                <Button
-                  variant="contained"
-                  onClick={() => setEventBook(true)}
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: 2,
-                    mt: 2,
-                    px: 2,
-                    background: "#FF8126",
-                    color: "white",
-                  }}
-                >
-                  Book Now
-                </Button>
+                {type !== "previous" && (
+                  <Button
+                    variant="contained"
+                    onClick={() => setEventBook(true)}
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: 2,
+                      mt: 2,
+                      px: 2,
+                      background: "#FF8126",
+                      color: "white",
+                    }}
+                  >
+                    Book Now
+                  </Button>
+                )}
               </Grid>
             </Grid>
           </Grid>

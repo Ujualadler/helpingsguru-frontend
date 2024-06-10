@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography, keyframes  } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -35,6 +35,27 @@ function About() {
     },
   ];
 
+  const rotate = keyframes`
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1.5); // Adjusted to scale up for demonstration
+  }
+`;
+
+
+
+  const dimension = keyframes`
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(.8);
+  }
+`;
+
+
   return (
     <Grid container mb={3}>
       <Grid
@@ -54,6 +75,8 @@ function About() {
           display={"flex"}
           alignItems={"center"}
           position={"relative"}
+          
+          
         >
           <Box
             sx={{
@@ -61,6 +84,7 @@ function About() {
               height: { md: "200px", xs: "150px" },
               background: "#6D7BFE",
               borderRadius: 10,
+              animation: `${rotate} 6s linear infinite`,
             }}
           />
           <Box
@@ -71,6 +95,9 @@ function About() {
               position: "absolute",
               top: { md: "16%", xs: "-50%" },
               left: { md: "13%", xs: "10%" },
+              animation: `${dimension} 6s linear infinite`,
+              
+              
             }}
           >
             <img
@@ -91,6 +118,7 @@ function About() {
               position: "absolute",
               top: { md: "25%", xs: "-40%" },
               right: { md: "20%", xs: "10%" },
+              animation: `${dimension} 6s linear infinite`,
             }}
           >
             <img
@@ -110,6 +138,7 @@ function About() {
               position: "absolute",
               bottom: { md: "25%", xs: "-70%" },
               right: { md: "25%", xs: "20%" },
+              animation: `${dimension} 6s linear infinite`,
             }}
           >
             <img

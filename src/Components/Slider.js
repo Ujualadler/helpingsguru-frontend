@@ -10,6 +10,8 @@ import EventSubmitModal from "./EventSubmitForm";
 
 function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [bookingData, setBookingData] = useState([]);
+  
   const [fade, setFade] = useState(true);
   const themes = useTheme();
   const [eventsData, setEventsData] = useState([]);
@@ -60,6 +62,8 @@ function Slider() {
 
   const data = eventsData[currentSlide];
 
+  console.log(data)
+
   const scrollingTextStyles = `
   @keyframes scroll-left {
     0% {
@@ -73,8 +77,8 @@ function Slider() {
 
   return (
     <>
-      {eventbook && (
-        <EventSubmitModal data={data} open={eventbook} show={setEventBook} />
+      {eventbook && bookingData && (
+        <EventSubmitModal data={bookingData} open={eventbook} show={setEventBook} />
       )}
       <Box
         height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
@@ -158,7 +162,7 @@ function Slider() {
               </Box>
             </Box>
             <Button
-              onClick={() => setEventBook(true)}
+              onClick={() => {setEventBook(true),setBookingData(data)}}
               variant="contained"
               endIcon={
                 <KeyboardDoubleArrowRightIcon
