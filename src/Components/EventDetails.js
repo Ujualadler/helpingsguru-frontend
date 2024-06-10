@@ -80,6 +80,7 @@ export default function EventDetails({ open, show, data, type }) {
                 md={6}
                 display={"flex"}
                 justifyContent={"center"}
+                flexDirection={'column'}
                 alignItems={"center"}
               >
                 <Box
@@ -98,6 +99,30 @@ export default function EventDetails({ open, show, data, type }) {
                     src={`${API_URL}api/v1/image/${data.images[0]}`}
                   />
                 </Box>
+                {/* <Box
+                  sx={{
+                    width: { xs: "100%", md: "80%" },
+                    height: "80px",
+                    borderRadius: "20px",
+                    display:'flex',
+                    alignItems:'center',
+                    p:1,
+                    gap:1,
+                    mt:2
+                  }}
+                >
+                {data?.images.map((img)=>(
+
+                   <img
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "20px",
+                    }}
+                    src={`${API_URL}api/v1/image/${img}`}
+                  />
+                ))}
+                </Box> */}
               </Grid>
               <Grid item xs={12} md={6} p={3}>
                 <Typography

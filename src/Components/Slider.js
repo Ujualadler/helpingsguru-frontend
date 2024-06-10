@@ -162,7 +162,11 @@ function Slider() {
               </Box>
             </Box>
             <Button
-              onClick={() => {setEventBook(true),setBookingData(data)}}
+              onClick={() => {
+                setEventBook(true);
+                setBookingData(data);
+              }}
+              
               variant="contained"
               endIcon={
                 <KeyboardDoubleArrowRightIcon
