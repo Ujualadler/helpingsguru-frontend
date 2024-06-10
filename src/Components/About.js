@@ -6,33 +6,37 @@ function About() {
   const navigate = useNavigate();
   const aboutData = [
     {
-      img: "https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__",
+      img:'/images/stage.png',
       name: "Educational Events & Roundtables",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__",
+      img: "/images/recruitment.png",
       name: "Staff Recruitment Solutions",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__",
+      img: "/images/Certification.png",
       name: "Teacher Training Certification Programme",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__",
+      img: "/images/magazine.png",
       name: "Educational Magazine Hub",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__",
+      img: "/images/responsive-design.png",
       name: "Innovative IFP Panels",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__",
+      img: "/images/lead.png",
       name: "Edtech B2B Lead Generation",
+    },
+    {
+      img: "/images/speech.png",
+      name: "Inspiring Speakers for Educational Institutions",
     },
   ];
 
   return (
-    <Grid container>
+    <Grid container mb={3}>
       <Grid
         item
         xs={12}
@@ -41,6 +45,7 @@ function About() {
         justifyContent={"center"}
         alignItems={"center"}
         pt={{ xs: 10, md: 0 }}
+        mb={3}
       >
         <Box
           width={"90%"}
@@ -74,7 +79,8 @@ function About() {
                 height: "100%",
                 borderRadius: "20px",
               }}
-              src="https://s3-alpha-sig.figma.com/img/4dcc/3b87/5f08b510d8d814fd046d75634a5227fa?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=goQKrlR9K7VbdGo3nHs3bLIbFb~myV4NB2vIK-XRjmH51lC77hxUXRkR0hVM9pEDylfRXN9VxTFE8gjaH71GUWpQkRkhPPu7Z9UOOID9OCqaAO25IydexL8SKwU4HyNGe5rVQGGR8kQl89f0HAcbBPzBCr6LJ7og9nX~hiAKrxm85TiyyShVPtFMV5kAOquD~wr2qUBedLJhdjr~pj6BdrAUlcJiAx5b9JKdH3K0KoyShPFIsIF~2NVe1mNyVUQ7IMaf3G8dcL7NwukcRFx5F61mhsgScg39dwfg5cG5EnRYgvrLmInqRxdobVqZSJUyf~hp~11MTrbuY~9N1ZbBpg__"
+              src="/images/about1.jpg"
+              
             />
           </Box>
           <Box
@@ -93,7 +99,7 @@ function About() {
                 height: "100%",
                 borderRadius: "20px",
               }}
-              src="https://s3-alpha-sig.figma.com/img/0e99/f073/d7b08529fc399553cfbe2fb09ec675b0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RSrQQ8U-2Ql19s8M0dMIelqF4TAoAoA7yTppGZuRL4To1zfi85intw89azhJOMSxW1pNVgqXselD8ZmM5FnVQGw~eI6MREjkisBk3z7jJZhVbn1~AXKuuwgRn3SL76XIF2EpVOr7d5IIl5zPeUJHh7scShK79Y1pPn3kuFmU6MajUf8Rrwy78SNLy425Y24bEJdiuqOcn3UvH6lKcyLWJgatRBlE~aCQaAWEF7FoiSXcmHRQyWhlN52njmgbkuEjUZbQuNF3jqtDYxOdagp43dCtUa2FBhXrzg5epxA0PDsn~LZdmfCnVtrcyEfNjXazKgtukzYJxbSuG14u3aKZNg__"
+              src="/images/about2.jpg"
             />
           </Box>
           <Box
@@ -112,7 +118,7 @@ function About() {
                 height: "100%",
                 borderRadius: "20px",
               }}
-              src="https://s3-alpha-sig.figma.com/img/19f2/7b1f/ec397d8e55dfdda9a6560e4d5de55933?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IU~scjTpfYND0GCEyd5QuVHPiwXPZjfDKPyrQJ~tiYlW7oLIQztCWujgGjygLV-~hI2JvNMvc8kE6CtzQYaF5lwEthivYKdWULjWuVBYRHqRFQaHOp5xlJQpQvtF4MpzfCK5mFPQw-DieeJBo5ED52IxYkuJzsplyyTHi75tqfjh4yvzDzNg4anT0S5rutyefB3OeDYUoLqKis3GIrIrfGszMR65GTyLFcDZgqmM9fXZChNt1KaUW36PqTpck8O6rvhSo6YdZ-nmqRqPRKYqzcJzgsGIhhN0qvWL-im7prERwQQeMQ3yF6rkXxsJBs7wKk0ohI-psVOpRb33NVZNlw__"
+              src="/images/about3.jpg"
             />
           </Box>
         </Box>
@@ -186,7 +192,7 @@ function About() {
                   >
                     <img
                       style={{ height: "80px", width: "80px" }}
-                      src="https://s3-alpha-sig.figma.com/img/7f92/2319/c291e52f776abb757133bc2d7ffedef0?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lRZvij3gZfmxm2FON3iimFCEl6p0-vcDDoHmfqRqav~0b5lBuVthgZXdjKWEldvsjFkmcWmAVnJV60MN~SP2TWGEpuw4EF-5Q-7MgMJ7E7afzwDNHrIoJCk241tH-N0YlG~m~0vu1hm2v-ZHVd47ChHxMw7q13ZlHAEzdSQbXJn2v4koblEYMkxekj8efekgj603el2yMx504hSX2fWR2g8QcSDcJzaek-NkkTOdCOlpeq6Ul8ZUPvA4Ql69KIJsB5V-jPLjNk-fD~TDENVsuzaoyP8B0slFW6DkDHcy~L~6JQi3Myysim76OTz3xwKqm3-F02G-MGFTrCFPWX1P-A__"
+                      src={data.img}
                     />
                     <Typography
                       ml={2}
@@ -199,22 +205,21 @@ function About() {
                   </Box>
                 </Grid>
               ))}
-              <Button
-                onClick={() => navigate("/our-service")}
-                variant="contained"
-                sx={{
-                  textTransform: "none",
-                  background: "#FF8126",
-                  width: { md: "30%", xs: "100%" },
-                  borderRadius: 2,
-                  ml:4,
-                  mt:1
-
-                }}
-              >
-                Read More
-              </Button>
             </Grid>
+            <Button
+              onClick={() => navigate("/our-service")}
+              variant="contained"
+              sx={{
+                textTransform: "none",
+                background: "#FF8126",
+                width: { md: "30%", xs: "100%" },
+                height: "40px",
+                borderRadius: 2,
+                mt: 3,
+              }}
+            >
+              Read More
+            </Button>
           </Box>
         </Box>
       </Grid>

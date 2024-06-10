@@ -55,7 +55,7 @@ export default function EventDetails({ open, show, data }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Event Name
+              {data.name}
             </Typography>
           </Toolbar>
         </AppBar>

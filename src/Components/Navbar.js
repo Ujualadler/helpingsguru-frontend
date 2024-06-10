@@ -1,13 +1,25 @@
-import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Box, Button, Typography, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
 const menuItems = [
   { name: "Home", url: "/" },
-  { name: "Our Services", url: "/our-service" },
+  {
+    name: "Our Services",
+    url: "/our-service",
+    services: [
+      "Educational Events & Roundtables",
+      "Staff Recruitment Solutions",
+      "Inspiring Speakers for Educational Institutions",
+      "Educational Magazine Hub",
+      "Edtech B2B Lead Generation",
+      "Innovative IFP Panels",
+      "Teacher Training Certification Programme",
+    ],
+  },
   { name: "Events", url: "/events" },
   { name: "About Us", url: "/about-us" },
   { name: "Contact Us", url: "/contact-us" },
@@ -18,11 +30,14 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState("");
 
   const getActiveItem = () => {
-    const currentItem = menuItems.find(item => item.url === location.pathname);
+    const currentItem = menuItems.find(
+      (item) => item.url === location.pathname
+    );
     return currentItem ? currentItem.name : "Home";
-  }
+  };
 
   const [active, setActive] = useState(getActiveItem);
 
@@ -32,30 +47,23 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 30;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 30);
     };
-
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      <Box position={"relative"}>
+      <Box position="relative">
         {<MobileMenu show={setShowMenu} open={showMenu} />}
         <Box
           height={{ md: "80px", xs: "60px" }}
-          display={"flex"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
-          position={"fixed"}
-          width={"100%"}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          position="fixed"
+          width="100%"
           zIndex={10000}
           sx={{
             transition: "background-color .5s ease-in-out",
@@ -65,7 +73,7 @@ function Navbar() {
           }}
         >
           <Box
-            bgcolor={"white"}
+            bgcolor="white"
             px={2}
             py={1}
             ml={2}
@@ -74,34 +82,26 @@ function Navbar() {
           >
             <img
               src="/images/logo1.png"
-              style={{
-                // borderRadius: "50%",
-                // height: "200px",
-                width: "100%",
-                objectFit: "contain",
-              }}
+              style={{ width: "100%", objectFit: "contain" }}
             />
           </Box>
-
-          <Box
-            display={{ md: "flex", xs: "none" }}
-            alignItems={"center"}
-            gap={1}
-          >
+          <Box display={{ md: "flex", xs: "none" }} alignItems="center" gap={1}>
             {menuItems.map((data, index) => (
               <Box
                 key={index}
+                onMouseEnter={() => setHovered(data.name)}
+                onMouseLeave={() => setHovered("")}
                 onClick={() => {
                   setActive(data.name);
                   navigate(data.url);
                 }}
-                display={"flex"}
+                display="flex"
                 sx={{ cursor: "pointer" }}
-                alignItems={"center"}
+                alignItems="center"
                 gap={1}
               >
                 <Typography
-                  fontSize={"21px"}
+                  fontSize="21px"
                   color={
                     active === data.name
                       ? "#FF8126"
@@ -112,6 +112,42 @@ function Navbar() {
                 >
                   {data.name}
                 </Typography>
+                {data.name === "Our Services" && hovered === "Our Services" && (
+                  <Box
+                    position="absolute"
+                    top={50}
+                    bgcolor="white"
+                    borderRadius={1}
+                    p={1}
+                    boxShadow={3}
+                    onMouseEnter={() => setHovered(data.name)}
+                    onMouseLeave={() => setHovered("")}
+                  >
+                    {data.services.map((service, idx) => (
+                      <Typography
+                        key={idx}
+                        p={1}
+                        sx={{
+                          "&:hover": {
+                            transform: "scale(1.05)",
+                            transition: "all 0.5s ease-in-out",
+                          },
+                        }}
+                        color={"#FF8126"}
+                        fontSize="16px"
+                        onClick={() =>
+                          navigate(
+                            `/our-service/${service
+                              .toLowerCase()
+                              .replace(" ", "-")}`
+                          )
+                        }
+                      >
+                        {service}
+                      </Typography>
+                    ))}
+                  </Box>
+                )}
                 {data.name !== "Contact Us" && (
                   <span style={{ color: "#FF8126" }}>/</span>
                 )}
@@ -119,6 +155,7 @@ function Navbar() {
             ))}
           </Box>
           <Button
+          onClick={()=>navigate('/contact-us')}
             variant="contained"
             startIcon={<LocalPhoneIcon />}
             disableElevation
@@ -160,9 +197,11 @@ export default Navbar;
 function MobileMenu({ show, open }) {
   const location = useLocation();
   const getActiveItem = () => {
-    const currentItem = menuItems.find(item => item.url === location.pathname);
+    const currentItem = menuItems.find(
+      (item) => item.url === location.pathname
+    );
     return currentItem ? currentItem.name : "Home";
-  }
+  };
 
   const [active, setActive] = useState(getActiveItem);
 

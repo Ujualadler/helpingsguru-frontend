@@ -119,9 +119,11 @@ const eventData = [
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState("upcoming");
   const [eventsData, setEventsData] = useState([]);
-  const scrollRefs = useRef(eventData.map(() => React.createRef()));
-  const handleScroll = (direction, index) => {
-    const container = scrollRefs.current[index].current;
+  const scrollRefs = useRef(new Map());
+
+  const handleScroll = (direction, categoryId) => {
+    console.log(categoryId)
+    const container = scrollRefs.current.get(categoryId);
     if (container) {
       const cardWidth = container.querySelector("[data-card]").offsetWidth;
       const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
@@ -129,21 +131,44 @@ function Events() {
     }
   };
 
+  const assignRef = (element, category) => {
+    if (element) {
+      scrollRefs.current.set(category, element);
+    }
+  };
+
   useEffect(() => {
     const getEvents = async () => {
       try {
         const result = await eventService.getEvents();
-        console.log(result.data);
         if (result.data.success === true) {
-          console.log(result.data.data);
-          setEventsData(result.data.data);
+          // Transform the data to group by category with full event details
+          const aggregatedData = result.data.data.reduce((acc, event) => {
+            const categoryIndex = acc.findIndex(
+              (item) => item.category === event.category
+            );
+            if (categoryIndex !== -1) {
+              acc[categoryIndex].data.push(event); // Push the whole event object
+            } else {
+              acc.push({
+                category: event.category,
+                data: [event], // Start with the whole event object
+              });
+            }
+            return acc;
+          }, []);
+
+          setEventsData(aggregatedData);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
+
     getEvents();
   }, []);
+
+  console.log(eventsData);
 
   const fadeInAnimation = keyframes`
   0% {
@@ -217,107 +242,108 @@ function Events() {
             "url(https://img.freepik.com/free-vector/gradient-blue-background_23-2149322706.jpg?size=626&ext=jpg&ga=GA1.1.563629714.1713778942&semt=ais_user)",
         }}
         display={"flex"}
-        justifyContent={"center"}
+        justifyContent={{ xs: "start", sm: "center" }}
         alignItems={"center"}
       >
         <Typography color={"white"} fontWeight={700} fontSize={"30px"}>
           Events
         </Typography>
       </Box>
-      {eventData.map((category, inde) => (
-        <Grid key={inde} container borderRadius={3} mt={10}>
-          {/* <Title title={"Experiential Learning"} /> */}
+      {eventsData.length > 0 &&
+        eventsData.map((category, inde) => (
+          <Grid key={inde} container borderRadius={3} mt={10}>
+            {/* <Title title={"Experiential Learning"} /> */}
 
-          <Box
-            position="relative"
-            maxWidth={"100%"}
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            flexDirection={"column"}
-          >
-            <Typography
-              textAlign={"center"}
-              fontWeight={800}
-              fontSize={{ xs: "1.5rem", md: "1.5rem" }}
-              color={"#100854"}
-              mb={3}
-            >
-              {category.category}
-            </Typography>
             <Box
+              position="relative"
+              width={"100%"}
               display={"flex"}
-              justifyContent={{ xs: "start", sm: "center" }}
-              overflow={"auto"}
-              width={{
-                xs: "90%",
-                md: "70%",
-              }}
-              sx={{ scrollbarWidth: "none" }}
-              ref={scrollRefs.current[inde]}
+              justifyContent={"center"}
+              alignItems={"center"}
+              flexDirection={"column"}
             >
-              {category.data.map((data, index) => (
-                <Box
-                  key={index}
-                  data-card
-                  sx={{
-                    flex: "0 0 auto",
-                    justifyContent: "center",
-                    display: "flex",
-                    width: { xs: "100%", sm: "50%", md: "25%" },
-                    animation: `${fadeInAnimation} ease 0.8s`,
-                  }}
-                  className="fade-in"
-                >
-                  <Box width={"80%"}>
-                    <EventCard data={data} />
+              <Typography
+                textAlign={"center"}
+                fontWeight={800}
+                fontSize={{ xs: "1.5rem", md: "1.5rem" }}
+                color={"#100854"}
+                mb={3}
+              >
+                {category.category}
+              </Typography>
+              <Box
+                display={"flex"}
+                justifyContent={{ xs: "start", sm: "start" }}
+                overflow={"auto"}
+                width={{
+                  xs: "90%",
+                  md: "70%",
+                }}
+                sx={{ scrollbarWidth: "none" }}
+                ref={(el) => assignRef(el, category.category)}
+              >
+                {category.data.map((data, index) => (
+                  <Box
+                    key={index}
+                    data-card
+                    sx={{
+                      flex: "0 0 auto",
+                      justifyContent: "center",
+                      display: "flex",
+                      width: { xs: "100%", sm: "50%", md: "25%" },
+                      animation: `${fadeInAnimation} ease 0.8s`,
+                    }}
+                    className="fade-in"
+                  >
+                    <Box width={"80%"}>
+                      <EventCard data={data} />
+                    </Box>
                   </Box>
-                </Box>
-              ))}
-            </Box>
+                ))}
+              </Box>
 
-            {/* Navigation buttons overlay */}
-            <IconButton
-              onClick={() => handleScroll("left", inde)}
-              size="small"
-              sx={{
-                position: "absolute",
-                left: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                background: "#FF8126",
-                color: "white",
-                "&:hover": {
-                  background: "grey",
+              {/* Navigation buttons overlay */}
+              <IconButton
+                onClick={() => handleScroll("left", category.category)}
+                size="small"
+                sx={{
+                  position: "absolute",
+                  left: 10,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  background: "#FF8126",
                   color: "white",
-                },
-              }}
-            >
-              <ArrowLeftIcon />
-            </IconButton>
-            <IconButton
-              onClick={() => handleScroll("right", inde)}
-              size="small"
-              sx={{
-                position: "absolute",
-                right: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 1,
-                background: "#FF8126",
-                color: "white",
-                "&:hover": {
-                  background: "grey",
+                  "&:hover": {
+                    background: "grey",
+                    color: "white",
+                  },
+                }}
+              >
+                <ArrowLeftIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => handleScroll("right", category.category)}
+                size="small"
+                sx={{
+                  position: "absolute",
+                  right: 10,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                  background: "#FF8126",
                   color: "white",
-                },
-              }}
-            >
-              <ArrowRightIcon />
-            </IconButton>
-          </Box>
-        </Grid>
-      ))}
+                  "&:hover": {
+                    background: "grey",
+                    color: "white",
+                  },
+                }}
+              >
+                <ArrowRightIcon />
+              </IconButton>
+            </Box>
+          </Grid>
+        ))}
     </Box>
   );
 }

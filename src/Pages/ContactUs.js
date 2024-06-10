@@ -1,6 +1,7 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 import { contactUsService } from "../Services/ContactUsService";
+import { toast } from "react-toastify";
 
 function ContactUs() {
   const [name, setName] = React.useState("");
@@ -11,19 +12,19 @@ function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!name.trim() || !email.trim() || !phone || message.trim()) {
+        toast.error("Fill all the fields");
+        return;
+      }
       const formData = {
         name,
         email,
         phone,
-        message
+        message,
       };
 
       const result = await contactUsService.postContactUs(formData);
       console.log(result);
-
-      // Handle successful submission
-      // e.g., show a success message, close the modal, etc.
-    //   handleClose();
     } catch (error) {
       console.error(error);
 
@@ -58,6 +59,8 @@ function ContactUs() {
         >
           <Grid
             container
+            alignItems={"center"}
+            justifyContent={"center"}
             width={{ lg: "80%", md: "90%", xs: "100%", sm: "95%" }}
           >
             <Grid
@@ -73,10 +76,10 @@ function ContactUs() {
                 sx={{ width: { xs: "90%", md: "80%", lg: "80%", xl: "80%" } }}
               >
                 <img
-                  src="https://img.freepik.com/free-photo/top-view-chat-bubbles-with-telephone-receiver_23-2148796076.jpg?t=st=1717918608~exp=1717922208~hmac=e2bdff0c6de235ba9612f23bd45323a28dbc03e176ffa622cafded2fc46da859&w=996"
+                  src="/images/contact.jpg"
                   style={{
                     width: "100%",
-                    height: "400px",
+                    height: "100%",
                     borderRadius: "10px",
                   }}
                 />
@@ -98,8 +101,8 @@ function ContactUs() {
               <Grid item md={6} xs={12}>
                 <Box>
                   <TextField
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     fullWidth
                     type="number"
                     label="Phone"

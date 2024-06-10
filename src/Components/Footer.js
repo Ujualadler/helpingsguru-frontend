@@ -1,8 +1,10 @@
 import { Grid, MenuItem, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <Box
       mt={5}
@@ -46,16 +48,28 @@ function Footer() {
             width={"100%"}
           >
             <MenuItem sx={{ color: "white", fontSize: "13px" }}>Home</MenuItem>
-            <MenuItem sx={{ color: "white", fontSize: "13px" }}>
+            <MenuItem
+              onClick={() => navigate("/our-service")}
+              sx={{ color: "white", fontSize: "13px" }}
+            >
               Our Services
             </MenuItem>
-            <MenuItem sx={{ color: "white", fontSize: "13px" }}>
+            <MenuItem
+              onClick={() => navigate("/events")}
+              sx={{ color: "white", fontSize: "13px" }}
+            >
               Events
             </MenuItem>
-            <MenuItem sx={{ color: "white", fontSize: "13px" }}>
+            <MenuItem
+              onClick={() => navigate("/about-us")}
+              sx={{ color: "white", fontSize: "13px" }}
+            >
               About Us
             </MenuItem>
-            <MenuItem sx={{ color: "white", fontSize: "13px" }}>
+            <MenuItem
+              onClick={() => navigate("/contact-us")}
+              sx={{ color: "white", fontSize: "13px" }}
+            >
               Contact Us
             </MenuItem>
           </Box>

@@ -6,6 +6,7 @@ import Modal from "@mui/material/Modal";
 import { Grid, IconButton, TextField } from "@mui/material";
 import Close from "@mui/icons-material/Close";
 import { BookingService } from "../Services/BookingService";
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -22,7 +23,7 @@ const style = {
 export default function EventSubmitModal({ open, show, data }) {
   const handleClose = () => show(false);
 
-  console.log(data)
+
 
   // State variables to manage form input values
   const [name, setName] = React.useState("");
@@ -33,13 +34,17 @@ export default function EventSubmitModal({ open, show, data }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!name.trim() || !email.trim() || !phone || address.trim()) {
+        toast.error("Fill all the fields");
+        return;
+      }
       const formData = {
         name,
         email,
         phone,
         address,
-        eventId: data?._id, 
-        eventName: data?.name, 
+        eventId: data?._id,
+        eventName: data?.name,
       };
 
       const result = await BookingService.postBooking(formData);
@@ -66,11 +71,17 @@ export default function EventSubmitModal({ open, show, data }) {
       >
         <Box sx={style}>
           <form onSubmit={handleSubmit}>
-            <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+            >
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Book Now
               </Typography>
-              <IconButton onClick={handleClose}><Close /></IconButton>
+              <IconButton onClick={handleClose}>
+                <Close />
+              </IconButton>
             </Box>
             <Grid container p={3} spacing={2}>
               <Grid item md={6} xs={12}>
@@ -122,7 +133,7 @@ export default function EventSubmitModal({ open, show, data }) {
                   <Button
                     type="submit"
                     variant="contained"
-                    sx={{ width: '100%', bgcolor: '#FF8126', height: '45px' }}
+                    sx={{ width: "100%", bgcolor: "#FF8126", height: "45px" }}
                   >
                     SUBMIT
                   </Button>

@@ -107,6 +107,7 @@ function OurSpeakers() {
           display={"flex"}
           justifyContent={"center"}
           alignItems={'center'}
+          flexDirection={'column'}
         >
           <Box
             display={"flex"}

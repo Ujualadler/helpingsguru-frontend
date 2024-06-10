@@ -13,7 +13,9 @@ function EventCard({ data }) {
       {eventDetails && (
         <EventDetails data={data} open={eventDetails} show={setEventDetails} />
       )}
-      {eventbook && <EventSubmitModal data={data} open={eventbook} show={setEventBook} />}
+      {eventbook && (
+        <EventSubmitModal data={data} open={eventbook} show={setEventBook} />
+      )}
       <Box width={"100%"}>
         <Box borderRadius={4} position={"relative"} overflow={"hidden"}>
           <img
@@ -67,11 +69,13 @@ function EventCard({ data }) {
             Know More
           </Button>
           <Button
+          variant="contained"
             onClick={() => setEventBook(true)}
             sx={{
               textTransform: "none",
               borderRadius: 2,
               width: "45%",
+              fontSize:'13px',
               background: "#FF8126",
               color: "white",
             }}

@@ -38,7 +38,9 @@ function Slider() {
   };
 
   const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + eventsData.length) % eventsData.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + eventsData.length) % eventsData.length
+    );
   };
 
   const handleNext = () => {
@@ -71,7 +73,9 @@ function Slider() {
 
   return (
     <>
-    {eventbook && <EventSubmitModal open={eventbook} show={setEventBook} />}
+      {eventbook && (
+        <EventSubmitModal data={data} open={eventbook} show={setEventBook} />
+      )}
       <Box
         height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
         sx={{
@@ -154,7 +158,7 @@ function Slider() {
               </Box>
             </Box>
             <Button
-             onClick={() => setEventBook(true)}
+              onClick={() => setEventBook(true)}
               variant="contained"
               endIcon={
                 <KeyboardDoubleArrowRightIcon
