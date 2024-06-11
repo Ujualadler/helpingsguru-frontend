@@ -13,57 +13,54 @@ const style = {
   top: "55%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: {lg:"60vw",md:'80vw',xs:'90vw'},
+  width: { lg: "60vw", md: "80vw", xs: "90vw" },
   bgcolor: "background.paper",
   borderRadius: 3,
   boxShadow: 24,
   overflow: "hidden",
 };
 
-export default function EventSubmitModal({ open, show, data }) {
+export default function CareerModal({ open, show, data }) {
   const handleClose = () => show(false);
 
-  console.log(data);
-
-  // State variables to manage form input values
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
-  const [address, setAddress] = React.useState("");
+  const [resume, setResume] = React.useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
-        toast.error("Please fill all the fields.");
-        return;
-      }
+  //   const handleSubmit = async (e) => {
+  //     e.preventDefault();
+  //     try {
+  //       if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
+  //         toast.error("Please fill all the fields.");
+  //         return;
+  //       }
 
-      const formData = {
-        name,
-        email,
-        phone,
-        address,
-        eventId: data?._id,
-        eventName: data?.name,
-      };
+  //       const formData = {
+  //         name,
+  //         email,
+  //         phone,
+  //         address,
+  //         eventId: data?._id,
+  //         eventName: data?.name,
+  //       };
 
-      const result = await BookingService.postBooking(formData);
-      console.log(result);
-      if (result.data.success === true) {
-        toast.success(result.data.message);
-      } else {
-        toast.error("Something went wrong");
-      }
+  //       const result = await BookingService.postBooking(formData);
+  //       console.log(result);
+  //       if (result.data.success === true) {
+  //         toast.success(result.data.message);
+  //       } else {
+  //         toast.error("Something went wrong");
+  //       }
 
-      handleClose();
-    } catch (error) {
-      console.error(error);
+  //       handleClose();
+  //     } catch (error) {
+  //       console.error(error);
 
-      // Handle submission error
-      // e.g., show an error message
-    }
-  };
+  //       // Handle submission error
+  //       // e.g., show an error message
+  //     }
+  //   };
 
   return (
     <div>
@@ -74,7 +71,7 @@ export default function EventSubmitModal({ open, show, data }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form onSubmit={handleSubmit}>
+          <form>
             <Box
               display={"flex"}
               justifyContent={"space-between"}
@@ -84,20 +81,20 @@ export default function EventSubmitModal({ open, show, data }) {
               color={"white"}
             >
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                Book Now
+                Apply Now
               </Typography>
               <IconButton onClick={handleClose}>
                 <Close sx={{ color: "white" }} />
               </IconButton>
             </Box>
-            <Grid container p={{md:4,xs:2}} spacing={2}>
+            <Grid container p={{ md: 4, xs: 2 }} spacing={2}>
               <Grid item xs={12}>
                 <Typography
                   fontWeight={600}
                   fontSize={"20px"}
                   color={"#FF8126"}
                 >
-                  {data?.name}
+                  {data.position.toUpperCase()}
                 </Typography>
               </Grid>
               <Grid item md={6} xs={12}>
@@ -132,16 +129,16 @@ export default function EventSubmitModal({ open, show, data }) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  type="text"
+                  type="file"
                   fullWidth
                   sx={{
                     height: "150px",
                     ".MuiOutlinedInput-root": { height: "150px" },
                   }}
-                  label="Address"
+                  label="Resume"
                   id="outlined-size-small"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  value={resume}
+                  onChange={(e) => setResume(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>

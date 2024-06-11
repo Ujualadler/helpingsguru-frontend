@@ -11,7 +11,7 @@ import EventSubmitModal from "./EventSubmitForm";
 function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [bookingData, setBookingData] = useState([]);
-  
+
   const [fade, setFade] = useState(true);
   const themes = useTheme();
   const [eventsData, setEventsData] = useState([]);
@@ -62,7 +62,7 @@ function Slider() {
 
   const data = eventsData[currentSlide];
 
-  console.log(data)
+  console.log(data);
 
   const scrollingTextStyles = `
   @keyframes scroll-left {
@@ -78,7 +78,11 @@ function Slider() {
   return (
     <>
       {eventbook && bookingData && (
-        <EventSubmitModal data={bookingData} open={eventbook} show={setEventBook} />
+        <EventSubmitModal
+          data={bookingData}
+          open={eventbook}
+          show={setEventBook}
+        />
       )}
       <Box
         height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
@@ -105,7 +109,7 @@ function Slider() {
           {data?.name?.split(" ")[0]}
           <br />
           <Typography
-            ml={{ md: "30%", xs: "10%" }}
+            ml={{ sm: "30%", xs: "10%" }}
             fontWeight={800}
             fontSize={{ md: "7vw", xs: "10vw" }}
             color={"white"}
@@ -137,23 +141,36 @@ function Slider() {
               src={`${API_URL}api/v1/image/${data.images[0]}`}
             />
           </Box>
-          <Box ml={1} display={"flex"} alignItems={"center"} gap={2} mt={"22%"}>
+          <Box
+            ml={1}
+            display={"flex"}
+            alignItems={"center"}
+            gap={2}
+            mt={{ sm: "22%", xs: "32%" }}
+          >
             <Box display={"flex"} flexDirection={"column"} gap={"5px"}>
-              <Box display={"flex"} alignItems={"center"} gap={"5px"}>
-                <CalendarMonthIcon sx={{ color: "white" }} fontSize="small" />
-                <Typography
-                  fontSize={{ md: "17px", xs: "15px" }}
-                  fontWeight={700}
-                  color={"white"}
-                >
-                  {formatDate(data?.startDate)} at
-                </Typography>
+              <Box
+                display={"flex"}
+                flexDirection={{ xs: "column", sm: "row" }}
+                alignItems={"center"}
+                gap={"5px"}
+              >
+                <Box display={"flex"}>
+                  <CalendarMonthIcon sx={{ color: "white" }} fontSize="small" />
+                  <Typography
+                    fontSize={{ md: "17px", xs: "15px" }}
+                    fontWeight={700}
+                    color={"white"}
+                  >
+                    {formatDate(data?.startDate)}
+                  </Typography>
+                </Box>
                 <Typography
                   color={"white"}
                   fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
                   fontWeight={400}
                 >
-                  {data?.startTime}
+                  at {data?.startTime}
                 </Typography>
               </Box>
               <Box display={"flex"} justifyContent={"start"} gap={"5px"}>
@@ -166,7 +183,6 @@ function Slider() {
                 setEventBook(true);
                 setBookingData(data);
               }}
-              
               variant="contained"
               endIcon={
                 <KeyboardDoubleArrowRightIcon
@@ -237,31 +253,48 @@ function Slider() {
               color: "white",
             }}
           >
-            Latest News: Example of a moving news ticker running smoothly across
-            the screen. Check out more updates! Latest News: Example of a moving
-            news ticker running smoothly across the screen. Check out more
-            updates! Latest News: Example of a moving news ticker running
-            smoothly across the screen. Check out more updates! Latest News:
-            Example of a moving news ticker running smoothly across the screen.
-            Check out more updates! Latest News: Example of a moving news ticker
-            running smoothly across the screen. Check out more updates! Latest
-            News: Example of a moving news ticker running smoothly across the
-            screen. Check out more updates! Latest News: Example of a moving
-            news ticker running smoothly across the screen. Check out more
-            updates! Latest News: Example of a moving news ticker running
-            smoothly across the screen. Check out more updates! Latest News:
-            Example of a moving news ticker running smoothly across the screen.
-            Check out more updates! Latest News: Example of a moving news ticker
-            running smoothly across the screen. Check out more updates! Latest
-            News: Example of a moving news ticker running smoothly across the
-            screen. Check out more updates! Latest News: Example of a moving
-            news ticker running smoothly across the screen. Check out more
-            updates! Latest News: Example of a moving news ticker running
-            smoothly across the screen. Check out more updates! Latest News:
-            Example of a moving news ticker running smoothly across the screen.
-            Check out more updates! Latest News: Example of a moving news ticker
-            running smoothly across the screen. Check out more updates!
-            {/* Repeat the text enough times to ensure it covers the gap */}
+            Helping Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus..... Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....Helping
+            Gurus.....Helping Gurus.....Helping Gurus.....
           </Typography>
         </Box>
         <style>{scrollingTextStyles}</style>

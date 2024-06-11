@@ -22,6 +22,7 @@ const menuItems = [
   },
   { name: "Events", url: "/events" },
   { name: "About Us", url: "/about-us" },
+  { name: "Career", url: "/career" },
   { name: "Contact Us", url: "/contact-us" },
 ];
 
@@ -38,11 +39,20 @@ function Navbar() {
     );
     return currentItem ? currentItem.name : "Home";
   };
+  const getActiveServiceItem = () => {
+    const currentItem = menuItems[1].services.find(
+      (item) =>
+        item.replace(/ & /g, "-").replace(/ /g, "-") === location.pathname
+    );
+    return currentItem ? currentItem : "";
+  };
 
   const [active, setActive] = useState(getActiveItem);
+  const [activeService, setActiveService] = useState(getActiveServiceItem);
 
   useEffect(() => {
     setActive(getActiveItem());
+    setActiveService(getActiveServiceItem());
   }, [location]);
 
   useEffect(() => {
@@ -133,15 +143,21 @@ function Navbar() {
                             transition: "all 0.5s ease-in-out",
                           },
                         }}
-                        color={"#FF8126"}
-                        fontSize="16px"
-                        onClick={() =>
-                          navigate(
-                            `/our-service/${service
-                              .toLowerCase()
-                              .replace(" ", "-")}`
-                          )
+                        color={
+                          activeService ===
+                          service.replace(/ & /g, "-").replace(/ /g, "-")
+                            ? "blue"
+                            : "#FF8126"
                         }
+                        fontSize="16px"
+                        onClick={(event) => {
+                          event.stopPropagation(); // Stop the event from bubbling up
+                          const servicePath = service
+                            .replace(/ & /g, "-")
+                            .replace(/ /g, "-");
+                          navigate(`/our-service/${servicePath}`);
+                          setActiveService(service);
+                        }}
                       >
                         {service}
                       </Typography>
@@ -155,7 +171,7 @@ function Navbar() {
             ))}
           </Box>
           <Button
-          onClick={()=>navigate('/contact-us')}
+            onClick={() => navigate("/contact-us")}
             variant="contained"
             startIcon={<LocalPhoneIcon />}
             disableElevation

@@ -226,7 +226,7 @@ function About() {
                     <Typography
                       ml={2}
                       textAlign={"start"}
-                      fontSize={"13px"}
+                      fontSize={{sm:"13px",xs:'11px'}}
                       fontWeight={600}
                     >
                       {data.name}

@@ -230,18 +230,20 @@ function Events() {
           justifyContent: "center",
           zIndex: "400",
           p: 1,
+          height: "40px",
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
         }}
       >
         <Box
           width="50%"
           p={0.5}
-          bgcolor={selectedEvent === "upcoming" ? "#FF8126" : "#1976d2"}
+          bgcolor={selectedEvent === "upcoming" ? "#FFF" : "#1976d2"}
           borderRadius={1}
           onClick={() => setSelectedEvent("upcoming")}
         >
           <Typography
             textAlign="center"
-            color={"white"}
+            color={selectedEvent === "upcoming" ? "#1976d2" : "#FFF"}
             fontWeight={600}
             sx={{
               cursor: "pointer",
@@ -253,13 +255,13 @@ function Events() {
         <Box
           width="50%"
           p={0.5}
-          bgcolor={selectedEvent === "previous" ? "#FF8126" : "#1976d2"}
+          bgcolor={selectedEvent === "previous" ? "#FFF" : "#1976d2"}
           borderRadius={1}
           onClick={() => setSelectedEvent("previous")}
         >
           <Typography
             textAlign="center"
-            color={"white"}
+            color={selectedEvent === "previous" ? "#1976d2" : "#FFF"}
             fontWeight={600}
             sx={{
               cursor: "pointer",
@@ -271,14 +273,14 @@ function Events() {
       </Box>
 
       <Box
-        height={{ md: "250px" }}
+        height={{ xs: "250px" }}
         pt={5}
         sx={{
           background:
             "url(https://img.freepik.com/free-vector/gradient-blue-background_23-2149322706.jpg?size=626&ext=jpg&ga=GA1.1.563629714.1713778942&semt=ais_user)",
         }}
         display={"flex"}
-        justifyContent={{ xs: "start", sm: "center" }}
+        justifyContent={"center"}
         alignItems={"center"}
       >
         <Typography color={"white"} fontWeight={700} fontSize={"30px"}>
@@ -332,7 +334,7 @@ function Events() {
                     className="fade-in"
                   >
                     <Box width={"80%"}>
-                      <EventCard data={data} type={selectedEvent}/>
+                      <EventCard data={data} type={selectedEvent} />
                     </Box>
                   </Box>
                 ))}

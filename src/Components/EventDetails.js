@@ -17,6 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function EventDetails({ open, show, data, type }) {
   const [eventbook, setEventBook] = React.useState(false);
+  const [activeImage, setImage] = React.useState(data?.images[0]);
 
   const handleClose = () => {
     show(false);
@@ -33,10 +34,10 @@ export default function EventDetails({ open, show, data, type }) {
         fullScreen
         TransitionComponent={Transition}
         PaperProps={{
-          style: {
+          sx: {
             position: "absolute",
             bottom: 0, // Anchor the dialog to the bottom of the view
-            height: "88vh", // Set the height of the dialog to 70% of the viewport height
+            height: { lg: "88vh", md: "85vh", xs: "80vh" }, // Set the height of the dialog to 70% of the viewport height
             maxHeight: "90vh",
             width: "100vw", // Optionally set the width to fill the screen
           },
@@ -58,14 +59,14 @@ export default function EventDetails({ open, show, data, type }) {
           </Toolbar>
         </AppBar>
         <Box
-          mt={10}
+          mt={4}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
         >
           <Grid
             container
-            width={{ md: "80%", xs: "98%" }}
+            width={{ md: "80%", xs: "100%" }}
             pb={3}
             display={"flex"}
             justifyContent={"center"}
@@ -73,14 +74,14 @@ export default function EventDetails({ open, show, data, type }) {
             borderRadius={"40px"}
             sx={{ boxShadow: "0px 15px 25px 0px #0000001C" }}
           >
-            <Grid container mt={2} p={4}>
+            <Grid container mt={2} p={{ sm: 4, xs: 2 }}>
               <Grid
                 item
                 xs={12}
                 md={6}
                 display={"flex"}
                 justifyContent={"center"}
-                flexDirection={'column'}
+                flexDirection={"column"}
                 alignItems={"center"}
               >
                 <Box
@@ -96,40 +97,58 @@ export default function EventDetails({ open, show, data, type }) {
                       height: "100%",
                       borderRadius: "20px",
                     }}
-                    src={`${API_URL}api/v1/image/${data.images[0]}`}
+                    src={`${API_URL}api/v1/image/${activeImage}`}
                   />
                 </Box>
-                {/* <Box
+                <Box
                   sx={{
                     width: { xs: "100%", md: "80%" },
                     height: "80px",
-                    borderRadius: "20px",
-                    display:'flex',
-                    alignItems:'center',
-                    p:1,
-                    gap:1,
-                    mt:2
+                    maxWidth: "100%",
+                    overflowY: "hidden",
+                    overflowX: "auto",
+                    borderRadius: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    p: 1,
+                    gap: 1,
+                    mt: 2,
                   }}
                 >
-                {data?.images.map((img)=>(
-
-                   <img
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "20px",
-                    }}
-                    src={`${API_URL}api/v1/image/${img}`}
-                  />
-                ))}
-                </Box> */}
+                  {data?.images.map((img, indexImg) => (
+                    <Box
+                      key={indexImg}
+                      height={"80px"}
+                      sx={{
+                        width: { xs: "100%", md: "33.3%" },
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setImage(img)}
+                    >
+                      <img
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "8px",
+                        }}
+                        src={`${API_URL}api/v1/image/${img}`}
+                      />
+                    </Box>
+                  ))}
+                </Box>
               </Grid>
-              <Grid item xs={12} md={6} p={3}>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                mt={{ xs: 4, md: 0 }}
+                p={{ xs: 0, sm: 3 }}
+              >
                 <Typography
                   color={"#100854"}
                   fontSize={"25px"}
                   fontWeight={700}
-                  mb={1}
+                  mb={2}
                 >
                   {data?.name}
                 </Typography>

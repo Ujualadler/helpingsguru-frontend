@@ -272,7 +272,7 @@ function Testimonials() {
               left: 10,
               top: "50%",
               transform: "translateY(-50%)",
-              zIndex: 1500,
+              zIndex: 2,
               background: "#FF8126",
               color: "white",
               "&:hover": {
@@ -291,7 +291,7 @@ function Testimonials() {
               right: 10,
               top: "50%",
               transform: "translateY(-50%)",
-              zIndex: 1500,
+              zIndex:2,
               background: "#FF8126",
               color: "white",
               "&:hover": {

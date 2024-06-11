@@ -1,7 +1,9 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function OurServices() {
+    const navigate = useNavigate();
   const ourservicesData = [
     {
       name: "Educational Events & Roundtables",
@@ -11,7 +13,7 @@ function OurServices() {
       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit
-      esse`,
+      esse`
     },
     {
       name: "Staff Recruitment Solutions",
@@ -22,6 +24,7 @@ function OurServices() {
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit
       esse`,
+    
     },
     {
       name: "Inspiring Speakers for Educational Institutions ",
@@ -31,6 +34,7 @@ function OurServices() {
       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis`,
+     
     },
     {
       name: "Educational Magazine Hub",
@@ -41,6 +45,7 @@ function OurServices() {
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit
       esse`,
+      
     },
     {
       name: "Edtech B2B Lead Generation",
@@ -51,6 +56,7 @@ function OurServices() {
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit
       esse`,
+      
     },
     {
       name: "Innovative IFP Panels",
@@ -61,6 +67,7 @@ function OurServices() {
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit
       esse`,
+     
     },
     {
       name: "Teacher Training Certification Programme",
@@ -70,12 +77,13 @@ function OurServices() {
       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
       ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis`,
+    
     },
   ];
   return (
     <Box>
       <Box
-        height={{ md: "250px" }}
+        height={{ xs: "250px" }}
         pt={5}
         sx={{
           background:
@@ -148,6 +156,11 @@ function OurServices() {
                     {data.description}
                   </Typography>
                   <Button
+                     onClick={(event) => {
+                        event.stopPropagation();  // Stop the event from bubbling up
+                        const servicePath = data.name.replace(/ & /g, '-').replace(/ /g, '-');
+                        navigate(`/our-service/${servicePath}`);
+                      }}
                     type="submit"
                     variant="contained"
                     sx={{ width: "100%", bgcolor: "#FF8126" }}

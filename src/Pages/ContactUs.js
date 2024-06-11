@@ -43,21 +43,21 @@ function ContactUs() {
   return (
     <Box>
       <form onSubmit={handleSubmit}>
-        <Box
-          height={{ md: "250px" }}
-          pt={5}
-          sx={{
-            background:
-              "url(https://img.freepik.com/free-vector/gradient-blue-background_23-2149322706.jpg?size=626&ext=jpg&ga=GA1.1.563629714.1713778942&semt=ais_user)",
-          }}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Typography color={"white"} fontWeight={700} fontSize={"30px"}>
-            Contact Us
-          </Typography>
-        </Box>
+      <Box
+        height={{ xs: "250px" }}
+        pt={5}
+        sx={{
+          background:
+            "url(https://img.freepik.com/free-vector/gradient-blue-background_23-2149322706.jpg?size=626&ext=jpg&ga=GA1.1.563629714.1713778942&semt=ais_user)",
+        }}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <Typography color={"white"} fontWeight={700} fontSize={"30px"}>
+          Contact Us
+        </Typography>
+      </Box>
         <Box
           display={"flex"}
           justifyContent={"center"}

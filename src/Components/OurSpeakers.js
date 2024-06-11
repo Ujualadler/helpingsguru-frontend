@@ -103,7 +103,7 @@ function OurSpeakers() {
                   <img
                     style={{
                       width: "100%",
-                      height: "50vh",
+                      height: {lg:"40vh",md:'45vh',xs:'50vh'},
                       background: "rgba(0, 0, 0, 0.5)",
                       filter: "brightness(80%)", // Semi-transparent black // Control the transparency of the overlay
                     }}

@@ -24,7 +24,7 @@ function AboutUs() {
   return (
     <Box>
       <Box
-        height={{ md: "250px" }}
+        height={{ xs: "250px" }}
         pt={5}
         sx={{
           background:

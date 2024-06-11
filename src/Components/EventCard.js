@@ -11,13 +11,25 @@ function EventCard({ data, type }) {
   return (
     <>
       {eventDetails && (
-        <EventDetails data={data} open={eventDetails} type={type} show={setEventDetails} />
+        <EventDetails
+          data={data}
+          open={eventDetails}
+          type={type}
+          show={setEventDetails}
+        />
       )}
       {eventbook && (
         <EventSubmitModal data={data} open={eventbook} show={setEventBook} />
       )}
-      <Box width={"100%"}>
-        <Box borderRadius={4} position={"relative"} overflow={"hidden"}>
+      <Box
+        width={"100%"}
+        onClick={() => setEventDetails(true)}
+        sx={{ cursor: "pointer" ,'&:hover':{
+            transform:'scale(1.05)',
+            transition:'all 0.5s ease-in-out'
+        }}}
+      >
+        <Box borderRadius={2} position={"relative"} overflow={"hidden"}>
           <img
             src={`${API_URL}api/v1/image/${data.images[0]}`}
             style={{
@@ -30,40 +42,54 @@ function EventCard({ data, type }) {
           <Typography
             position={"absolute"}
             top={7}
-            left={7}
+            left={0}
             color={"white"}
             sx={{
               background:
                 "linear-gradient(145deg, rgba(0, 0, 128, 0.9), rgba(0, 0, 255, 0.7))", // Gradient from navy to lighter blue
               borderRadius: 2,
-              px: 1,
+              p: 1,
+              mx: 1,
+              fontSize: "13px",
+              fontWeight: 600,
+              //   width: "100%",
             }}
           >
-            {data?.name}
+            {data?.name.toUpperCase()}
           </Typography>
           <Typography
             position={"absolute"}
             bottom={0}
+            width={"100%"}
             color={"white"}
             sx={{
               background:
                 "linear-gradient(145deg, rgba(0, 0, 128, 0.8), rgba(0, 0, 255, 0.6))", // Gradient from navy to transparent blue
               width: "100%",
               textAlign: "center",
-              py: 1,
+              fontSize: "13px",
+              fontWeight: 600,
+              p: 1,
             }}
           >
             {formatDate(data?.startDate)}
           </Typography>
         </Box>
-        <Box display={"flex"} alignItems={"center"} mt={1} gap={"4px"}>
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          mt={1}
+          gap={"4px"}
+        >
           <Button
             onClick={() => setEventDetails(true)}
             sx={{
               textTransform: "none",
               borderRadius: 2,
-              width:type !== "previous"? "50%":'100%',
+              width: type !== "previous" ? "50%" : "100%",
               color: "black",
+              fontSize: { xs: "12px", xl: "13px" },
             }}
           >
             Know More
@@ -75,8 +101,8 @@ function EventCard({ data, type }) {
               sx={{
                 textTransform: "none",
                 borderRadius: 2,
-                width: "45%",
-                fontSize: "13px",
+                width: "50%",
+                fontSize: { xs: "10px", xl: "12px" },
                 background: "#FF8126",
                 color: "white",
               }}

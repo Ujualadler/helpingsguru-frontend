@@ -47,7 +47,12 @@ function Footer() {
             justifyContent={"center"}
             width={"100%"}
           >
-            <MenuItem sx={{ color: "white", fontSize: "13px" }}>Home</MenuItem>
+            <MenuItem
+              onClick={() => navigate("/")}
+              sx={{ color: "white", fontSize: "13px" }}
+            >
+              Home
+            </MenuItem>
             <MenuItem
               onClick={() => navigate("/our-service")}
               sx={{ color: "white", fontSize: "13px" }}
@@ -92,6 +97,24 @@ function Footer() {
             <Typography fontSize={"13px"} color={"white"}>
               Lorem Ipsum is simply dummy text of the and typesetting industry
             </Typography>
+            <Box display={"flex"} alignItems={"center"} gap={1.2} mt={2}>
+              <img
+                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                src="/images/facebook.png"
+              />
+              <img
+                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                src="/images/instagram.png"
+              />
+              <img
+                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                src="/images/whatsapp.png"
+              />
+              <img
+                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                src="/images/youtube.png"
+              />
+            </Box>
           </Box>
         </Grid>
         <Grid item md={4.5} p={3}>

@@ -8,6 +8,8 @@ import ContactUs from "./Pages/ContactUs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./Pages/NotFound";
+import ServiceSinglePage from "./Pages/ServiceSinglePage";
+import Career from "./Pages/Career";
 
 export const AppRoutes = () => {
   return (
@@ -29,9 +31,14 @@ export const AppRoutes = () => {
         <Route path="/" element={<Layout component={<Home />} />} />
         <Route path="/about-us" element={<Layout component={<AboutUs />} />} />
         <Route path="/events" element={<Layout component={<Events />} />} />
+        <Route path="/career" element={<Layout component={<Career />} />} />
         <Route
           path="/our-service"
           element={<Layout component={<OurServices />} />}
+        />
+        <Route
+          path="/our-service/:serviceName"
+          element={<Layout component={<ServiceSinglePage />} />}
         />
         <Route
           path="/contact-us"
