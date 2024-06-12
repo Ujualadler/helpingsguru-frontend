@@ -24,10 +24,13 @@ function EventCard({ data, type }) {
       <Box
         width={"100%"}
         onClick={() => setEventDetails(true)}
-        sx={{ cursor: "pointer" ,'&:hover':{
-            transform:'scale(1.05)',
-            transition:'all 0.5s ease-in-out'
-        }}}
+        sx={{
+          cursor: "pointer",
+          "&:hover": {
+            transform: "scale(1.05)",
+            transition: "all 0.5s ease-in-out",
+          },
+        }}
       >
         <Box borderRadius={2} position={"relative"} overflow={"hidden"}>
           <img
@@ -37,6 +40,7 @@ function EventCard({ data, type }) {
               height: "35vh",
               borderRadius: "8px",
               filter: "brightness(80%)",
+              objectFit: "cover",
             }}
           />
           <Typography
@@ -97,7 +101,10 @@ function EventCard({ data, type }) {
           {type !== "previous" && (
             <Button
               variant="contained"
-              onClick={() => setEventBook(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setEventBook(true);
+              }}
               sx={{
                 textTransform: "none",
                 borderRadius: 2,

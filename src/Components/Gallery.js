@@ -84,7 +84,7 @@ function Gallery() {
         >
           <Box
             display={"flex"}
-            justifyContent={{ xs: "start", sm: "center" }}
+            justifyContent={{ xs: "start", sm: "start" }}
             overflow={"auto"}
             width={{
               xs: "90%",
@@ -132,7 +132,7 @@ function Gallery() {
                         style={{
                           width: "100%",
                           height: "35vh",
-                          filter: "brightness(80%)",
+                          objectFit:'cover'
                         }}
                       />
                     </Box>

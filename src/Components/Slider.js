@@ -7,6 +7,7 @@ import { useTheme } from "@mui/material/styles";
 import { eventService } from "../Services/EventService";
 import { API_URL, formatDate } from "../Services/url";
 import EventSubmitModal from "./EventSubmitForm";
+import EventDetails from "./EventDetails";
 
 function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -62,7 +63,7 @@ function Slider() {
 
   const data = eventsData[currentSlide];
 
-  console.log(data);
+ 
 
   const scrollingTextStyles = `
   @keyframes scroll-left {
@@ -78,7 +79,7 @@ function Slider() {
   return (
     <>
       {eventbook && bookingData && (
-        <EventSubmitModal
+        <EventDetails
           data={bookingData}
           open={eventbook}
           show={setEventBook}
@@ -137,6 +138,7 @@ function Slider() {
                 height: "100%",
                 objectFit: "cover",
                 borderRadius: "15px",
+                objectFit: "cover",
               }}
               src={`${API_URL}api/v1/image/${data.images[0]}`}
             />

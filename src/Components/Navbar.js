@@ -230,7 +230,7 @@ function MobileMenu({ show, open }) {
       position="fixed"
       top={0}
       left={0}
-      width="100vw"
+      width={{xs:"100vw",sm:'60vw'}}
       height="100vh"
       bgcolor="#3034BB" // Use theme color for background
       zIndex="10000"

@@ -13,7 +13,7 @@ const style = {
   top: "55%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: {lg:"60vw",md:'80vw',xs:'90vw'},
+  width: { lg: "60vw", md: "80vw", xs: "90vw" },
   bgcolor: "background.paper",
   borderRadius: 3,
   boxShadow: 24,
@@ -36,6 +36,10 @@ export default function EventSubmitModal({ open, show, data }) {
     try {
       if (!name.trim() || !email.trim() || !phone.trim() || !address.trim()) {
         toast.error("Please fill all the fields.");
+        return;
+      }
+      if (phone.length < 10) {
+        toast.error("Enter a valid number");
         return;
       }
 
@@ -90,7 +94,7 @@ export default function EventSubmitModal({ open, show, data }) {
                 <Close sx={{ color: "white" }} />
               </IconButton>
             </Box>
-            <Grid container p={{md:4,xs:2}} spacing={2}>
+            <Grid container p={{ md: 4, xs: 2 }} spacing={2}>
               <Grid item xs={12}>
                 <Typography
                   fontWeight={600}

@@ -10,6 +10,7 @@ import Slide from "@mui/material/Slide";
 import { Box, Grid } from "@mui/material";
 import EventSubmitModal from "./EventSubmitForm";
 import { API_URL, formatDate } from "../Services/url";
+import Close from "@mui/icons-material/Close";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -33,17 +34,19 @@ export default function EventDetails({ open, show, data, type }) {
         onClose={handleClose}
         fullScreen
         TransitionComponent={Transition}
+        transitionDuration={500}
         PaperProps={{
           sx: {
             position: "absolute",
             bottom: 0, // Anchor the dialog to the bottom of the view
-            height: { lg: "88vh", md: "85vh", xs: "80vh" }, // Set the height of the dialog to 70% of the viewport height
+            height: { lg: "89vh", md: "90vh", xs: "84vh", sm: "90vh" }, // Set the height of the dialog to 70% of the viewport height
             maxHeight: "90vh",
-            width: "100vw", // Optionally set the width to fill the screen
+            width: "100vw",
+            zIndex: 100000, // Optionally set the width to fill the screen
           },
         }}
       >
-        <AppBar sx={{ position: "relative" }}>
+        {/* <AppBar sx={{ position: "relative" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -57,19 +60,49 @@ export default function EventDetails({ open, show, data, type }) {
               {data.name}
             </Typography>
           </Toolbar>
-        </AppBar>
+        </AppBar> */}
         <Box
-          mt={4}
+          //   mt={4}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
+          flexDirection={"column"}
         >
+          <Box
+            position={"sticky"}
+            top={0}
+            display={"flex"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+            sx={{ background: "#FF8126" }}
+            //   p={1}
+            overflow={"hidden"}
+            color={"white"}
+            width={"100%"}
+            zIndex={10000000}
+            mb={{ xs: 2, sm: 0 }}
+          >
+            <Typography
+              m={1}
+              p={1}
+              id="modal-modal-title"
+              fontSize={{ md: "16px", xs: "15px" }}
+              fontWeight={600}
+            >
+              {data?.name}
+            </Typography>
+            <IconButton onClick={handleClose}>
+              <Close sx={{ color: "white" }} />
+            </IconButton>
+          </Box>
           <Grid
             container
             width={{ md: "80%", xs: "100%" }}
             pb={3}
+            mt={{ xs: 0, md: 5 }}
             display={"flex"}
             justifyContent={"center"}
+            alignItems={"center"}
             // flexDirection={'column'}
             borderRadius={"40px"}
             sx={{ boxShadow: "0px 15px 25px 0px #0000001C" }}
@@ -96,6 +129,7 @@ export default function EventDetails({ open, show, data, type }) {
                       width: "100%",
                       height: "100%",
                       borderRadius: "20px",
+                      objectFit: "cover",
                     }}
                     src={`${API_URL}api/v1/image/${activeImage}`}
                   />
@@ -130,6 +164,7 @@ export default function EventDetails({ open, show, data, type }) {
                           width: "100%",
                           height: "100%",
                           borderRadius: "8px",
+                          objectFit: "cover",
                         }}
                         src={`${API_URL}api/v1/image/${img}`}
                       />

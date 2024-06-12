@@ -1,5 +1,5 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { contactUsService } from "../Services/ContactUsService";
 import { toast } from "react-toastify";
 
@@ -9,11 +9,16 @@ function ContactUs() {
   const [phone, setPhone] = React.useState("");
   const [message, setMessage] = React.useState("");
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (!name.trim() || !email.trim() || !phone.trim() || !message.trim()) {
         toast.error("Please fill all the fields.");
+        return;
+      }
+      if (phone.length<10) {
+        toast.error("Enter a valid number");
         return;
       }
       const formData = {
@@ -27,6 +32,10 @@ function ContactUs() {
 
       if (result.data.success === true) {
         toast.success(result.data.message);
+        setEmail('')
+        setName('')
+        setPhone('')
+        setMessage('')
       } else {
         toast.error("Something went wrong");
       }

@@ -7,8 +7,6 @@ import { keyframes } from "@emotion/react";
 import { ourSpeakersService } from "../Services/OurSpeakersService";
 import { API_URL } from "../Services/url";
 
-
-
 function OurSpeakers() {
   const scrollRef = useRef(null);
   const handleScroll = (direction) => {
@@ -74,79 +72,87 @@ function OurSpeakers() {
             sx={{ scrollbarWidth: "none" }}
             ref={scrollRef}
           >
-            {ourSpeakerData.length>0 && ourSpeakerData.map((data, index) => (
-              <Box
-                key={index}
-                data-card
-                sx={{
-                  flex: "0 0 auto",
-                  width: { xs: "100%", sm: "50%", md: "25%", lg: "20%" },
-                  animation: `${fadeInAnimation} ease 0.8s`,
-                  // opacity: 0,
-                }}
-                className="fade-in"
-              >
+            {ourSpeakerData.length > 0 &&
+              ourSpeakerData.map((data, index) => (
                 <Box
+                  key={index}
+                  data-card
                   sx={{
-                    border: `
-                         "1px"
-                       solid #cfd4dc`,
-                    background: "yellow",
-
-                    // borderRadius: 3,
-                    position: "relative",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
+                    flex: "0 0 auto",
+                    width: {
+                      xs: "100%",
+                      sm: "50%",
+                      md: "33.333%",
+                      lg: "25%",
+                      xl: "20%",
+                    },
+                    animation: `${fadeInAnimation} ease 0.8s`,
+                    // opacity: 0,
                   }}
+                  className="fade-in"
                 >
-                  <img
-                    style={{
-                      width: "100%",
-                      height: {lg:"40vh",md:'45vh',xs:'50vh'},
-                      background: "rgba(0, 0, 0, 0.5)",
-                      filter: "brightness(80%)", // Semi-transparent black // Control the transparency of the overlay
-                    }}
-                    src={`${API_URL}api/v1/image/${data?.img}`}
-                  />
-
                   <Box
                     sx={{
-                      position: "absolute",
-                      bottom: 20,
+                      border: `
+                         "1px"
+                       solid #cfd4dc`,
+                      background: "yellow",
+                      height: { lg: "40vh", md: "40vh", xs: "50vh" },
+                      // borderRadius: 3,
+                      position: "relative",
                       display: "flex",
                       flexDirection: "column",
-                      alignItems: "start",
-                      left: -1,
-                      zIndex: 2,
+                      alignItems: "center",
                     }}
                   >
-                    <Typography
-                      fontSize={"30px"}
-                      fontWeight={600}
-                      px={1}
-                      color={"white"}
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        background: "rgba(0, 0, 0, 0.5)",
+                        filter: "brightness(80%)",
+                        objectFit: "cover",
+                      }}
+                      src={`${API_URL}api/v1/image/${data?.img}`}
+                    />
+
+                    <Box
                       sx={{
-                        // background: "orange",
-                        WebkitMaskImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0 0 H85 Q90 25 95 50 Q90 75 85 100 H0 V0 Z' fill='black'/></svg>")`,
-                        WebkitMaskSize: "100% 100%",
-                        maskImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0 0 H85 Q90 25 95 50 Q90 75 85 100 H0 V0 Z' fill='black'/></svg>")`,
-                        maskSize: "100% 100%",
-                        paddingRight: "15px",
-                        paddingBlock: "3px",
-                        textAlign: "left",
-                        overflowWrap: "break-word",
+                        position: "absolute",
+                        bottom: 20,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "start",
+                        left: -1,
+                        zIndex: 2,
                       }}
                     >
-                      {data?.name}
-                    </Typography>
-                    <Typography px={1} color={"white"}>
-                      {data?.designation}
-                    </Typography>
+                      <Typography
+                        fontSize={"30px"}
+                        fontWeight={600}
+                        px={1}
+                        color={"white"}
+                        sx={{
+                          // background: "orange",
+                          WebkitMaskImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0 0 H85 Q90 25 95 50 Q90 75 85 100 H0 V0 Z' fill='black'/></svg>")`,
+                          WebkitMaskSize: "100% 100%",
+                          maskImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0 0 H85 Q90 25 95 50 Q90 75 85 100 H0 V0 Z' fill='black'/></svg>")`,
+                          maskSize: "100% 100%",
+                          paddingRight: "15px",
+                          paddingBlock: "3px",
+                          textAlign: "left",
+                          overflowWrap: "break-word",
+                        }}
+                      >
+                        {data?.name}
+                      </Typography>
+                      <Typography px={1} color={"white"}>
+                        {data?.designation}
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-            ))}
+              ))}
           </Box>
 
           {/* Navigation buttons overlay */}

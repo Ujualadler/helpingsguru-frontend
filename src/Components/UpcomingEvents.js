@@ -36,10 +36,10 @@ function UpcomingEvents() {
       </Typography>
 
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-        <Grid container width={{ md: "70%", xs: "90%" }}>
+        <Grid container width={{ lg: "70%", xs: "90%" }}>
           {eventsData.length > 0 &&
             eventsData.map((data, index) => (
-              <Grid item md={4} lg={3} xs={12} sm={6} p={3}>
+              <Grid item md={6} lg={4} xl={3} xs={12} sm={6} p={3}>
                 <EventCard data={data} key={index} />
               </Grid>
             ))}

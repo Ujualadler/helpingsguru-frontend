@@ -113,6 +113,7 @@ function OurSpeakers() {
                     height: "35vh",
                     borderRadius: "8px",
                     filter: "brightness(80%)",
+                    objectFit:'cover'
                   }}
                 />
                 <Typography

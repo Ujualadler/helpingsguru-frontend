@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Modal, IconButton } from "@mui/material";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { API_URL } from "../Services/url";
 import Close from "@mui/icons-material/Close";
 
@@ -19,7 +19,7 @@ const style = {
   alignItems: "center",
   justifyContent: "center",
   position: "relative",
-  borderRadius:3
+  borderRadius: 3,
 };
 
 export default function GallerySlider({
@@ -49,10 +49,12 @@ export default function GallerySlider({
       aria-describedby="image-preview-slide"
     >
       <Box sx={style}>
-        {/* <Box position={'relative'} width={'100%'}> */}
-          <IconButton onClick={()=>show(false)} sx={{position:'absolute',top:0,right:0}}>
-            <Close />
-          </IconButton>
+        <IconButton
+          onClick={() => show(false)}
+          sx={{ position: "absolute", top: 0, right:0,color:'#FF8126' }}
+        >
+          <Close fontSize="large" />
+        </IconButton>
         {/* </Box> */}
         <IconButton
           onClick={handlePrev}
@@ -64,11 +66,11 @@ export default function GallerySlider({
             color: "#FF8126",
           }}
         >
-          <ArrowLeftIcon fontSize="large" />
+          <ArrowBackIosIcon fontSize="large" />
         </IconButton>
         <img
           src={`${API_URL}api/v1/image/${data[currentIndex]}`}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
         <IconButton
           onClick={handleNext}
@@ -80,7 +82,7 @@ export default function GallerySlider({
             color: "#FF8126",
           }}
         >
-          <ArrowRightIcon fontSize="large" />
+          <ArrowForwardIosIcon fontSize="large" sx={{fontWeight:'bold'}} />
         </IconButton>
       </Box>
     </Modal>

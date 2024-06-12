@@ -1,44 +1,32 @@
 import { Box, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ForwardIcon from "@mui/icons-material/Forward";
 import { positions } from "@mui/system";
 import CareerModal from "../Components/CareerModal";
+import { careerService } from "../Services/CareerService";
 
 function Career() {
     const[showForm,setShowForm] = useState(false)
     const[data,setData] = useState('')
-  const careerData = [
-    {
-      department: "development",
-      position: "developer",
-      starting: "Immediate join",
-    },
-    {
-      department: "design",
-      position: "Brand Designer",
-      starting: "Immediate join",
-    },
-    {
-      department: "Strategy",
-      position: "project manager",
-      starting: "Immediate join",
-    },
-    {
-      department: "development",
-      position: "designer intern",
-      starting: "Immediate join",
-    },
-    {
-      department: "development",
-      position: "Assistant manager",
-      starting: "Immediate join",
-    },
-    {
-      department: "design",
-      position: "UI/UX designer",
-      starting: "Immediate join",
-    },
-  ];
+    const [careerData, setCareerData] = useState([]);
+
+    useEffect(() => {
+        const getCareer = async () => {
+          try {
+            const result = await careerService.getCareer();
+            console.log(result.data);
+            if (result.data.success === true) {
+              console.log(result.data.data);
+              setCareerData(result.data.data);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        getCareer();
+      }, []);
+
+
 
   return (
     <Box>
@@ -65,7 +53,7 @@ function Career() {
         alignItems={"center"}
       >
         <Grid container width={{ md: "80%", lg: "70%", xs: "95%" }}>
-          {careerData.map((data) => (
+          {careerData.length>0 && careerData.map((data) => (
             <Grid item xs={12} md={6} lg={4} p={2}>
               <Box
               onClick={()=>{
@@ -99,10 +87,10 @@ function Career() {
                   fontWeight={600}
                   color={"rgb(177 181 187)"}
                 >
-                  {data.department.toUpperCase()}
+                  {data?.department.toUpperCase()}
                 </Typography>
                 <Typography fontSize={"25px"} fontWeight={900} mt={5}>
-                  {data.position.toUpperCase()}
+                  {data?.role.toUpperCase()}
                 </Typography>
                 <Box
                   display={"flex"}
@@ -127,7 +115,7 @@ function Career() {
                       Start:
                     </Typography>
                     <Typography fontSize={"14px"} fontWeight={600}>
-                      {data.starting}
+                      {data?.start}
                     </Typography>
                   </Box>
                   <ForwardIcon
