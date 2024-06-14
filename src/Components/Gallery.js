@@ -132,8 +132,10 @@ function Gallery() {
                         style={{
                           width: "100%",
                           height: "35vh",
-                          objectFit:'cover'
+                          objectFit:'cover',
+                          background:'linear-gradient(to right, #6D7BFE, #3034BB)'
                         }}
+                        loading="lazy"
                       />
                     </Box>
                   </Box>

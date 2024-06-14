@@ -168,8 +168,10 @@ function CountDown() {
                         width: "100%",
                         height: "100%",
                         borderRadius: "20px",
-                        objectFit:'cover'
+                        objectFit:'cover',
+                        background:'linear-gradient(to right, #6D7BFE, #3034BB)'
                       }}
+                      loading="lazy"
                       src={`${API_URL}api/v1/image/${data.images[0]}`}
                     />
                   </Box>
@@ -179,19 +181,20 @@ function CountDown() {
                     color={"#100854"}
                     fontSize={"25px"}
                     fontWeight={700}
+                    mb={2}
                   >
                     {data?.name}
                   </Typography>
                   <Typography
                     color={"#515151"}
-                    fontSize={"17px"}
+                    fontSize={{md:"17px",xs:'15px'}}
                     fontWeight={400}
                   >
                     {data?.description}
                   </Typography>
                   <Box display={"flex"} alignItems={"center"} gap={1} my={1}>
                     <Typography
-                      fontSize={"17px"}
+                      fontSize={{md:"17px",xs:'15px'}}
                       fontWeight={700}
                       color={"#100854"}
                     >
@@ -199,7 +202,7 @@ function CountDown() {
                     </Typography>
                     <Typography
                       color={"#515151"}
-                      fontSize={"17px"}
+                      fontSize={{md:"17px",xs:'15px'}}
                       fontWeight={400}
                     >
                       {data?.location}
@@ -207,7 +210,7 @@ function CountDown() {
                   </Box>
                   <Box display={"flex"} alignItems={"center"} gap={1} my={1}>
                     <Typography
-                      fontSize={"17px"}
+                      fontSize={{md:"17px",xs:'15px'}}
                       fontWeight={700}
                       color={"#100854"}
                     >
@@ -215,7 +218,7 @@ function CountDown() {
                     </Typography>
                     <Typography
                       color={"#515151"}
-                      fontSize={"17px"}
+                      fontSize={{md:"17px",xs:'15px'}}
                       fontWeight={400}
                     >
                       {data?.startTime} - {data.endTime}
@@ -223,7 +226,7 @@ function CountDown() {
                   </Box>
                   <Box display={"flex"} alignItems={"center"} gap={1} my={1}>
                     <Typography
-                      fontSize={"17px"}
+                      fontSize={{md:"17px",xs:'15px'}}
                       fontWeight={700}
                       color={"#100854"}
                     >
@@ -231,7 +234,7 @@ function CountDown() {
                     </Typography>
                     <Typography
                       color={"#515151"}
-                      fontSize={"17px"}
+                      fontSize={{md:"17px",xs:'15px'}}
                       fontWeight={400}
                     >
                       {formatDate(data?.startDate)} -{" "}

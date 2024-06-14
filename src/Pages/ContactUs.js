@@ -97,7 +97,9 @@ function ContactUs() {
                     width: "100%",
                     height: "100%",
                     borderRadius: "10px",
+                    background:'linear-gradient(to right, #6D7BFE, #3034BB)'
                   }}
+                  loading="lazy"
                 />
               </Box>
             </Grid>

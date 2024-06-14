@@ -112,8 +112,10 @@ function OurSpeakers() {
                         background: "rgba(0, 0, 0, 0.5)",
                         filter: "brightness(80%)",
                         objectFit: "cover",
+                        background:'linear-gradient(to right, #6D7BFE, #3034BB)'
                       }}
                       src={`${API_URL}api/v1/image/${data?.img}`}
+                      loading="lazy"
                     />
 
                     <Box

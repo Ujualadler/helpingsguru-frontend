@@ -19,7 +19,7 @@ function NotFound() {
       </Typography>
     <Button endIcon={<ArrowForwardIcon/>}  onClick={()=>navigate('/')} sx={{textTransform:'none'}} variant='contained'>Back to the home</Button>
       <Box sx={{ width: "40%"}}>
-        <img src="/images/404.jpg" style={{height:'100%',width:'100%'}} />
+        <img src="/images/404.jpg" style={{height:'100%',width:'100%',background:'linear-gradient(to right, #6D7BFE, #3034BB)'}} />
       </Box>
     </Box>
   );

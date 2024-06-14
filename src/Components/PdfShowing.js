@@ -12,6 +12,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function PdfShowing({ show, open, url }) {
+  const setVhProperty = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
+
+  React.useEffect(() => {
+    setVhProperty();
+    window.addEventListener("resize", setVhProperty);
+    return () => {
+      window.removeEventListener("resize", setVhProperty);
+    };
+  }, []);
+
   const handleClose = () => {
     show(false);
   };
@@ -25,13 +38,13 @@ export default function PdfShowing({ show, open, url }) {
         TransitionComponent={Transition}
         transitionDuration={500}
         PaperProps={{
-          style: {
+          sx: {
             position: "absolute",
-            bottom: 0,
-            height: { lg: "88vh", md: "90vh", xs: "84vh", sm: "90vh" }, // Set the height of the dialog to 70% of the viewport height
+            bottom: 0, // Anchor the dialog to the bottom of the view
+            height: { xs: "calc(var(--vh, 1vh) * 88)" }, // Set the height of the dialog to 70% of the viewport height
             maxHeight: "90vh",
             width: "100vw",
-            zindex: 10,
+            zIndex: 100000, // Optionally set the width to fill the screen
           },
         }}
       >

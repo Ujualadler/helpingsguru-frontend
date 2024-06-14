@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./Pages/NotFound";
 import ServiceSinglePage from "./Pages/ServiceSinglePage";
 import Career from "./Pages/Career";
+import EdtechB2B from "./Pages/EdtechB2B";
+import IfpPanel from "./Pages/IfpPanel";
 
 export const AppRoutes = () => {
   return (
@@ -25,7 +27,7 @@ export const AppRoutes = () => {
         pauseOnFocusLoss={false}
         draggable
         pauseOnHover={false}
-        theme="colored"
+        theme="dark"
       />
       <Routes>
         <Route path="/" element={<Layout component={<Home />} />} />
@@ -43,6 +45,14 @@ export const AppRoutes = () => {
         <Route
           path="/contact-us"
           element={<Layout component={<ContactUs />} />}
+        />
+        <Route
+          path="/edtech-b2b-lead-generation"
+          element={<Layout component={<EdtechB2B />} />}
+        />
+        <Route
+          path="/innovative-ifp-panels"
+          element={<Layout component={<IfpPanel />} />}
         />
         <Route path="/*" element={<NotFound />} />
       </Routes>

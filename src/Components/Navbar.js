@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Box, Button, Typography, IconButton } from "@mui/material";
+import { Box, Button, Typography, IconButton, Divider } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 
 const menuItems = [
   { name: "Home", url: "/" },
+  { name: "About Us", url: "/about-us" },
+
   {
     name: "Our Services",
     url: "/our-service",
@@ -15,13 +18,14 @@ const menuItems = [
       "Staff Recruitment Solutions",
       "Inspiring Speakers for Educational Institutions",
       "Educational Magazine Hub",
-      "Edtech B2B Lead Generation",
-      "Innovative IFP Panels",
       "Teacher Training Certification Programme",
+      "Talks With Gurus"
     ],
   },
+  { name: "Edtech B2B Lead Generation", url: "/edtech-b2b-lead-generation" },
+  { name: "Innovative IFP Panels", url: "/innovative-ifp-panels" },
   { name: "Events", url: "/events" },
-  { name: "About Us", url: "/about-us" },
+
   { name: "Career", url: "/career" },
   { name: "Contact Us", url: "/contact-us" },
 ];
@@ -40,7 +44,7 @@ function Navbar() {
     return currentItem ? currentItem.name : "Home";
   };
   const getActiveServiceItem = () => {
-    const currentItem = menuItems[1].services.find(
+    const currentItem = menuItems[2].services.find(
       (item) =>
         item.replace(/ & /g, "-").replace(/ /g, "-") === location.pathname
     );
@@ -68,7 +72,7 @@ function Navbar() {
       <Box position="relative">
         {<MobileMenu show={setShowMenu} open={showMenu} />}
         <Box
-          height={{ md: "80px", xs: "60px" }}
+          height={{ md: "80px", xs: "10vh" }}
           display="flex"
           justifyContent="space-between"
           alignItems="center"
@@ -92,7 +96,11 @@ function Navbar() {
           >
             <img
               src="/images/logo1.png"
-              style={{ width: "100%", objectFit: "contain" }}
+              style={{
+                width: "100%",
+                objectFit: "contain",
+                background: "white",
+              }}
             />
           </Box>
           <Box display={{ md: "flex", xs: "none" }} alignItems="center" gap={1}>
@@ -111,7 +119,7 @@ function Navbar() {
                 gap={1}
               >
                 <Typography
-                  fontSize="21px"
+                  fontSize={{ lg: "17px", md: "15px" }}
                   color={
                     active === data.name
                       ? "#FF8126"
@@ -134,33 +142,36 @@ function Navbar() {
                     onMouseLeave={() => setHovered("")}
                   >
                     {data.services.map((service, idx) => (
-                      <Typography
-                        key={idx}
-                        p={1}
-                        sx={{
-                          "&:hover": {
-                            transform: "scale(1.05)",
-                            transition: "all 0.5s ease-in-out",
-                          },
-                        }}
-                        color={
-                          activeService ===
-                          service.replace(/ & /g, "-").replace(/ /g, "-")
-                            ? "blue"
-                            : "#FF8126"
-                        }
-                        fontSize="16px"
-                        onClick={(event) => {
-                          event.stopPropagation(); // Stop the event from bubbling up
-                          const servicePath = service
-                            .replace(/ & /g, "-")
-                            .replace(/ /g, "-");
-                          navigate(`/our-service/${servicePath}`);
-                          setActiveService(service);
-                        }}
-                      >
-                        {service}
-                      </Typography>
+                      <>
+                        <Typography
+                          key={idx}
+                          p={1}
+                          sx={{
+                            "&:hover": {
+                              transform: "scale(1.05)",
+                              transition: "all 0.5s ease-in-out",
+                            },
+                          }}
+                          color={
+                            activeService ===
+                            service.replace(/ & /g, "-").replace(/ /g, "-")
+                              ? "blue"
+                              : "#FF8126"
+                          }
+                          fontSize="16px"
+                          onClick={(event) => {
+                            event.stopPropagation(); // Stop the event from bubbling up
+                            const servicePath = service
+                              .replace(/ & /g, "-")
+                              .replace(/ /g, "-");
+                            navigate(`/our-service/${servicePath}`);
+                            setActiveService(service);
+                          }}
+                        >
+                          {service}
+                        </Typography>
+                        <Divider sx={{ bgcolor: "lightgray" }} />
+                      </>
                     ))}
                   </Box>
                 )}
@@ -219,18 +230,31 @@ function MobileMenu({ show, open }) {
     return currentItem ? currentItem.name : "Home";
   };
 
+  const getActiveServiceItem = () => {
+    const currentItem = menuItems[2].services.find(
+      (item) =>
+        item.replace(/ & /g, "-").replace(/ /g, "-") === location.pathname
+    );
+    return currentItem ? currentItem : "";
+  };
+
   const [active, setActive] = useState(getActiveItem);
+  const [activeService, setActiveService] = useState(getActiveServiceItem);
+  const [showServices, setShowServices] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setActive(getActiveItem());
+    setActiveService(getActiveServiceItem());
   }, [location]);
-  const navigate = useNavigate();
+
   return (
     <Box
       position="fixed"
       top={0}
       left={0}
-      width={{xs:"100vw",sm:'60vw'}}
+      onClose={() => show(false)}
+      width={{ xs: "100vw", sm: "60vw" }}
       height="100vh"
       bgcolor="#3034BB" // Use theme color for background
       zIndex="10000"
@@ -245,22 +269,87 @@ function MobileMenu({ show, open }) {
       }}
     >
       {menuItems.map((data, index) => (
-        <Button
-          key={index}
-          onClick={() => {
-            setActive(data.name);
-            navigate(data.url);
-            show(false);
-          }}
-          sx={{
-            my: 1,
-            color: active ? "#FF8126" : "white",
-            fontSize: "20px",
-            fontWeight: 600,
-          }}
-        >
-          {data.name}
-        </Button>
+        <Box key={index} sx={{ width: "100%" }}>
+          <Button
+            onClick={() => {
+              if (data.name === "Our Services") {
+                setShowServices(!showServices);
+              } else {
+                setActive(data.name);
+                navigate(data.url);
+                show(false);
+              }
+            }}
+            endIcon={
+              data.name === "Our Services" && (
+                <ArrowDropDownCircleIcon
+                  fontSize="large"
+                  sx={{
+                    fontSize: "20px",
+                    transform: showServices
+                      ? "rotate(90deg)"
+                      : "rotate(270deg)",
+                    transition: "transform 0.3s ease",
+                  }}
+                />
+              )
+            }
+            sx={{
+              my: 1,
+              color: active === data.name ? "#FF8126" : "white",
+              fontSize: "20px",
+              fontWeight: 600,
+              width: "100%",
+              textAlign: "left",
+            }}
+          >
+            {data.name}
+          </Button>
+          {data.name === "Our Services" && (
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 10,
+                background: "#FF8126",
+                transform: showServices ? "translateX(0)" : "translateX(-100%)",
+                transition: "transform .5s ease-in-out",
+              }}
+            >
+              {data.services.map((service, idx) => (
+                <Box width={{ xs: "100vw", sm: "60vw" }}>
+                  <Button
+                    key={idx}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const servicePath = service
+                        .replace(/ & /g, "-")
+                        .replace(/ /g, "-");
+                      navigate(`/our-service/${servicePath}`);
+                      setActiveService(service);
+                      show(false);
+                    }}
+                    sx={{
+                      my: "2px",
+                      color:
+                        activeService ===
+                        service.replace(/ & /g, "-").replace(/ /g, "-")
+                          ? "#FF8126"
+                          : "white",
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      width: "100%",
+                      textAlign: "center",
+                      textTransform: "none",
+                    }}
+                  >
+                    {service}
+                  </Button>
+                  <Divider />
+                </Box>
+              ))}
+            </Box>
+          )}
+        </Box>
       ))}
     </Box>
   );

@@ -113,19 +113,19 @@ import { keyframes } from "@emotion/react";
 const eventData = [
   {
     name: "Jhon",
-    image:'/images/testimonial1.avif'
+    image: "/images/testimonial1.avif",
   },
   {
     name: "Aegon",
-    image:'/images/testimonial2.avif'
+    image: "/images/testimonial2.avif",
   },
   {
     name: "Sansa",
-    image:'/images/testimonial3.avif'
+    image: "/images/testimonial3.avif",
   },
   {
     name: "Aria",
-    image:'/images/testimonial4.jpg'
+    image: "/images/testimonial4.jpg",
   },
 ];
 
@@ -213,12 +213,14 @@ function Testimonials() {
                       width: "142px",
                       height: "220px",
                       borderRadius: "190px",
-                      objectFit:'cover'
+                      objectFit: "cover",
+                      background: "linear-gradient(to right, #6D7BFE, #3034BB)",
                     }}
+                    loading="lazy"
                     src={data.image}
                   />
                   <Typography fontWeight={700} fontSize={"25px"}>
-                   {data.name}
+                    {data.name}
                   </Typography>
                   <Typography
                     textAlign={"center"}

@@ -25,6 +25,9 @@ function OurSpeakers() {
   const [ourMagazine, setOurMagazine] = useState([]);
   const [pdf, setPdf] = useState(false);
   const [url, setUrl] = useState('');
+
+  
+
   useEffect(() => {
     const getMagazine = async () => {
       try {
@@ -113,8 +116,11 @@ function OurSpeakers() {
                     height: "35vh",
                     borderRadius: "8px",
                     filter: "brightness(80%)",
-                    objectFit:'cover'
+                    objectFit:'cover',
+                    background:'linear-gradient(to right, #6D7BFE, #3034BB)',
+              
                   }}
+                  loading="lazy"
                 />
                 <Typography
                   position={"absolute"}

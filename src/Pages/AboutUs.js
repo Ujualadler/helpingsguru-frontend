@@ -40,7 +40,7 @@ function AboutUs() {
       </Box>
       <Box
         // height={"150px"}
-        pt={10}
+        pt={{ md: 10, xs: 0 }}
         pb={6}
       >
         <Box
@@ -54,31 +54,45 @@ function AboutUs() {
         >
           <Box
             sx={{
-              width: { md: "180px", xs: "50%" },
-              height: { md: "200px", xs: "60px" },
+              width: { md: "180px", xs: "0px" },
+              height: { md: "200px", xs: "0px" },
             }}
           >
             <img
-              style={{ width: "180px", height: "200px" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                background: "white",
+                objectFit: "contain",
+              }}
+              loading="lazy"
               src="/images/dotblue.webp"
             />
           </Box>
           <Box
-            width={{
-              md: "70%",
-              xs: "95%",
-              height: { md: "500px", xs: "400px" },
+            sx={{
+              position: "relative",
+              width: { xs: "98%", md: "70%" },
+              //   m: 4,
+              paddingBottom: { md: "30%", xs: "70%" }, // 16:9 aspect ratio
+              height: 0,
+              overflow: "hidden",
+              borderRadius: { md: "20px", xs: "0" },
             }}
           >
             <iframe
-              width="100%"
-              height="500px"
-              style={{ borderRadius: "20px" }}
               src={url}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               title="Embedded YouTube Video"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
             ></iframe>
           </Box>
         </Box>
@@ -88,7 +102,7 @@ function AboutUs() {
           item
           xs={12}
           md={6}
-          py={4}
+          py={{ md: 4, xs: 0 }}
           display={"flex"}
           justifyContent={{ md: "end", xs: "center" }}
           alignItems={"center"}
@@ -100,7 +114,13 @@ function AboutUs() {
             }}
           >
             <img
-              style={{ width: "100%", height: "100%", borderRadius: "10px" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "10px",
+                background: "linear-gradient(to right, #6D7BFE, #3034BB)",
+              }}
+              loading="lazy"
               src="https://c1.wallpaperflare.com/preview/623/487/747/technology-code-coding-computer.jpg"
             />
           </Box>
@@ -131,10 +151,11 @@ function AboutUs() {
             maxWidth={{ md: "70%", xs: "100%" }}
             color={"#100854"}
           >
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat."
+            "At Helping Gurus, we leverage an extensive network of CBSE, ICSE,
+            IB, State Board schools & Universities to help Edtech partners
+            establish their presence across India. By showcasing your brand
+            through our comprehensive connections, we facilitate seamless entry
+            into educational institutions nationwide."
           </Typography>
           <Button
             variant="contained"
@@ -179,20 +200,26 @@ function AboutUs() {
                 display={"flex"}
                 flexDirection={"column"}
                 alignItems={"center"}
-                gap={"2px"}
+                gap={"4px"}
               >
                 <img
                   style={{
                     borderRadius: "50%",
                     height: "100px",
                     width: "100px",
+                    objectFit: "cover",
+                    background: "linear-gradient(to right, #6D7BFE, #3034BB)",
                   }}
                   src={data.img}
                 />
-                <Typography color={"white"} fontWeight={700} fontSize={"25px"}>
+                <Typography
+                  color={"#FF8126"}
+                  fontWeight={700}
+                  fontSize={"25px"}
+                >
                   {data.count} +
                 </Typography>
-                <Typography color={"white"} fontWeight={600} fontSize={"15px"}>
+                <Typography color={"#fff"} fontWeight={600} fontSize={"15px"}>
                   {data.title}
                 </Typography>
               </Box>

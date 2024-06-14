@@ -37,6 +37,7 @@ function Career() {
         sx={{
           background:
             "url(https://img.freepik.com/free-vector/gradient-blue-background_23-2149322706.jpg?size=626&ext=jpg&ga=GA1.1.563629714.1713778942&semt=ais_user)",
+            backgroundColor:'linear-gradient(to right, #6D7BFE, #3034BB)'
         }}
         display={"flex"}
         justifyContent={"center"}

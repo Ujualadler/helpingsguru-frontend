@@ -40,16 +40,6 @@ function Slider() {
     }, 300); // Short delay to allow fade out before updating content
   };
 
-  const handlePrev = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + eventsData.length) % eventsData.length
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % eventsData.length);
-  };
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % eventsData.length);
@@ -62,8 +52,6 @@ function Slider() {
   }
 
   const data = eventsData[currentSlide];
-
- 
 
   const scrollingTextStyles = `
   @keyframes scroll-left {
@@ -79,11 +67,7 @@ function Slider() {
   return (
     <>
       {eventbook && bookingData && (
-        <EventDetails
-          data={bookingData}
-          open={eventbook}
-          show={setEventBook}
-        />
+        <EventDetails data={bookingData} open={eventbook} show={setEventBook} />
       )}
       <Box
         height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
@@ -139,7 +123,9 @@ function Slider() {
                 objectFit: "cover",
                 borderRadius: "15px",
                 objectFit: "cover",
+                background:'linear-gradient(to right, #6D7BFE, #3034BB)'
               }}
+              loading="lazy"
               src={`${API_URL}api/v1/image/${data.images[0]}`}
             />
           </Box>

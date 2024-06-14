@@ -20,6 +20,19 @@ export default function EventDetails({ open, show, data, type }) {
   const [eventbook, setEventBook] = React.useState(false);
   const [activeImage, setImage] = React.useState(data?.images[0]);
 
+  const setVhProperty = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  React.useEffect(() => {
+    setVhProperty();
+    window.addEventListener('resize', setVhProperty);
+    return () => {
+      window.removeEventListener('resize', setVhProperty);
+    };
+  }, []);
+
   const handleClose = () => {
     show(false);
   };
@@ -39,7 +52,7 @@ export default function EventDetails({ open, show, data, type }) {
           sx: {
             position: "absolute",
             bottom: 0, // Anchor the dialog to the bottom of the view
-            height: { lg: "89vh", md: "90vh", xs: "84vh", sm: "90vh" }, // Set the height of the dialog to 70% of the viewport height
+            height: { xs: "calc(var(--vh, 1vh) * 88)"}, // Set the height of the dialog to 70% of the viewport height
             maxHeight: "90vh",
             width: "100vw",
             zIndex: 100000, // Optionally set the width to fill the screen
@@ -130,7 +143,9 @@ export default function EventDetails({ open, show, data, type }) {
                       height: "100%",
                       borderRadius: "20px",
                       objectFit: "cover",
+                      background: "linear-gradient(to right, #6D7BFE, #3034BB)",
                     }}
+                    loading="lazy"
                     src={`${API_URL}api/v1/image/${activeImage}`}
                   />
                 </Box>
@@ -165,7 +180,10 @@ export default function EventDetails({ open, show, data, type }) {
                           height: "100%",
                           borderRadius: "8px",
                           objectFit: "cover",
+                          background:
+                            "linear-gradient(to right, #6D7BFE, #3034BB)",
                         }}
+                        loading="lazy"
                         src={`${API_URL}api/v1/image/${img}`}
                       />
                     </Box>

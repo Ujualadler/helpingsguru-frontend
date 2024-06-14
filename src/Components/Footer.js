@@ -14,7 +14,7 @@ function Footer() {
       alignItems={"center"}
       p={2}
     >
-      <Grid container width={"82%"} mt={2}>
+      <Grid container width={{ md: "82%", xs: "100%" }} mt={2}>
         <Grid item md={2.5} display={"flex"} justifyContent={"center"} p={3}>
           <Box
             display={"flex"}
@@ -39,7 +39,7 @@ function Footer() {
             </Typography>
           </Box>
         </Grid>
-        <Grid item md={2.5} p={3}>
+        <Grid item md={2.5} xs={12} p={3}>
           <Box
             display={"flex"}
             alignItems={"start"}
@@ -79,7 +79,7 @@ function Footer() {
             </MenuItem>
           </Box>
         </Grid>
-        <Grid item md={2.5} p={3}>
+        <Grid item md={2.5} xs={12} p={3}>
           <Box
             display={"flex"}
             alignItems={"start"}
@@ -99,25 +99,29 @@ function Footer() {
             </Typography>
             <Box display={"flex"} alignItems={"center"} gap={1.2} mt={2}>
               <img
-                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                style={{ height: "35px", width: "35px", cursor: "pointer" }}
                 src="/images/facebook.png"
+                loading="lazy"
               />
               <img
-                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                style={{ height: "35px", width: "35px", cursor: "pointer" }}
                 src="/images/instagram.png"
+                loading="lazy"
               />
               <img
-                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                style={{ height: "35px", width: "35px", cursor: "pointer" }}
                 src="/images/whatsapp.png"
+                loading="lazy"
               />
               <img
-                style={{ height: "35px", width: "35px",cursor:'pointer' }}
+                style={{ height: "35px", width: "35px", cursor: "pointer" }}
                 src="/images/youtube.png"
+                loading="lazy"
               />
             </Box>
           </Box>
         </Grid>
-        <Grid item md={4.5} p={3}>
+        <Grid item md={4.5} xs={12} p={3}>
           <iframe
             width="100%"
             height="250"

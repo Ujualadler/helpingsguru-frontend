@@ -1,12 +1,13 @@
-import { Box, Button, Grid, Typography, keyframes  } from "@mui/material";
+import { Box, Button, Grid, Typography, keyframes } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import AccordionContent from "./AccordianContent";
 
 function About() {
   const navigate = useNavigate();
   const aboutData = [
     {
-      img:'/images/stage.png',
+      img: "/images/stage.png",
       name: "Educational Events & Roundtables",
     },
     {
@@ -22,13 +23,17 @@ function About() {
       name: "Educational Magazine Hub",
     },
     {
-      img: "/images/responsive-design.png",
-      name: "Innovative IFP Panels",
+      img: "/images/magazine.png",
+      name: "Talks With Gurus",
     },
-    {
-      img: "/images/lead.png",
-      name: "Edtech B2B Lead Generation",
-    },
+    // {
+    //   img: "/images/responsive-design.png",
+    //   name: "Innovative IFP Panels",
+    // },
+    // {
+    //   img: "/images/lead.png",
+    //   name: "Edtech B2B Lead Generation",
+    // },
     {
       img: "/images/speech.png",
       name: "Inspiring Speakers for Educational Institutions",
@@ -44,8 +49,6 @@ function About() {
   }
 `;
 
-
-
   const dimension = keyframes`
   from {
     transform: scale(1.1);
@@ -54,7 +57,6 @@ function About() {
     transform: scale(.8);
   }
 `;
-
 
   return (
     <Grid container mb={3}>
@@ -75,8 +77,6 @@ function About() {
           display={"flex"}
           alignItems={"center"}
           position={"relative"}
-          
-          
         >
           <Box
             sx={{
@@ -96,8 +96,6 @@ function About() {
               top: { md: "16%", xs: "-50%" },
               left: { md: "13%", xs: "10%" },
               animation: `${dimension} 6s linear infinite`,
-              
-              
             }}
           >
             <img
@@ -105,9 +103,9 @@ function About() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "20px",
+                background: "grey",
               }}
               src="/images/about1.jpg"
-              
             />
           </Box>
           <Box
@@ -126,6 +124,7 @@ function About() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "20px",
+                background: "grey",
               }}
               src="/images/about2.jpg"
             />
@@ -146,6 +145,7 @@ function About() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "20px",
+                background: "linear-gradient(to right, #6D7BFE, #3034BB)",
               }}
               src="/images/about3.jpg"
             />
@@ -171,17 +171,17 @@ function About() {
             About Us
           </Typography>
           <Typography
-            maxWidth={{ md: "80%", xs: "100%" }}
+            maxWidth={{ md: "90%", xs: "100%" }}
             fontWeight={400}
             mb={2}
             fontSize={"15px"}
             color={"#100854"}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, 
+            At Helping Gurus, we leverage an extensive network of CBSE, ICSE,
+            IB, State Board schools & Universities to help Edtech partners
+            establish their presence across India. By showcasing your brand
+            through our comprehensive connections, we facilitate seamless entry
+            into educational institutions nationwide. 
           </Typography>
 
           <Button
@@ -196,6 +196,7 @@ function About() {
           >
             Read More
           </Button>
+
           <Box container mt={3}>
             <Typography
               fontWeight={700}
@@ -209,10 +210,10 @@ function About() {
               container
               mt={1}
               spacing={3}
-              width={{ md: "90%", xs: "100%" }}
+              width={{ md: "100%", xs: "100%" }}
             >
               {aboutData.map((data, index) => (
-                <Grid item xs={4} key={index}>
+                <Grid item xs={4} sm={4} key={index}>
                   <Box
                     display={"flex"}
                     // width={"100px"}
@@ -220,13 +221,19 @@ function About() {
                     gap={1}
                   >
                     <img
-                      style={{ height: "80px", width: "80px" }}
+                      style={{
+                        height: "80px",
+                        width: "80px",
+                        borderRadius: "5px",
+                        background:
+                          "linear-gradient(to right, #6D7BFE, #3034BB)",
+                      }}
                       src={data.img}
+                      loading="lazy"
                     />
                     <Typography
-                      ml={2}
-                      textAlign={"start"}
-                      fontSize={{sm:"13px",xs:'11px'}}
+                      textAlign={{ xs: "center", md: "start" }}
+                      fontSize={{ sm: "13px", xs: "11px" }}
                       fontWeight={600}
                     >
                       {data.name}

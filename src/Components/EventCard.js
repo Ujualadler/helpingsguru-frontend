@@ -41,7 +41,9 @@ function EventCard({ data, type }) {
               borderRadius: "8px",
               filter: "brightness(80%)",
               objectFit: "cover",
+              background:'linear-gradient(to right, #6D7BFE, #3034BB)'
             }}
+            loading="lazy"
           />
           <Typography
             position={"absolute"}
