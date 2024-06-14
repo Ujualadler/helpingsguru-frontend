@@ -19,11 +19,25 @@ const menuItems = [
       "Inspiring Speakers for Educational Institutions",
       "Educational Magazine Hub",
       "Teacher Training Certification Programme",
-      "Talks With Gurus"
+      "Talks With Gurus",
     ],
   },
   { name: "Edtech B2B Lead Generation", url: "/edtech-b2b-lead-generation" },
   { name: "Innovative IFP Panels", url: "/innovative-ifp-panels" },
+  {
+    name: "Gurus Help",
+    url: "/gurus-help",
+    services: [
+      "School Erp",
+      "College ERP",
+      "LMS & NEP Aligned Digital Content ",
+      "Vedic Maths",
+      "Robotics",
+      "Tours and Travels",
+      "Furniture For Institutions",
+      "K-12 Music Program for Institutions",
+    ],
+  },
   { name: "Events", url: "/events" },
 
   { name: "Career", url: "/career" },
@@ -43,20 +57,12 @@ function Navbar() {
     );
     return currentItem ? currentItem.name : "Home";
   };
-  const getActiveServiceItem = () => {
-    const currentItem = menuItems[2].services.find(
-      (item) =>
-        item.replace(/ & /g, "-").replace(/ /g, "-") === location.pathname
-    );
-    return currentItem ? currentItem : "";
-  };
 
   const [active, setActive] = useState(getActiveItem);
-  const [activeService, setActiveService] = useState(getActiveServiceItem);
+  const [activeService, setActiveService] = useState("");
 
   useEffect(() => {
     setActive(getActiveItem());
-    setActiveService(getActiveServiceItem());
   }, [location]);
 
   useEffect(() => {
@@ -111,7 +117,9 @@ function Navbar() {
                 onMouseLeave={() => setHovered("")}
                 onClick={() => {
                   setActive(data.name);
-                  navigate(data.url);
+                  if (data.name !== "Gurus Help") {
+                    navigate(data.url);
+                  }
                 }}
                 display="flex"
                 sx={{ cursor: "pointer" }}
@@ -130,7 +138,8 @@ function Navbar() {
                 >
                   {data.name}
                 </Typography>
-                {data.name === "Our Services" && hovered === "Our Services" && (
+                {(data.name === "Our Services" && hovered === "Our Services") ||
+                (data.name === "Gurus Help" && hovered === "Gurus Help") ? (
                   <Box
                     position="absolute"
                     top={50}
@@ -154,7 +163,7 @@ function Navbar() {
                           }}
                           color={
                             activeService ===
-                            service.replace(/ & /g, "-").replace(/ /g, "-")
+                            service.replace(/ & /g, "-").replace(/\s+/g, "")
                               ? "blue"
                               : "#FF8126"
                           }
@@ -164,7 +173,9 @@ function Navbar() {
                             const servicePath = service
                               .replace(/ & /g, "-")
                               .replace(/ /g, "-");
-                            navigate(`/our-service/${servicePath}`);
+
+                            navigate(`${data.url}/${servicePath}`);
+
                             setActiveService(service);
                           }}
                         >
@@ -174,6 +185,8 @@ function Navbar() {
                       </>
                     ))}
                   </Box>
+                ) : (
+                  ""
                 )}
                 {data.name !== "Contact Us" && (
                   <span style={{ color: "#FF8126" }}>/</span>

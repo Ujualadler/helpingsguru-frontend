@@ -151,11 +151,12 @@ function AboutUs() {
             maxWidth={{ md: "70%", xs: "100%" }}
             color={"#100854"}
           >
-            "At Helping Gurus, we leverage an extensive network of CBSE, ICSE,
-            IB, State Board schools & Universities to help Edtech partners
-            establish their presence across India. By showcasing your brand
-            through our comprehensive connections, we facilitate seamless entry
-            into educational institutions nationwide."
+            "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
+            dedicated himself to improving the educational landscape by
+            providing support and services to schools and colleges across India.
+            With a background in Computer Application from Manav Rachna
+            International University, Mr. Bahl has quickly established personal
+            connections with over 3,000 school authorities nationwide."
           </Typography>
           <Button
             variant="contained"

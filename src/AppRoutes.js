@@ -12,6 +12,7 @@ import ServiceSinglePage from "./Pages/ServiceSinglePage";
 import Career from "./Pages/Career";
 import EdtechB2B from "./Pages/EdtechB2B";
 import IfpPanel from "./Pages/IfpPanel";
+import GurusHelp from "./Pages/GurusHelp";
 
 export const AppRoutes = () => {
   return (
@@ -53,6 +54,10 @@ export const AppRoutes = () => {
         <Route
           path="/innovative-ifp-panels"
           element={<Layout component={<IfpPanel />} />}
+        />
+        <Route
+          path="/gurus-help/:serviceName"
+          element={<Layout component={<GurusHelp/>} />}
         />
         <Route path="/*" element={<NotFound />} />
       </Routes>
