@@ -26,8 +26,6 @@ function Footer() {
               <img
                 src="/images/logo1.png"
                 style={{
-                  // borderRadius: "50%",
-                  // height: "120px",
                   marginTop: "10px",
                   width: "120px",
                   objectFit: "contain",
@@ -132,7 +130,7 @@ function Footer() {
           <iframe
             width="100%"
             height="250"
-            // style="border:0"
+            style={{border:0}}
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
