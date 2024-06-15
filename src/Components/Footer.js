@@ -130,7 +130,7 @@ function Footer() {
           <iframe
             width="100%"
             height="250"
-            style={{border:0}}
+            style={{ border: 0 }}
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"

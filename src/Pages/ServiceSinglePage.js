@@ -6,6 +6,7 @@ import ServiceForm from "../Components/ServiceForm";
 import { serviceService } from "../Services/service";
 import { API_URL } from "../Services/url";
 import OurSpeakers from "../Components/OurSpeakers";
+import { ourSpeakersService } from "../Services/OurSpeakersService";
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -39,6 +40,24 @@ function ServiceSinglePage() {
       }
     };
     getGallery();
+  }, []);
+
+  const [ourSpeakerData, setOurSpeakerData] = useState([]);
+
+  useEffect(() => {
+    const getOurSpeakers = async () => {
+      try {
+        const result = await ourSpeakersService.getOurSpeakers();
+        console.log(result.data);
+        if (result.data.success === true) {
+          console.log(result.data.data);
+          setOurSpeakerData(result.data.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getOurSpeakers();
   }, []);
 
   return (
@@ -707,7 +726,76 @@ function ServiceSinglePage() {
               well as authorities from NCERT, CBSE, NITI Ayog and KVS Sangathan
             </Typography>
             <Box my={3}>
-            <OurSpeakers/>
+               <Grid container width={'100%'} justifyContent={'center'} display={'flex'}  >
+                <Grid container width={{md:'70%',xs:'95%'}} >
+                {ourSpeakerData.length > 0 &&
+              ourSpeakerData.map((data, index) => (
+                  <Grid item md={4} xs={12} sm={6} p={2}>
+                  <Box
+                    sx={{
+                      border: `
+                         "1px"
+                       solid #cfd4dc`,
+                      background: "yellow",
+                      height: { lg: "45vh", md: "40vh", xs: "50vh" },
+                      // borderRadius: 3,
+                      position: "relative",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        background: "rgba(0, 0, 0, 0.5)",
+                        filter: "brightness(80%)",
+                        objectFit: "cover",
+                        background:
+                          "linear-gradient(to right, #6D7BFE, #3034BB)",
+                          objectPosition:'top'
+                      }}
+                      src={`${API_URL}api/v1/image/${data?.img}`}
+                      loading="lazy"
+                    />
+
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        bottom: 20,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "start",
+                        left: -1,
+                        zIndex: 2,
+                      }}
+                    >
+                      <Typography
+                        fontSize={"25px"}
+                        fontWeight={600}
+                        px={1}
+                        color={"white"}
+                        sx={{
+                          // background: "orange",
+                          paddingRight: "15px",
+                          paddingBlock: "3px",
+                          textAlign: "left",
+                          // overflowWrap: "break-word",
+                        }}
+                      >
+                        {data?.name}
+                      </Typography>
+                      <Typography px={1} color={"white"}>
+                        {data?.designation}
+                      </Typography>
+                    <Button sx={{ml:1,mt:1,background:'#FF8126'}} variant="contained">Book Now</Button>
+                    </Box>
+                  </Box>
+                  </Grid>))}
+
+                </Grid>
+               </Grid>
             </Box>
             <Box px={{lg:30, md: 8, sm: 5, xs: 2}}>
             <Typography
