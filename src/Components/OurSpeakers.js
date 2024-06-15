@@ -112,7 +112,9 @@ function OurSpeakers() {
                         background: "rgba(0, 0, 0, 0.5)",
                         filter: "brightness(80%)",
                         objectFit: "cover",
-                        background:'linear-gradient(to right, #6D7BFE, #3034BB)'
+                        background:
+                          "linear-gradient(to right, #6D7BFE, #3034BB)",
+                          objectPosition:'top'
                       }}
                       src={`${API_URL}api/v1/image/${data?.img}`}
                       loading="lazy"
@@ -130,20 +132,16 @@ function OurSpeakers() {
                       }}
                     >
                       <Typography
-                        fontSize={"30px"}
+                        fontSize={"25px"}
                         fontWeight={600}
                         px={1}
                         color={"white"}
                         sx={{
                           // background: "orange",
-                          WebkitMaskImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0 0 H85 Q90 25 95 50 Q90 75 85 100 H0 V0 Z' fill='black'/></svg>")`,
-                          WebkitMaskSize: "100% 100%",
-                          maskImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M0 0 H85 Q90 25 95 50 Q90 75 85 100 H0 V0 Z' fill='black'/></svg>")`,
-                          maskSize: "100% 100%",
                           paddingRight: "15px",
                           paddingBlock: "3px",
                           textAlign: "left",
-                          overflowWrap: "break-word",
+                          // overflowWrap: "break-word",
                         }}
                       >
                         {data?.name}
@@ -166,7 +164,7 @@ function OurSpeakers() {
               left: 10,
               top: "50%",
               transform: "translateY(-50%)",
-              zIndex: 1500,
+              zIndex: 2,
               background: "#FF8126",
               color: "white",
               "&:hover": {
@@ -185,7 +183,7 @@ function OurSpeakers() {
               right: 10,
               top: "50%",
               transform: "translateY(-50%)",
-              zIndex: 1500,
+              zIndex: 2,
               background: "#FF8126",
               color: "white",
               "&:hover": {

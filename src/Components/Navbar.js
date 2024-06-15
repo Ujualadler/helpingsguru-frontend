@@ -128,8 +128,13 @@ function Navbar() {
               >
                 <Typography
                   fontSize={{ lg: "17px", md: "15px" }}
+                  sx={{'&:hover':{
+                    color:
+                    "#FF8126"
+                  
+                  }}}
                   color={
-                    active === data.name
+                    active === data.name 
                       ? "#FF8126"
                       : scrolled
                       ? "#100854"
@@ -172,11 +177,13 @@ function Navbar() {
                             event.stopPropagation(); // Stop the event from bubbling up
                             const servicePath = service
                               .replace(/ & /g, "-")
-                              .replace(/ /g, "-");
+                              .replace(/\s+/g, "-");
 
                             navigate(`${data.url}/${servicePath}`);
 
-                            setActiveService(service);
+                            setActiveService(
+                              service.replace(/ & /g, "-").replace(/\s+/g, "")
+                            );
                           }}
                         >
                           {service}
@@ -243,22 +250,13 @@ function MobileMenu({ show, open }) {
     return currentItem ? currentItem.name : "Home";
   };
 
-  const getActiveServiceItem = () => {
-    const currentItem = menuItems[2].services.find(
-      (item) =>
-        item.replace(/ & /g, "-").replace(/ /g, "-") === location.pathname
-    );
-    return currentItem ? currentItem : "";
-  };
-
   const [active, setActive] = useState(getActiveItem);
-  const [activeService, setActiveService] = useState(getActiveServiceItem);
-  const [showServices, setShowServices] = useState(false);
+  const [activeService, setActiveService] = useState("");
+  const [showServices, setShowServices] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     setActive(getActiveItem());
-    setActiveService(getActiveServiceItem());
   }, [location]);
 
   return (
@@ -285,8 +283,8 @@ function MobileMenu({ show, open }) {
         <Box key={index} sx={{ width: "100%" }}>
           <Button
             onClick={() => {
-              if (data.name === "Our Services") {
-                setShowServices(!showServices);
+              if (data.name === "Our Services" || data.name === "Gurus Help") {
+                setShowServices(showServices === data.name ? null : data.name);
               } else {
                 setActive(data.name);
                 navigate(data.url);
@@ -294,23 +292,24 @@ function MobileMenu({ show, open }) {
               }
             }}
             endIcon={
-              data.name === "Our Services" && (
+              data.name === "Our Services" || data.name === "Gurus Help" ? (
                 <ArrowDropDownCircleIcon
                   fontSize="large"
                   sx={{
                     fontSize: "20px",
-                    transform: showServices
-                      ? "rotate(90deg)"
-                      : "rotate(270deg)",
+                    transform:
+                      showServices === data.name
+                        ? "rotate(90deg)"
+                        : "rotate(270deg)",
                     transition: "transform 0.3s ease",
                   }}
                 />
-              )
+              ) : null
             }
             sx={{
               my: 1,
               color: active === data.name ? "#FF8126" : "white",
-              fontSize: "20px",
+              fontSize: { sm: "20px", xs: "16px" },
               fontWeight: 600,
               width: "100%",
               textAlign: "left",
@@ -324,29 +323,81 @@ function MobileMenu({ show, open }) {
                 position: "absolute",
                 zIndex: 10,
                 background: "#FF8126",
-                transform: showServices ? "translateX(0)" : "translateX(-100%)",
+                transform:
+                  showServices === "Our Services"
+                    ? "translateX(0)"
+                    : "translateX(-100%)",
                 transition: "transform .5s ease-in-out",
               }}
             >
               {data.services.map((service, idx) => (
-                <Box width={{ xs: "100vw", sm: "60vw" }}>
+                <Box key={idx} width={{ xs: "100vw", sm: "60vw" }}>
                   <Button
-                    key={idx}
                     onClick={(e) => {
                       e.stopPropagation();
                       const servicePath = service
                         .replace(/ & /g, "-")
-                        .replace(/ /g, "-");
-                      navigate(`/our-service/${servicePath}`);
-                      setActiveService(service);
+                        .replace(/\s+/g, "-");
+                      navigate(`${data.url}/${servicePath}`);
+                      setActiveService(
+                        service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                      );
                       show(false);
                     }}
                     sx={{
                       my: "2px",
                       color:
                         activeService ===
-                        service.replace(/ & /g, "-").replace(/ /g, "-")
-                          ? "#FF8126"
+                        service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                          ? "blue"
+                          : "white",
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      width: "100%",
+                      textAlign: "center",
+                      textTransform: "none",
+                    }}
+                  >
+                    {service}
+                  </Button>
+                  <Divider />
+                </Box>
+              ))}
+            </Box>
+          )}
+          {data.name === "Gurus Help" && (
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 10,
+                background: "#FF8126",
+                transform:
+                  showServices === "Gurus Help"
+                    ? "translateX(0)"
+                    : "translateX(-100%)",
+                transition: "transform .5s ease-in-out",
+              }}
+            >
+              {data.services.map((service, idx) => (
+                <Box key={idx} width={{ xs: "100vw", sm: "60vw" }}>
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const servicePath = service
+                        .replace(/ & /g, "-")
+                        .replace(/\s+/g, "-");
+                      navigate(`${data.url}/${servicePath}`);
+                      setActiveService(
+                        service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                      );
+                      show(false);
+                    }}
+                    sx={{
+                      my: "2px",
+                      color:
+                        activeService ===
+                        service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                          ? "blue"
                           : "white",
                       fontSize: "14px",
                       fontWeight: 400,

@@ -115,13 +115,13 @@ function AboutUs() {
           >
             <img
               style={{
-                width: "100%",
-                height: "100%",
+                width: "80%",
+                height: "60%",
                 borderRadius: "10px",
-                background: "linear-gradient(to right, #6D7BFE, #3034BB)",
+                // background: "linear-gradient(to right, #6D7BFE, #3034BB)",
               }}
               loading="lazy"
-              src="https://c1.wallpaperflare.com/preview/623/487/747/technology-code-coding-computer.jpg"
+              src="/images/logo1.png"
             />
           </Box>
         </Grid>
@@ -138,11 +138,11 @@ function AboutUs() {
           </Typography>
           <Typography
             fontWeight={600}
-            fontSize={{ md: "50px", xs: "30px" }}
+            fontSize={{ md: "35px", xs: "20px" }}
             my={1}
             maxWidth={{ md: "70%", xs: "100%" }}
           >
-            We Are Experts In Elearning
+            Gurus Happiness is our Happiness and Gurus pain is our pain
           </Typography>
           <Typography
             fontWeight={400}
@@ -156,27 +156,29 @@ function AboutUs() {
             providing support and services to schools and colleges across India.
             With a background in Computer Application from Manav Rachna
             International University, Mr. Bahl has quickly established personal
-            connections with over 3,000 school authorities nationwide."
+            connections with over 3,000 school authorities nationwide." Driven
+            by a passion for identifying and solving the pain points of
+            educators, Mr. Bahl and his team at Helping Gurus are committed to
+            ensuring the happiness and success of every educator they work with.
+            Their company motto, "Gurus Happiness is our Happiness and Gurus
+            pain is our pain," reflects their dedication to going above and
+            beyond to meet the needs of their clients. Driven by a passion for
+            identifying and solving the pain points of educators, Mr. Bahl and
+            his team at Helping Gurus are committed to ensuring the happiness
+            and success of every educator they work with. Their company motto,
+            "Gurus Happiness is our Happiness and Gurus pain is our pain,"
+            reflects their dedication to going above and beyond to meet the
+            needs of their clients. The Helping Gurus team is always prepared to
+            support schools and colleges, ensuring that educators receive the
+            assistance they need to succeed.
           </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              textTransform: "none",
-              borderRadius: 2,
-              width: { md: "70%", xs: "100%" },
-              mt: 2,
-              background: "#FF8126",
-              color: "white",
-            }}
-          >
-            Read More
-          </Button>
         </Grid>
       </Grid>
       <Box
         display={"flex"}
         justifyContent={"center"}
         width={"100%"}
+        flexDirection={'column'}
         alignItems={"center"}
       >
         <Grid
@@ -227,7 +229,166 @@ function AboutUs() {
             </Grid>
           ))}
         </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          md={12}
+          width={{ md: "70%", xs: "90%" }}
+          mt={{ md: 5, xs: 0 }}
+        >
+          <Grid item md={7} xs={12}>
+          <Typography
+            fontWeight={600}
+            fontSize={{ md: "35px", xs: "20px" }}
+            my={1}
+          >
+            Message from the Founder & CEO
+          </Typography>
+          <Typography
+            fontWeight={400}
+            fontSize={"15px"}
+            my={1}
+            color={"#100854"}
+          >
+            "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
+            dedicated himself to improving the educational landscape by
+            providing support and services to schools and colleges across India.
+            With a background in Computer Application from Manav Rachna
+            International University, Mr. Bahl has quickly established personal
+            connections with over 3,000 school authorities nationwide." Driven
+            by a passion for identifying and solving the pain points of
+            educators, Mr. Bahl and his team at Helping Gurus are committed to
+            ensuring the happiness and success of every educator they work with.
+            Their company motto, "Gurus Happiness is our Happiness and Gurus
+            pain is our pain," reflects their dedication to going above and
+            beyond to meet the needs of their clients. Driven by a passion for
+            identifying and solving the pain points of educators, Mr. Bahl and
+            his team at Helping Gurus are committed to ensuring the happiness
+            and success of every educator they work with. Their company motto,
+            "Gurus Happiness is our Happiness and Gurus pain is our pain,"
+            reflects their dedication to going above and beyond to meet the
+            needs of their clients. The Helping Gurus team is always prepared to
+            support schools and colleges, ensuring that educators receive the
+            assistance they need to succeed.
+          </Typography>
+          </Grid>
+          <Grid
+          item
+          xs={12}
+          md={5}
+         
+          py={{ md: 4, xs: 0 }}
+          display={"flex"}
+          justifyContent={{ md: "end", xs: "center" }}
+          alignItems={"center"}
+        >
+          <Box
+            sx={{
+              width: { md: "70%", xs: "90%" },
+              height: { md: "400px", xs: "300px" },
+            }}
+          >
+            <img
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "10px",
+                // background: "linear-gradient(to right, #6D7BFE, #3034BB)",
+              }}
+              loading="lazy"
+              src="/images/rajiv.png"
+            />
+          </Box>
+        </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          md={12}
+          width={{ md: "70%", xs: "90%" }}
+          mt={{ md: 5, xs: 0 }}
+          p={{ md: 4, xs: 3 }}
+          pl={{ md: 0, xs: 4 }}
+        >
+         
+   
+        <Grid item md={12} xs={12}>
+          <Typography
+            fontWeight={600}
+            fontSize={{ md: "35px", xs: "20px" }}
+            my={1}
+          >
+            Our Mission
+          </Typography>
+          <Typography
+            fontWeight={400}
+            fontSize={"15px"}
+            my={1}
+            color={"#100854"}
+          >
+            "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
+            dedicated himself to improving the educational landscape by
+            providing support and services to schools and colleges across India.
+            With a background in Computer Application from Manav Rachna
+            International University, Mr. Bahl has quickly established personal
+            connections with over 3,000 school authorities nationwide." Driven
+            by a passion for identifying and solving the pain points of
+            educators, Mr. Bahl and his team at Helping Gurus are committed to
+            ensuring the happiness and success of every educator they work with.
+            Their company motto, "Gurus Happiness is our Happiness and Gurus
+            pain is our pain," reflects their dedication to going above and
+            beyond to meet the needs of their clients. Driven by a passion for
+            identifying and solving the pain points of educators, Mr. Bahl and
+            his team at Helping Gurus are committed to ensuring the happiness
+            and success of every educator they work with. Their company motto,
+            "Gurus Happiness is our Happiness and Gurus pain is our pain,"
+            reflects their dedication to going above and beyond to meet the
+            needs of their clients. The Helping Gurus team is always prepared to
+            support schools and colleges, ensuring that educators receive the
+            assistance they need to succeed.
+          </Typography>
+          </Grid>
+        <Grid item md={12} xs={12}  mt={{md:5,xs:0}}>
+          <Typography
+            fontWeight={600}
+            fontSize={{ md: "35px", xs: "20px" }}
+            my={1}
+          >
+            Our Team
+          </Typography>
+          <Typography
+            fontWeight={400}
+            fontSize={"15px"}
+            my={1}
+            color={"#100854"}
+          >
+            "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
+            dedicated himself to improving the educational landscape by
+            providing support and services to schools and colleges across India.
+            With a background in Computer Application from Manav Rachna
+            International University, Mr. Bahl has quickly established personal
+            connections with over 3,000 school authorities nationwide." Driven
+            by a passion for identifying and solving the pain points of
+            educators, Mr. Bahl and his team at Helping Gurus are committed to
+            ensuring the happiness and success of every educator they work with.
+            Their company motto, "Gurus Happiness is our Happiness and Gurus
+            pain is our pain," reflects their dedication to going above and
+            beyond to meet the needs of their clients. Driven by a passion for
+            identifying and solving the pain points of educators, Mr. Bahl and
+            his team at Helping Gurus are committed to ensuring the happiness
+            and success of every educator they work with. Their company motto,
+            "Gurus Happiness is our Happiness and Gurus pain is our pain,"
+            reflects their dedication to going above and beyond to meet the
+            needs of their clients. The Helping Gurus team is always prepared to
+            support schools and colleges, ensuring that educators receive the
+            assistance they need to succeed.
+          </Typography>
+          </Grid>
+        </Grid>
       </Box>
+
     </Box>
   );
 }

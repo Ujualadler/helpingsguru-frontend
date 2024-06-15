@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React from "react";
-import { keyframes } from "@mui/system";
+import React, { useState } from "react";
+import { display, keyframes } from "@mui/system";
 import { useNavigate, useParams } from "react-router-dom";
 import ServiceForm from "../Components/ServiceForm";
 
@@ -38,6 +38,8 @@ const erpData = [
 function GurusHelp() {
   const { serviceName } = useParams();
   const navigate = useNavigate();
+  const [viewDemo, setViewDemo] = useState("");
+  const [showDemo, setShowDemo] = useState(false);
   return (
     <Box>
       <Box
@@ -158,7 +160,7 @@ function GurusHelp() {
             <Grid container width={{ xs: "100%" }} mt={5}>
               {erpData.length > 0 &&
                 erpData.map((data) => (
-                  <Grid item xs={12} md={6} lg={3} p={2}>
+                  <Grid item xs={12} sm={6} md={4} lg={3} p={2}>
                     <Box
                       sx={{
                         display: "flex",
@@ -191,6 +193,10 @@ function GurusHelp() {
                           {data.name}
                         </Typography>
                         <Button
+                          onClick={() => {
+                            setViewDemo(data.name);
+                            setShowDemo(!showDemo);
+                          }}
                           variant="contained"
                           sx={{
                             background: "#FF8126",
@@ -206,69 +212,75 @@ function GurusHelp() {
                   </Grid>
                 ))}
             </Grid>
-
-            <Box
-              sx={{ background: "#3034BB" }}
-              color={"white"}
-              position={"relative"}
-              borderRadius={2}
-              display={"flex"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-              mt={3}
-              py={2}
-              pb={5}
-              px={3}
-            >
+            {viewDemo !== "" && (
               <Box
-                component="img"
-                src="/images/dot-svg.png"
                 sx={{
-                  position: "absolute",
-                  top: "15%",
-                  right: "2%",
-                  height: "120px",
-                  opacity: "20%",
-                  width: "150px",
-                  animation: `${bounce} 2s infinite`,
+                  background: "#3034BB",
+
+                  display: showDemo ? "flex" : "none",
+                  transition: "all .5s ease-in-out",
                 }}
-              />
-              <Box px={{ md: 4, xs: 0 }}>
-                <Typography
-                  fontWeight={700}
-                  fontSize={{ md: "28px", xs: "18px" }}
-                  color={"white"}
-                  mt={4}
-                >
-                  Become a Partner
-                </Typography>
-                <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                color={"white"}
+                position={"relative"}
+                borderRadius={2}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                mt={3}
+                py={2}
+                pb={5}
+                px={3}
+              >
+                <Box
+                  component="img"
+                  src="/images/dot-svg.png"
+                  sx={{
+                    position: "absolute",
+                    top: "15%",
+                    right: "2%",
+                    height: "120px",
+                    opacity: "20%",
+                    width: "150px",
+                    animation: `${bounce} 2s infinite`,
+                  }}
+                />
+                <Box px={{ md: 4, xs: 0 }}>
                   <Typography
-                    fontWeight={600}
-                    color={"#FF8126"}
-                    fontSize={"16px"}
+                    fontWeight={700}
+                    fontSize={{ md: "28px", xs: "18px" }}
+                    color={"white"}
+                    mt={4}
                   >
-                    Interested in partnering with us and presenting your
-                    services to educational institutions? Please fill out your
-                    details below.
+                    Become a Partner
                   </Typography>
-                </Box>
-                <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm type={"Edtech B2B Lead Generation"} />
-                </Box>
-                <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <Typography
-                    fontWeight={600}
-                    color={"#FF8126"}
-                    fontSize={"16px"}
-                  >
-                    At Helping Gurus, we are committed to the success of our
-                    partners. Join us and let’s revolutionize the educational
-                    landscape together.
-                  </Typography>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <Typography
+                      fontWeight={600}
+                      color={"#FF8126"}
+                      fontSize={"16px"}
+                    >
+                      Interested in partnering with us and presenting your
+                      services to educational institutions? Please fill out your
+                      details below.
+                    </Typography>
+                  </Box>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <ServiceForm type={"Edtech B2B Lead Generation"} />
+                  </Box>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <Typography
+                      fontWeight={600}
+                      color={"#FF8126"}
+                      fontSize={"16px"}
+                    >
+                      At Helping Gurus, we are committed to the success of our
+                      partners. Join us and let’s revolutionize the educational
+                      landscape together.
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
-            </Box>
+            )}
           </Box>
         )}
       </Box>

@@ -35,7 +35,9 @@ function Footer() {
               />
             </Box>
             <Typography fontSize={"13px"} color={"white"} textAlign={"left"}>
-              Lorem Ipsum is simply dummy text of the and typesetting industry.
+              At Helping Gurus, we leverage an extensive network of CBSE, ICSE,
+              IB, State Board schools & Universities to help Edtech partners
+              establish their presence across India.
             </Typography>
           </Box>
         </Grid>
@@ -119,6 +121,11 @@ function Footer() {
                 loading="lazy"
               />
             </Box>
+            <Typography
+              fontSize={"13px"}
+              color={"white"}
+              mt={"2px"}
+            ></Typography>
           </Box>
         </Grid>
         <Grid item md={4.5} xs={12} p={3}>
@@ -129,7 +136,7 @@ function Footer() {
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.458708337962!2d-73.97418738459392!3d40.78509136233808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f685362b4b%3A0x4d0c64e5eb65baae!2sCentral%20Park!5e0!3m2!1sen!2sus!4v1640694339934!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83999965772!2d77.06889965004984!3d28.527280006173133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sus!4v1659322345678!5m2!1sen!2sus"
           ></iframe>
         </Grid>
       </Grid>

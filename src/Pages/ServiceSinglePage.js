@@ -5,6 +5,7 @@ import { keyframes } from "@mui/system";
 import ServiceForm from "../Components/ServiceForm";
 import { serviceService } from "../Services/service";
 import { API_URL } from "../Services/url";
+import OurSpeakers from "../Components/OurSpeakers";
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -62,7 +63,8 @@ function ServiceSinglePage() {
           {serviceName.replace(/-/g, " ")}
         </Typography>
       </Box>
-      <Box px={{ lg: 30, md: 8, sm: 5, xs: 2 }} py={{ md: 10, xs: 5 }}>
+      <Box px={{ lg:serviceName.replace(/-/g, " ") ===
+          "Inspiring Speakers for Educational Institutions"?0:30 , md: 8, sm: 5, xs: 2 }} py={{ md: 10, xs: 5 }}>
         {serviceName.replace(/-/g, " ") === "Educational Magazine Hub" && (
           <Box>
             <Typography
@@ -687,11 +689,13 @@ function ServiceSinglePage() {
               fontWeight={700}
               fontSize={{ md: "25px", xs: "17px" }}
               color={"#FF8126"}
+              px={{lg:30, md: 8, sm: 5, xs: 2}}
             >
               Welcome to HelpingGurus - Connecting Inspirational Speakers with
               Educational Institutions
             </Typography>
             <Typography
+            px={{lg:30, md: 8, sm: 5, xs: 2}}
               fontWeight={"400"}
               fontSize={{ md: "16px", xs: "14px" }}
               mt={2}
@@ -702,6 +706,10 @@ function ServiceSinglePage() {
               creators, business coaches, IAS officers, government officials, as
               well as authorities from NCERT, CBSE, NITI Ayog and KVS Sangathan
             </Typography>
+            <Box my={3}>
+            <OurSpeakers/>
+            </Box>
+            <Box px={{lg:30, md: 8, sm: 5, xs: 2}}>
             <Typography
               fontWeight={700}
               fontSize={{ md: "18px", xs: "16px" }}
@@ -865,6 +873,8 @@ function ServiceSinglePage() {
                 <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
                   <ServiceForm type={"Inspiring Speakers for Educational Institutions"} />
                 </Box>
+
+              </Box>
               </Box>
             </Box>
           </Box>
