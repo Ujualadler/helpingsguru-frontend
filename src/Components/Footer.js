@@ -97,7 +97,7 @@ function Footer() {
               Address
             </Typography>
             <Typography fontSize={"13px"} color={"white"}>
-              Lorem Ipsum is simply dummy text of the and typesetting industry
+              Delhi, India
             </Typography>
             <Box display={"flex"} alignItems={"center"} gap={1.2} mt={2}>
               <img
