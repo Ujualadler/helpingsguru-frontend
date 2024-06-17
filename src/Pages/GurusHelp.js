@@ -19,55 +19,55 @@ const bounce = keyframes`
 const erpData = [
   {
     name: "Brainwonders",
-    img: "/images/partners/brainwonders.jpeg",
+    img: "/images/brainwonders.jpeg",
   },
   {
     name: "Entab infotech",
-    img: "/images/partners/entab.jpeg",
+    img: "/images/entab.jpeg",
   },
   {
     name: "Brio Touch",
-    img: "/images/partners/brio.jpeg",
+    img: "/images/brio.jpeg",
   },
   {
     name: "LiveLife Education",
-    img: "/images/partners/livelife.jpeg",
+    img: "/images/livelife.jpeg",
   },
   {
     name: "Dramm Jamm Education",
-    img: "/images/partners/drammjamm.jpeg",
+    img: "/images/drammjamm.jpeg",
   },
   {
     name: "NTT DATA",
-    img: "/images/partners/nttdata.jpeg",
+    img: "/images/nttdata.jpeg",
   },
   {
     name: "Skolaro",
-    img: "/images/partners/skolaro.jpeg",
+    img: "/images/skolaro.jpeg",
   },
   {
     name: "Sonet",
-    img: "/images/partners/sonet.jpeg",
+    img: "/images/sonet.jpeg",
   },
   {
     name: "Sprouts",
-    img: "/images/partners/sprouts.jpeg",
+    img: "/images/sprouts.jpeg",
   },
   {
     name: "Truscholar",
-    img: "/images/partners/truscholar.jpeg",
+    img: "/images/truscholar.jpeg",
   },
   {
     name: "UCMAS",
-    img: "/images/partners/ucmas.png",
+    img: "/images/ucmas.png",
   },
   {
     name: "Learntech",
-    img: "/images/partners/learntech.jpeg",
+    img: "/images/learntech.jpeg",
   },
   {
     name: "CampusPro",
-    img: "/images/partners/campuspro.jpeg",
+    img: "/images/campuspro.jpeg",
   },
 ];
 

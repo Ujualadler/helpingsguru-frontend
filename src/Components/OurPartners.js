@@ -6,22 +6,22 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { keyframes } from "@emotion/react";
 
 const partnersData = [
-  "/images/partners/campuspro.jpeg",
-  "/images/partners/brainwonders.jpeg",
-  "/images/partners/brio.jpeg",
-  "/images/partners/drammjamm.jpeg",
-  "/images/partners/entab.jpeg",
-  "/images/partners/livelife.jpeg",
-  "/images/partners/nttdata.jpeg",
-  "/images/partners/skolaro.jpeg",
-  "/images/partners/sonet.jpeg",
-  "/images/partners/sprouts.jpeg",
-  "/images/partners/truscholar.jpeg",
-  "/images/partners/learntech.jpeg",
-  "/images/partners/ucmas.png",
-  "/images/partners/Wisetime.png",
-  "/images/partners/hitbullseye.jpeg",
-  "/images/partners/campuspro.jpeg",
+  "/images/campuspro.jpeg",
+  "/images/brainwonders.jpeg",
+  "/images/brio.jpeg",
+  "/images/drammjamm.jpeg",
+  "/images/entab.jpeg",
+  "/images/livelife.jpeg",
+  "/images/nttdata.jpeg",
+  "/images/skolaro.jpeg",
+  "/images/sonet.jpeg",
+  "/images/sprouts.jpeg",
+  "/images/truscholar.jpeg",
+  "/images/learntech.jpeg",
+  "/images/ucmas.png",
+  "/images/Wisetime.png",
+  "/images/hitbullseye.jpeg",
+  "/images/campuspro.jpeg",
 ];
 
 function OurPartners() {
