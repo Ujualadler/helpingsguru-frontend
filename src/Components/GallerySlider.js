@@ -70,7 +70,7 @@ export default function GallerySlider({
         </IconButton>
         <img
           src={`${API_URL}api/v1/image/${data[currentIndex]}`}
-          style={{ width: "100%", height: "100%", objectFit: "cover",background:'linear-gradient(to right, #6D7BFE, #3034BB)' }}
+          style={{ width: "100%", height: "100%", objectFit: "contain",background:'linear-gradient(to right, #6D7BFE, #3034BB)' }}
           loading="lazy"
         />
         <IconButton

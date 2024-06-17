@@ -66,6 +66,14 @@ const erpData = [
     img: "/images/learntech.jpeg",
   },
   {
+    name: "Hitbullseye",
+    img: "/images/hitbullseye.jpeg",
+  },
+  {
+    name: "Wisetime",
+    img: "/images/Wisetime.png",
+  },
+  {
     name: "CampusPro",
     img: "/images/campuspro.jpeg",
   },
@@ -78,7 +86,14 @@ function GurusHelp() {
   const [showDemo, setShowDemo] = useState(false);
   return (
     <Box>
-      {viewDemo && <ServiceModal open={viewDemo} show={setViewDemo} type={'Gurus Help'} service={serviceName.replace(/-/g, " ")}/>}
+      {viewDemo && (
+        <ServiceModal
+          open={viewDemo}
+          show={setViewDemo}
+          type={"Gurus Help"}
+          service={serviceName.replace(/-/g, " ")}
+        />
+      )}
       <Box
         height={{ xs: "250px" }}
         pt={5}
