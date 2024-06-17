@@ -8,6 +8,7 @@ import { API_URL } from "../Services/url";
 import OurSpeakers from "../Components/OurSpeakers";
 import { ourSpeakersService } from "../Services/OurSpeakersService";
 import ServiceModal from "../Components/ServiceModal";
+import GallerySlider from "../Components/GallerySlider";
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -25,7 +26,14 @@ function ServiceSinglePage() {
   const { serviceName } = useParams();
   const navigate = useNavigate();
   const [teacherGalleryData, setTeachergallery] = useState([]);
+  const [showGallery, setShowGallery] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const educationRound = "Educational Events & Roundtables";
+
+  const openGallery = (index) => {
+    setShowGallery(true);
+    setCurrentIndex(index);
+  };
 
   useEffect(() => {
     const getGallery = async () => {
@@ -44,7 +52,7 @@ function ServiceSinglePage() {
   }, []);
 
   const [ourSpeakerData, setOurSpeakerData] = useState([]);
-  const [openSpeakersModal,setOpenSpeakersModal] = useState(false)
+  const [openSpeakersModal, setOpenSpeakersModal] = useState(false);
 
   useEffect(() => {
     const getOurSpeakers = async () => {
@@ -64,7 +72,23 @@ function ServiceSinglePage() {
 
   return (
     <Box>
-      {openSpeakersModal&&<ServiceModal open={openSpeakersModal} show={setOpenSpeakersModal}/>}
+      {openSpeakersModal && (
+        <ServiceModal
+          open={openSpeakersModal}
+          show={setOpenSpeakersModal}
+          type={"Our Services"}
+          service={serviceName.replace(/-/g, " ")}
+        />
+      )}
+      {showGallery && (
+        <GallerySlider
+          show={setShowGallery}
+          open={showGallery}
+          data={teacherGalleryData}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+        />
+      )}
       <Box
         height={{ xs: "250px" }}
         pt={5}
@@ -85,8 +109,19 @@ function ServiceSinglePage() {
           {serviceName.replace(/-/g, " ")}
         </Typography>
       </Box>
-      <Box px={{ lg:serviceName.replace(/-/g, " ") ===
-          "Inspiring Speakers for Educational Institutions"?0:30 , md: 8, sm: 5, xs: 2 }} py={{ md: 10, xs: 5 }}>
+      <Box
+        px={{
+          lg:
+            serviceName.replace(/-/g, " ") ===
+            "Inspiring Speakers for Educational Institutions"
+              ? 0
+              : 30,
+          md: 8,
+          sm: 5,
+          xs: 2,
+        }}
+        py={{ md: 10, xs: 5 }}
+      >
         {serviceName.replace(/-/g, " ") === "Educational Magazine Hub" && (
           <Box>
             <Typography
@@ -442,7 +477,10 @@ function ServiceSinglePage() {
                   </Typography>
                 </Box>
                 <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm type={"Educational Events & Roundtables"} />
+                  <ServiceForm
+                    type={"Our Services"}
+                    service={"Educational Events & Roundtables"}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -543,7 +581,7 @@ function ServiceSinglePage() {
                   </Typography>
                 </Box>
                 <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm type={"Staff Recruitment Solutions"} />
+                  <ServiceForm type={"Our Services"} service={'Staff Recruitment Solutions'} />
                 </Box>
               </Box>
             </Box>
@@ -647,7 +685,8 @@ function ServiceSinglePage() {
                   </Box>
                   <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
                     <ServiceForm
-                      type={"Teacher Training Certification Programme"}
+                      type={"Our Services"}
+                      service={"Teacher Training Certification Programme"}
                     />
                   </Box>
                 </Box>
@@ -689,6 +728,7 @@ function ServiceSinglePage() {
                 teacherGalleryData.map((img, index) => (
                   <Grid item md={3} sm={4} xs={6}>
                     <img
+                      onClick={() => openGallery(index)}
                       src={`${API_URL}api/v1/image/${img}`}
                       loading="lazy"
                       style={{
@@ -711,13 +751,13 @@ function ServiceSinglePage() {
               fontWeight={700}
               fontSize={{ md: "25px", xs: "17px" }}
               color={"#FF8126"}
-              px={{lg:30, md: 8, sm: 5, xs: 2}}
+              px={{ lg: 30, md: 8, sm: 5, xs: 2 }}
             >
               Welcome to HelpingGurus - Connecting Inspirational Speakers with
               Educational Institutions
             </Typography>
             <Typography
-            px={{lg:30, md: 8, sm: 5, xs: 2}}
+              px={{ lg: 30, md: 8, sm: 5, xs: 2 }}
               fontWeight={"400"}
               fontSize={{ md: "16px", xs: "14px" }}
               mt={2}
@@ -729,243 +769,263 @@ function ServiceSinglePage() {
               well as authorities from NCERT, CBSE, NITI Ayog and KVS Sangathan
             </Typography>
             <Box my={3}>
-               <Grid container width={'100%'} justifyContent={'center'} display={'flex'}  >
-                <Grid container width={{md:'70%',xs:'95%'}} >
-                {ourSpeakerData.length > 0 &&
-              ourSpeakerData.map((data, index) => (
-                  <Grid item md={4} xs={12} sm={6} p={2}>
-                  <Box
-                    sx={{
-                      border: `
+              <Grid
+                container
+                width={"100%"}
+                justifyContent={"center"}
+                display={"flex"}
+              >
+                <Grid container width={{ md: "70%", xs: "95%" }}>
+                  {ourSpeakerData.length > 0 &&
+                    ourSpeakerData.map((data, index) => (
+                      <Grid item md={4} xs={12} sm={6} p={2}>
+                        <Box
+                          sx={{
+                            border: `
                          "1px"
                        solid #cfd4dc`,
-                      background: "yellow",
-                      height: { lg: "45vh", md: "40vh", xs: "50vh" },
-                      // borderRadius: 3,
-                      position: "relative",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        background: "rgba(0, 0, 0, 0.5)",
-                        filter: "brightness(80%)",
-                        objectFit: "cover",
-                        background:
-                          "linear-gradient(to right, #6D7BFE, #3034BB)",
-                          objectPosition:'top'
-                      }}
-                      src={`${API_URL}api/v1/image/${data?.img}`}
-                      loading="lazy"
-                    />
+                            background: "yellow",
+                            height: { lg: "45vh", md: "40vh", xs: "50vh" },
+                            // borderRadius: 3,
+                            position: "relative",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                          }}
+                        >
+                          <img
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              background: "rgba(0, 0, 0, 0.5)",
+                              filter: "brightness(80%)",
+                              objectFit: "cover",
+                              background:
+                                "linear-gradient(to right, #6D7BFE, #3034BB)",
+                              objectPosition: "top",
+                            }}
+                            src={`${API_URL}api/v1/image/${data?.img}`}
+                            loading="lazy"
+                          />
 
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        bottom: 20,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "start",
-                        left: -1,
-                        zIndex: 2,
-                      }}
-                    >
-                      <Typography
-                        fontSize={"25px"}
-                        fontWeight={600}
-                        px={1}
-                        color={"white"}
-                        sx={{
-                          // background: "orange",
-                          paddingRight: "15px",
-                          paddingBlock: "3px",
-                          textAlign: "left",
-                          // overflowWrap: "break-word",
-                        }}
-                      >
-                        {data?.name}
-                      </Typography>
-                      <Typography px={1} color={"white"}>
-                        {data?.designation}
-                      </Typography>
-                    <Button onClick={()=>setOpenSpeakersModal(!openSpeakersModal)} sx={{ml:1,mt:1,background:'#FF8126'}} variant="contained">Book Now</Button>
-                    </Box>
-                  </Box>
-                  </Grid>))}
-
+                          <Box
+                            sx={{
+                              position: "absolute",
+                              bottom: 20,
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "start",
+                              left: -1,
+                              zIndex: 2,
+                            }}
+                          >
+                            <Typography
+                              fontSize={"25px"}
+                              fontWeight={600}
+                              px={1}
+                              color={"white"}
+                              sx={{
+                                // background: "orange",
+                                paddingRight: "15px",
+                                paddingBlock: "3px",
+                                textAlign: "left",
+                                // overflowWrap: "break-word",
+                              }}
+                            >
+                              {data?.name}
+                            </Typography>
+                            <Typography px={1} color={"white"}>
+                              {data?.designation}
+                            </Typography>
+                            <Button
+                              onClick={() =>
+                                setOpenSpeakersModal(!openSpeakersModal)
+                              }
+                              sx={{ ml: 1, mt: 1, background: "#FF8126" }}
+                              variant="contained"
+                            >
+                              Book Now
+                            </Button>
+                          </Box>
+                        </Box>
+                      </Grid>
+                    ))}
                 </Grid>
-               </Grid>
+              </Grid>
             </Box>
-            <Box px={{lg:30, md: 8, sm: 5, xs: 2}}>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "18px", xs: "16px" }}
-              mt={4}
-            >
-              Who We Connect You With
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-              color={"#FF8126"}
-            >
-              Motivational Speakers
-            </Typography>
-            <Typography
-              fontWeight={400}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={1}
-            >
-              Experts who inspire and motivate students, teachers and parents to
-              achieve their best.
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-              color={"#FF8126"}
-            >
-              Spiritual Speakers
-            </Typography>
-            <Typography
-              fontWeight={400}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={1}
-            >
-              Individuals who guide and uplift students on spiritual and moral
-              grounds.
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-              color={"#FF8126"}
-            >
-              Content Creators
-            </Typography>
-            <Typography
-              fontWeight={400}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={1}
-            >
-              Innovators who bring fresh perspectives and creativity to the
-              educational landscape.
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-              color={"#FF8126"}
-            >
-              Business Coaches
-            </Typography>
-            <Typography
-              fontWeight={400}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={1}
-            >
-              Professionals who impart valuable business insights and
-              entrepreneurial knowledge.
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-              color={"#FF8126"}
-            >
-              IAS and Govt Officials
-            </Typography>
-            <Typography
-              fontWeight={400}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={1}
-            >
-              Leaders in governance and administration who share their
-              experience and wisdom.
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-              color={"#FF8126"}
-            >
-              NCERT,CBSE, NITI Ayog & KVS Authorities
-            </Typography>
-            <Typography
-              fontWeight={400}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={1}
-            >
-              Key figures in the educational regulatory bodies offering valuable
-              guidance.
-            </Typography>
-            <Typography
-              fontWeight={700}
-              fontSize={{ md: "18px", xs: "16px" }}
-              mt={4}
-            >
-              How We Can Help
-            </Typography>
-            <Typography
-              fontWeight={"400"}
-              fontSize={{ md: "16px", xs: "14px" }}
-              mt={2}
-            >
-              If your school and college is interested in inviting these
-              esteemed personalities to inspire your students and teachers, Book
-              your slot today. Enhance your educational experience with the
-              wisdom and guidance of these distinguished figures.
-            </Typography>
-            <Box
-              sx={{ background: "#3034BB" }}
-              color={"white"}
-              position={"relative"}
-              borderRadius={2}
-              display={"flex"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-              mt={3}
-              py={2}
-              pb={5}
-              px={3}
-            >
+            <Box px={{ lg: 30, md: 8, sm: 5, xs: 2 }}>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "18px", xs: "16px" }}
+                mt={4}
+              >
+                Who We Connect You With
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+                color={"#FF8126"}
+              >
+                Motivational Speakers
+              </Typography>
+              <Typography
+                fontWeight={400}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={1}
+              >
+                Experts who inspire and motivate students, teachers and parents
+                to achieve their best.
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+                color={"#FF8126"}
+              >
+                Spiritual Speakers
+              </Typography>
+              <Typography
+                fontWeight={400}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={1}
+              >
+                Individuals who guide and uplift students on spiritual and moral
+                grounds.
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+                color={"#FF8126"}
+              >
+                Content Creators
+              </Typography>
+              <Typography
+                fontWeight={400}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={1}
+              >
+                Innovators who bring fresh perspectives and creativity to the
+                educational landscape.
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+                color={"#FF8126"}
+              >
+                Business Coaches
+              </Typography>
+              <Typography
+                fontWeight={400}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={1}
+              >
+                Professionals who impart valuable business insights and
+                entrepreneurial knowledge.
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+                color={"#FF8126"}
+              >
+                IAS and Govt Officials
+              </Typography>
+              <Typography
+                fontWeight={400}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={1}
+              >
+                Leaders in governance and administration who share their
+                experience and wisdom.
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+                color={"#FF8126"}
+              >
+                NCERT,CBSE, NITI Ayog & KVS Authorities
+              </Typography>
+              <Typography
+                fontWeight={400}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={1}
+              >
+                Key figures in the educational regulatory bodies offering
+                valuable guidance.
+              </Typography>
+              <Typography
+                fontWeight={700}
+                fontSize={{ md: "18px", xs: "16px" }}
+                mt={4}
+              >
+                How We Can Help
+              </Typography>
+              <Typography
+                fontWeight={"400"}
+                fontSize={{ md: "16px", xs: "14px" }}
+                mt={2}
+              >
+                If your school and college is interested in inviting these
+                esteemed personalities to inspire your students and teachers,
+                Book your slot today. Enhance your educational experience with
+                the wisdom and guidance of these distinguished figures.
+              </Typography>
               <Box
-                component="img"
-                src="/images/dot-svg.png"
-                sx={{
-                  position: "absolute",
-                  top: "15%",
-                  right: "2%",
-                  height: "120px",
-                  opacity: "20%",
-                  width: "150px",
-                  animation: `${bounce} 2s infinite`,
-                }}
-              />
-              <Box px={{ md: 4, xs: 0 }}>
-                <Typography
-                  fontWeight={700}
-                  fontSize={{ md: "28px", xs: "20px" }}
-                  color={"#FF8126"}
-                  mt={4}
-                >
-                  Contact Us for Bookings
-                </Typography>
-                <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <Typography fontWeight={600} color={"#fff"} fontSize={"16px"}>
-                  To book a slot for a speaker, please provide the following details.
+                sx={{ background: "#3034BB" }}
+                color={"white"}
+                position={"relative"}
+                borderRadius={2}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                mt={3}
+                py={2}
+                pb={5}
+                px={3}
+              >
+                <Box
+                  component="img"
+                  src="/images/dot-svg.png"
+                  sx={{
+                    position: "absolute",
+                    top: "15%",
+                    right: "2%",
+                    height: "120px",
+                    opacity: "20%",
+                    width: "150px",
+                    animation: `${bounce} 2s infinite`,
+                  }}
+                />
+                <Box px={{ md: 4, xs: 0 }}>
+                  <Typography
+                    fontWeight={700}
+                    fontSize={{ md: "28px", xs: "20px" }}
+                    color={"#FF8126"}
+                    mt={4}
+                  >
+                    Contact Us for Bookings
                   </Typography>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <Typography
+                      fontWeight={600}
+                      color={"#fff"}
+                      fontSize={"16px"}
+                    >
+                      To book a slot for a speaker, please provide the following
+                      details.
+                    </Typography>
+                  </Box>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <ServiceForm
+                      type={"Our Services"}
+                      service={'Inspiring Speakers for Educational Institutions'}
+                    />
+                  </Box>
                 </Box>
-                <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm type={"Inspiring Speakers for Educational Institutions"} />
-                </Box>
-
-              </Box>
               </Box>
             </Box>
           </Box>

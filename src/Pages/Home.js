@@ -11,6 +11,7 @@ import CenterTypo from '../Components/CenterTypo';
 import Gallery from '../Components/Gallery';
 import Testimonials from '../Components/Testimonials';
 import Footer from '../Components/Footer';
+import OurPartners from '../Components/OurPartners';
 
 
 
@@ -21,6 +22,7 @@ function Home() {
       <Slider/>
       <About/>
       <OurSpeakers/>
+      <OurPartners/>
       <UpcomingEvents/>
       <CountDown/>  
       <OurMagazines/>

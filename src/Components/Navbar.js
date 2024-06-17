@@ -8,8 +8,16 @@ import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 
 const menuItems = [
   { name: "Home", url: "/" },
-  { name: "About Us", url: "/about-us" },
-
+  {
+    name: "About Us",
+    url: "/about-us",
+    services: [
+      "About Us",
+      "Founders Voice",
+      "Our Mission And Vision",
+      "Our Family",
+    ],
+  },
   {
     name: "Our Services",
     url: "/our-service",
@@ -22,14 +30,11 @@ const menuItems = [
       "Talks With Gurus",
     ],
   },
-  { name: "Edtech B2B Lead Generation", url: "/edtech-b2b-lead-generation" },
-  { name: "Innovative IFP Panels", url: "/innovative-ifp-panels" },
   {
     name: "Gurus Help",
     url: "/gurus-help",
     services: [
-      "School Erp",
-      "College ERP",
+      "School Erp And College Erp",
       "LMS & NEP Aligned Digital Content ",
       "Vedic Maths",
       "Robotics",
@@ -39,30 +44,35 @@ const menuItems = [
     ],
   },
   { name: "Events", url: "/events" },
-
+  { name: "Innovative IFP Panels", url: "/innovative-ifp-panels" },
   { name: "Career", url: "/career" },
   { name: "Contact Us", url: "/contact-us" },
 ];
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const navigate = useNavigate();
   const [hovered, setHovered] = useState("");
-
-  const getActiveItem = () => {
-    const currentItem = menuItems.find(
-      (item) => item.url === location.pathname
-    );
-    return currentItem ? currentItem.name : "Home";
-  };
-
-  const [active, setActive] = useState(getActiveItem);
+  const [active, setActive] = useState(getActiveItem(location.pathname));
   const [activeService, setActiveService] = useState("");
 
+  function getActiveItem(path) {
+    const item = menuItems.find((menu) => {
+      if (menu.url === path) return true;
+      if (menu.services) {
+        return menu.services.some((service) =>
+          path.includes(service.replace(/ & /g, "-").replace(/\s+/g, "-"))
+        );
+      }
+      return false;
+    });
+    return item ? item.name : "Home";
+  }
+
   useEffect(() => {
-    setActive(getActiveItem());
+    setActive(getActiveItem(location.pathname));
   }, [location]);
 
   useEffect(() => {
@@ -74,168 +84,170 @@ function Navbar() {
   }, []);
 
   return (
-    <>
-      <Box position="relative">
-        {<MobileMenu show={setShowMenu} open={showMenu} />}
+    <Box position="relative">
+      {<MobileMenu show={setShowMenu} open={showMenu} />}
+      <Box
+        height={{ md: "80px", xs: "10vh" }}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        position="fixed"
+        width="100%"
+        zIndex={10000}
+        sx={{
+          transition: "background-color .5s ease-in-out",
+          background: scrolled
+            ? "white"
+            : "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0))",
+        }}
+      >
         <Box
-          height={{ md: "80px", xs: "10vh" }}
-          display="flex"
-          justifyContent="space-between"
+          bgcolor="white"
+          px={2}
+          py={1}
+          ml={2}
+          borderRadius={3}
+          width={{ lg: "100px", xs: "60px" }}
+          onClick={() => navigate("/")}
+        >
+          <img
+            src="/images/logo1.png"
+            style={{
+              width: "100%",
+              objectFit: "contain",
+              background: "white",
+            }}
+          />
+        </Box>
+        <Box
+          display={{ md: "flex", xs: "none" }}
           alignItems="center"
-          position="fixed"
-          width="100%"
-          zIndex={10000}
+          gap={{ lg: 1, md: 0.5 }}
+        >
+          {menuItems.map((data, index) => (
+            <Box
+              key={index}
+              onMouseEnter={() => setHovered(data.name)}
+              onMouseLeave={() => setHovered("")}
+              onClick={() => {
+                setActive(data.name);
+                if (data.name !== "Gurus Help") {
+                  navigate(data.url);
+                }
+              }}
+              display="flex"
+              sx={{ cursor: "pointer" }}
+              alignItems="center"
+              gap={1}
+            >
+              <Typography
+                fontSize={{ lg: "17px", md: "13px" }}
+                sx={{
+                  "&:hover": {
+                    color: "#FF8126",
+                  },
+                }}
+                color={
+                  active === data.name
+                    ? "#FF8126"
+                    : scrolled
+                    ? "#100854"
+                    : "white"
+                }
+              >
+                {data.name}
+              </Typography>
+              {(data.name === "Our Services" && hovered === "Our Services") ||
+              (data.name === "Gurus Help" && hovered === "Gurus Help") ||
+              (data.name === "About Us" && hovered === "About Us") ? (
+                <Box
+                  position="absolute"
+                  top={50}
+                  bgcolor="white"
+                  borderRadius={1}
+                  p={1}
+                  boxShadow={3}
+                  onMouseEnter={() => setHovered(data.name)}
+                  onMouseLeave={() => setHovered("")}
+                >
+                  {data.services.map((service, idx) => (
+                    <Box key={idx}>
+                      <Typography
+                        p={1}
+                        sx={{
+                          "&:hover": {
+                            transform: "scale(1.05)",
+                            transition: "all 0.5s ease-in-out",
+                          },
+                        }}
+                        // color={
+                        //   activeService ===
+                        //   service.replace(/ & /g, "-").replace(/\s+/g, "")
+                        //     ? "blue"
+                        //     : "#FF8126"
+                        // }
+                        color={"#FF8126"}
+                        fontSize="16px"
+                        onClick={(event) => {
+                          event.stopPropagation(); // Stop the event from bubbling up
+                          const servicePath = service
+                            .replace(/ & /g, "-")
+                            .replace(/\s+/g, "-");
+                          navigate(`${data.url}/${servicePath}`);
+                          setActiveService(servicePath);
+                        }}
+                      >
+                        {service}
+                      </Typography>
+                      <Divider sx={{ bgcolor: "lightgray" }} />
+                    </Box>
+                  ))}
+                </Box>
+              ) : (
+                ""
+              )}
+              {data.name !== "Contact Us" && (
+                <span style={{ color: "#FF8126" }}>/</span>
+              )}
+            </Box>
+          ))}
+        </Box>
+        <Button
+          onClick={() => navigate("/contact-us")}
+          variant="contained"
+          startIcon={
+            <LocalPhoneIcon sx={{ display: { md: "none", lg: "flex" } }} />
+          }
+          disableElevation
           sx={{
-            transition: "background-color .5s ease-in-out",
-            background: scrolled
-              ? "white"
-              : "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0))",
+            textTransform: "none",
+            border: "3px solid #FF8126",
+            borderRadius: 3,
+            background: "transparent",
+            color: scrolled ? "#100854" : "white",
+            fontSize: { xs: "12px", lg: "16px" },
+            mr: 3,
+            display: { md: "flex", xs: "none" },
           }}
         >
-          <Box
-            bgcolor="white"
-            px={2}
-            py={1}
-            ml={2}
-            borderRadius={3}
-            width={{ md: "100px", xs: "60px" }}
-          >
-            <img
-              src="/images/logo1.png"
-              style={{
-                width: "100%",
-                objectFit: "contain",
-                background: "white",
-              }}
-            />
-          </Box>
-          <Box display={{ md: "flex", xs: "none" }} alignItems="center" gap={1}>
-            {menuItems.map((data, index) => (
-              <Box
-                key={index}
-                onMouseEnter={() => setHovered(data.name)}
-                onMouseLeave={() => setHovered("")}
-                onClick={() => {
-                  setActive(data.name);
-                  if (data.name !== "Gurus Help") {
-                    navigate(data.url);
-                  }
-                }}
-                display="flex"
-                sx={{ cursor: "pointer" }}
-                alignItems="center"
-                gap={1}
-              >
-                <Typography
-                  fontSize={{ lg: "17px", md: "15px" }}
-                  sx={{'&:hover':{
-                    color:
-                    "#FF8126"
-                  
-                  }}}
-                  color={
-                    active === data.name 
-                      ? "#FF8126"
-                      : scrolled
-                      ? "#100854"
-                      : "white"
-                  }
-                >
-                  {data.name}
-                </Typography>
-                {(data.name === "Our Services" && hovered === "Our Services") ||
-                (data.name === "Gurus Help" && hovered === "Gurus Help") ? (
-                  <Box
-                    position="absolute"
-                    top={50}
-                    bgcolor="white"
-                    borderRadius={1}
-                    p={1}
-                    boxShadow={3}
-                    onMouseEnter={() => setHovered(data.name)}
-                    onMouseLeave={() => setHovered("")}
-                  >
-                    {data.services.map((service, idx) => (
-                      <>
-                        <Typography
-                          key={idx}
-                          p={1}
-                          sx={{
-                            "&:hover": {
-                              transform: "scale(1.05)",
-                              transition: "all 0.5s ease-in-out",
-                            },
-                          }}
-                          color={
-                            activeService ===
-                            service.replace(/ & /g, "-").replace(/\s+/g, "")
-                              ? "blue"
-                              : "#FF8126"
-                          }
-                          fontSize="16px"
-                          onClick={(event) => {
-                            event.stopPropagation(); // Stop the event from bubbling up
-                            const servicePath = service
-                              .replace(/ & /g, "-")
-                              .replace(/\s+/g, "-");
-
-                            navigate(`${data.url}/${servicePath}`);
-
-                            setActiveService(
-                              service.replace(/ & /g, "-").replace(/\s+/g, "")
-                            );
-                          }}
-                        >
-                          {service}
-                        </Typography>
-                        <Divider sx={{ bgcolor: "lightgray" }} />
-                      </>
-                    ))}
-                  </Box>
-                ) : (
-                  ""
-                )}
-                {data.name !== "Contact Us" && (
-                  <span style={{ color: "#FF8126" }}>/</span>
-                )}
-              </Box>
-            ))}
-          </Box>
-          <Button
-            onClick={() => navigate("/contact-us")}
-            variant="contained"
-            startIcon={<LocalPhoneIcon />}
-            disableElevation
-            sx={{
-              textTransform: "none",
-              border: "3px solid #FF8126",
-              borderRadius: 3,
-              background: "transparent",
-              color: scrolled ? "#100854" : "white",
-              fontSize: "16px",
-              mr: 3,
-              display: { md: "flex", xs: "none" },
-            }}
-          >
-            Enquire Now
-          </Button>
-          <IconButton
-            onClick={() => setShowMenu(!showMenu)}
-            size="small"
-            sx={{
-              mr: 1,
-              display: { md: "none", xs: "flex" },
-              border: "2px solid #FF8126",
-              borderRadius: 3,
-              background: "transparent",
-              color: scrolled ? "#100854" : "white",
-            }}
-          >
-            {showMenu ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
-        </Box>
+          Enquire Now
+        </Button>
+        <IconButton
+          onClick={() => setShowMenu(!showMenu)}
+          size="small"
+          sx={{
+            mr: 1,
+            display: { md: "none", xs: "flex" },
+            border: "2px solid #FF8126",
+            borderRadius: 3,
+            background: "transparent",
+            color: scrolled ? "#100854" : "white",
+          }}
+        >
+          {showMenu ? <CloseIcon /> : <MenuIcon />}
+        </IconButton>
       </Box>
-    </>
+    </Box>
   );
 }
 
@@ -243,21 +255,33 @@ export default Navbar;
 
 function MobileMenu({ show, open }) {
   const location = useLocation();
-  const getActiveItem = () => {
-    const currentItem = menuItems.find(
-      (item) => item.url === location.pathname
-    );
-    return currentItem ? currentItem.name : "Home";
-  };
-
-  const [active, setActive] = useState(getActiveItem);
-  const [activeService, setActiveService] = useState("");
-  const [showServices, setShowServices] = useState(null);
   const navigate = useNavigate();
 
+  const getActiveItem = (path) => {
+    const item = menuItems.find((menu) => {
+      if (menu.url === path) return true;
+      return menu.services?.some((service) =>
+        path.includes(service.replace(/ & /g, "-").replace(/\s+/g, "-"))
+      );
+    });
+    return item ? item.name : "Home";
+  };
+
+  const [active, setActive] = useState(() => getActiveItem(location.pathname));
+  const [activeService, setActiveService] = useState("");
+  const [showServices, setShowServices] = useState(null);
+
   useEffect(() => {
-    setActive(getActiveItem());
+    setActive(getActiveItem(location.pathname));
   }, [location]);
+
+  const handleServiceClick = (e, data, service) => {
+    e.stopPropagation();
+    const servicePath = service.replace(/ & /g, "-").replace(/\s+/g, "-");
+    navigate(`${data.url}/${servicePath}`);
+    setActiveService(servicePath);
+    show(false);
+  };
 
   return (
     <Box
@@ -283,7 +307,11 @@ function MobileMenu({ show, open }) {
         <Box key={index} sx={{ width: "100%" }}>
           <Button
             onClick={() => {
-              if (data.name === "Our Services" || data.name === "Gurus Help") {
+              if (
+                data.name === "Our Services" ||
+                data.name === "Gurus Help" ||
+                data.name === "About Us"
+              ) {
                 setShowServices(showServices === data.name ? null : data.name);
               } else {
                 setActive(data.name);
@@ -292,7 +320,9 @@ function MobileMenu({ show, open }) {
               }
             }}
             endIcon={
-              data.name === "Our Services" || data.name === "Gurus Help" ? (
+              data.name === "Our Services" ||
+              data.name === "Gurus Help" ||
+              data.name === "About Us" ? (
                 <ArrowDropDownCircleIcon
                   fontSize="large"
                   sx={{
@@ -346,11 +376,12 @@ function MobileMenu({ show, open }) {
                     }}
                     sx={{
                       my: "2px",
-                      color:
-                        activeService ===
-                        service.replace(/ & /g, "-").replace(/\s+/g, "-")
-                          ? "blue"
-                          : "white",
+                      // color:
+                      //   activeService ===
+                      //   service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                      //     ? "blue"
+                      //     : "white",
+                      color: "white",
                       fontSize: "14px",
                       fontWeight: 400,
                       width: "100%",
@@ -394,11 +425,61 @@ function MobileMenu({ show, open }) {
                     }}
                     sx={{
                       my: "2px",
-                      color:
-                        activeService ===
+                      // color:
+                      //   activeService ===
+                      //   service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                      //     ? "blue"
+                      //     : "white",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      width: "100%",
+                      textAlign: "center",
+                      textTransform: "none",
+                    }}
+                  >
+                    {service}
+                  </Button>
+                  <Divider />
+                </Box>
+              ))}
+            </Box>
+          )}
+          {data.name === "About Us" && (
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 10,
+                background: "#FF8126",
+                transform:
+                  showServices === "About Us"
+                    ? "translateX(0)"
+                    : "translateX(-100%)",
+                transition: "transform .5s ease-in-out",
+              }}
+            >
+              {data.services.map((service, idx) => (
+                <Box key={idx} width={{ xs: "100vw", sm: "60vw" }}>
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const servicePath = service
+                        .replace(/ & /g, "-")
+                        .replace(/\s+/g, "-");
+                      navigate(`${data.url}/${servicePath}`);
+                      setActiveService(
                         service.replace(/ & /g, "-").replace(/\s+/g, "-")
-                          ? "blue"
-                          : "white",
+                      );
+                      show(false);
+                    }}
+                    sx={{
+                      my: "2px",
+                      // color:
+                      //   activeService ===
+                      //   service.replace(/ & /g, "-").replace(/\s+/g, "-")
+                      //     ? "blue"
+                      //     : "white",
+                      color: "white",
                       fontSize: "14px",
                       fontWeight: 400,
                       width: "100%",

@@ -17,7 +17,7 @@ const style = {
   borderRadius:2,
   bgcolor: 'background.paper',
   boxShadow: 24,
-//   p: 4,
+  width:{md:'70%',lg:'50%',xs:'95%'}
 };
 
 const bounce = keyframes`
@@ -32,7 +32,7 @@ const bounce = keyframes`
   }
 `;
 
-export default function ServiceModal({open,show}) {
+export default function ServiceModal({open,show, type, service}) {
 
   const handleClose = () => show(false);
 
@@ -81,7 +81,7 @@ export default function ServiceModal({open,show}) {
                   Book Now
                 </Typography>
                 <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm type={"Inspiring Speakers for Educational Institutions"} />
+                  <ServiceForm type={type} service={service} />
                 </Box>
 
               </Box>

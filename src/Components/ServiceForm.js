@@ -3,13 +3,16 @@ import React from "react";
 import { serviceService } from "../Services/service";
 import { toast } from "react-toastify";
 
-function ServiceForm({ type }) {
+function ServiceForm({ type,service }) {
   const [name, setName] = React.useState("");
   const [designation, setDesignation] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [organization, setOrganization] = React.useState("");
   const [location, setLocation] = React.useState("");
   const [topic, setTopic] = React.useState("");
+
+  console.log(type)
+  console.log(service)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +46,8 @@ function ServiceForm({ type }) {
         phone,
         location,
         type,
-        topic,
+        service,
+        topic 
       };
 
       const result = await serviceService.postService(formData);

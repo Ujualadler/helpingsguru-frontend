@@ -32,6 +32,10 @@ export const AppRoutes = () => {
       />
       <Routes>
         <Route path="/" element={<Layout component={<Home />} />} />
+        <Route
+          path="/about-us/:serviceName"
+          element={<Layout component={<AboutUs />} />}
+        />
         <Route path="/about-us" element={<Layout component={<AboutUs />} />} />
         <Route path="/events" element={<Layout component={<Events />} />} />
         <Route path="/career" element={<Layout component={<Career />} />} />
@@ -57,7 +61,7 @@ export const AppRoutes = () => {
         />
         <Route
           path="/gurus-help/:serviceName"
-          element={<Layout component={<GurusHelp/>} />}
+          element={<Layout component={<GurusHelp />} />}
         />
         <Route path="/*" element={<NotFound />} />
       </Routes>

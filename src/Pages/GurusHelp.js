@@ -2,7 +2,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { display, keyframes } from "@mui/system";
 import { useNavigate, useParams } from "react-router-dom";
-import ServiceForm from "../Components/ServiceForm";
+import ServiceModal from "../Components/ServiceModal";
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -18,20 +18,56 @@ const bounce = keyframes`
 
 const erpData = [
   {
-    name: "Entab infotech",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSswdQTbyxZ5aYJ-ZTwCTYoPuK90uPtg2_vbA&s",
+    name: "Brainwonders",
+    img: "/images/partners/brainwonders.jpeg",
   },
   {
     name: "Entab infotech",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSswdQTbyxZ5aYJ-ZTwCTYoPuK90uPtg2_vbA&s",
+    img: "/images/partners/entab.jpeg",
   },
   {
-    name: "Entab infotech",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSswdQTbyxZ5aYJ-ZTwCTYoPuK90uPtg2_vbA&s",
+    name: "Brio Touch",
+    img: "/images/partners/brio.jpeg",
   },
   {
-    name: "Entab infotech",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSswdQTbyxZ5aYJ-ZTwCTYoPuK90uPtg2_vbA&s",
+    name: "LiveLife Education",
+    img: "/images/partners/livelife.jpeg",
+  },
+  {
+    name: "Dramm Jamm Education",
+    img: "/images/partners/drammjamm.jpeg",
+  },
+  {
+    name: "NTT DATA",
+    img: "/images/partners/nttdata.jpeg",
+  },
+  {
+    name: "Skolaro",
+    img: "/images/partners/skolaro.jpeg",
+  },
+  {
+    name: "Sonet",
+    img: "/images/partners/sonet.jpeg",
+  },
+  {
+    name: "Sprouts",
+    img: "/images/partners/sprouts.jpeg",
+  },
+  {
+    name: "Truscholar",
+    img: "/images/partners/truscholar.jpeg",
+  },
+  {
+    name: "UCMAS",
+    img: "/images/partners/ucmas.png",
+  },
+  {
+    name: "Learntech",
+    img: "/images/partners/learntech.jpeg",
+  },
+  {
+    name: "CampusPro",
+    img: "/images/partners/campuspro.jpeg",
   },
 ];
 
@@ -42,6 +78,7 @@ function GurusHelp() {
   const [showDemo, setShowDemo] = useState(false);
   return (
     <Box>
+      {viewDemo && <ServiceModal open={viewDemo} show={setViewDemo} type={'Gurus Help'} service={serviceName.replace(/-/g, " ")}/>}
       <Box
         height={{ xs: "250px" }}
         pt={5}
@@ -64,7 +101,7 @@ function GurusHelp() {
       </Box>
 
       <Box px={{ lg: 30, md: 8, sm: 5, xs: 2 }} py={{ md: 10, xs: 5 }}>
-        {serviceName.replace(/-/g, " ") === "School Erp" && (
+        {serviceName.replace(/-/g, " ") === "School Erp And College Erp" && (
           <Box>
             <Typography
               fontWeight={700}
@@ -174,9 +211,9 @@ function GurusHelp() {
                     >
                       <img
                         style={{
-                          width: "100%",
-                          height: "160px",
-                          objectFit: "cover",
+                          width: "150px",
+                          height: "150px",
+                          objectFit: "contain",
                         }}
                         src={data.img}
                       />
@@ -205,82 +242,13 @@ function GurusHelp() {
                             my: "4px",
                           }}
                         >
-                          View Demo
+                          Book Demo
                         </Button>
                       </Box>
                     </Box>
                   </Grid>
                 ))}
             </Grid>
-            {viewDemo !== "" && (
-              <Box
-                sx={{
-                  background: "#3034BB",
-
-                  display: showDemo ? "flex" : "none",
-                  transition: "all .5s ease-in-out",
-                }}
-                color={"white"}
-                position={"relative"}
-                borderRadius={2}
-                display={"flex"}
-                alignItems={"center"}
-                justifyContent={"space-between"}
-                mt={3}
-                py={2}
-                pb={5}
-                px={3}
-              >
-                <Box
-                  component="img"
-                  src="/images/dot-svg.png"
-                  sx={{
-                    position: "absolute",
-                    top: "15%",
-                    right: "2%",
-                    height: "120px",
-                    opacity: "20%",
-                    width: "150px",
-                    animation: `${bounce} 2s infinite`,
-                  }}
-                />
-                <Box px={{ md: 4, xs: 0 }}>
-                  <Typography
-                    fontWeight={700}
-                    fontSize={{ md: "28px", xs: "18px" }}
-                    color={"white"}
-                    mt={4}
-                  >
-                    Become a Partner
-                  </Typography>
-                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                    <Typography
-                      fontWeight={600}
-                      color={"#FF8126"}
-                      fontSize={"16px"}
-                    >
-                      Interested in partnering with us and presenting your
-                      services to educational institutions? Please fill out your
-                      details below.
-                    </Typography>
-                  </Box>
-                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                    <ServiceForm type={"Edtech B2B Lead Generation"} />
-                  </Box>
-                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                    <Typography
-                      fontWeight={600}
-                      color={"#FF8126"}
-                      fontSize={"16px"}
-                    >
-                      At Helping Gurus, we are committed to the success of our
-                      partners. Join us and let’s revolutionize the educational
-                      landscape together.
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            )}
           </Box>
         )}
       </Box>
