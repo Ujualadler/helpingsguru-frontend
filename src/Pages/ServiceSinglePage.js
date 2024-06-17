@@ -7,6 +7,7 @@ import { serviceService } from "../Services/service";
 import { API_URL } from "../Services/url";
 import OurSpeakers from "../Components/OurSpeakers";
 import { ourSpeakersService } from "../Services/OurSpeakersService";
+import ServiceModal from "../Components/ServiceModal";
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -43,6 +44,7 @@ function ServiceSinglePage() {
   }, []);
 
   const [ourSpeakerData, setOurSpeakerData] = useState([]);
+  const [openSpeakersModal,setOpenSpeakersModal] = useState(false)
 
   useEffect(() => {
     const getOurSpeakers = async () => {
@@ -62,6 +64,7 @@ function ServiceSinglePage() {
 
   return (
     <Box>
+      {openSpeakersModal&&<ServiceModal open={openSpeakersModal} show={setOpenSpeakersModal}/>}
       <Box
         height={{ xs: "250px" }}
         pt={5}
@@ -789,7 +792,7 @@ function ServiceSinglePage() {
                       <Typography px={1} color={"white"}>
                         {data?.designation}
                       </Typography>
-                    <Button sx={{ml:1,mt:1,background:'#FF8126'}} variant="contained">Book Now</Button>
+                    <Button onClick={()=>setOpenSpeakersModal(!openSpeakersModal)} sx={{ml:1,mt:1,background:'#FF8126'}} variant="contained">Book Now</Button>
                     </Box>
                   </Box>
                   </Grid>))}
