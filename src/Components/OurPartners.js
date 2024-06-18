@@ -82,7 +82,7 @@ function OurPartners() {
         color={"#100854"}
         mb={3}
       >
-        Our Partners
+        Our Trusted Partners
       </Typography>
       <Grid container borderRadius={3}>
         {/* <Title title={"Experiential Learning"} /> */}
