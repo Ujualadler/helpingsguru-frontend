@@ -283,7 +283,7 @@ function Events() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Typography color={"white"} fontWeight={700} fontSize={"30px"}>
+        <Typography mt={2}  color={"white"} fontWeight={700} fontSize={"30px"}>
           Events
         </Typography>
       </Box>

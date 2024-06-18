@@ -12,7 +12,6 @@ const menuItems = [
     name: "About Us",
     url: "/about-us",
     services: [
-      "About Us",
       "Founders Voice",
       "Our Mission And Vision",
       "Our Family",
@@ -98,7 +97,7 @@ function Navbar() {
           transition: "background-color .5s ease-in-out",
           background: scrolled
             ? "white"
-            : "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0))",
+            : "white",
         }}
       >
         <Box
@@ -152,7 +151,7 @@ function Navbar() {
                     ? "#FF8126"
                     : scrolled
                     ? "#100854"
-                    : "white"
+                    : "#100854"
                 }
               >
                 {data.name}
@@ -224,7 +223,7 @@ function Navbar() {
             border: "3px solid #FF8126",
             borderRadius: 3,
             background: "transparent",
-            color: scrolled ? "#100854" : "white",
+            color: scrolled ? "#100854" : "#100854",
             fontSize: { xs: "12px", lg: "16px" },
             mr: 3,
             display: { md: "flex", xs: "none" },
@@ -241,7 +240,7 @@ function Navbar() {
             border: "2px solid #FF8126",
             borderRadius: 3,
             background: "transparent",
-            color: scrolled ? "#100854" : "white",
+            color: scrolled ? "#100854" : "#100854",
           }}
         >
           {showMenu ? <CloseIcon /> : <MenuIcon />}

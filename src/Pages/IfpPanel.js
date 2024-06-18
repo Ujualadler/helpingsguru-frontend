@@ -36,6 +36,7 @@ function IfpPanel() {
           fontWeight={700}
           textAlign={"center"}
           fontSize={"30px"}
+          mt={2} 
         >
           Innovative IFP Panels
         </Typography>

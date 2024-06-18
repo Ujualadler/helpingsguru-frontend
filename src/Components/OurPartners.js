@@ -21,6 +21,7 @@ const partnersData = [
   "/images/ucmas.png",
   "/images/Wisetime.png",
   "/images/hitbullseye.jpeg",
+  "/images/franciscan.jpeg",
   "/images/campuspro.jpeg",
 ];
 

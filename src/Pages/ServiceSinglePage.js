@@ -105,6 +105,7 @@ function ServiceSinglePage() {
           fontWeight={700}
           textAlign={"center"}
           fontSize={"30px"}
+          mt={2} 
         >
           {serviceName.replace(/-/g, " ")}
         </Typography>

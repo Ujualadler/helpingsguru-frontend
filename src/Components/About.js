@@ -3,6 +3,42 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import AccordionContent from "./AccordianContent";
 
+const aboutusData = [
+  {
+    title: "CBSE Schools",
+    img: "https://img.freepik.com/free-vector/high-school-concept-illustration_114360-8499.jpg?t=st=1717833954~exp=1717837554~hmac=5e641d9e3369c00e3c584a2709a235c7124746f016ee04ab49847fae76405b7c&w=740",
+    count: "10,000",
+  },
+  {
+    title: "ICSE Schools",
+    img: "https://img.freepik.com/free-vector/high-school-concept-illustration_114360-8499.jpg?t=st=1717833954~exp=1717837554~hmac=5e641d9e3369c00e3c584a2709a235c7124746f016ee04ab49847fae76405b7c&w=740",
+    count: "400",
+  },
+  {
+    title: "IB Schools",
+    img: "https://img.freepik.com/free-vector/high-school-concept-illustration_114360-8499.jpg?t=st=1717833954~exp=1717837554~hmac=5e641d9e3369c00e3c584a2709a235c7124746f016ee04ab49847fae76405b7c&w=740",
+    count: "50",
+  },
+  {
+    title: "State Board Schools",
+    img: "https://img.freepik.com/free-vector/high-school-concept-illustration_114360-8499.jpg?t=st=1717833954~exp=1717837554~hmac=5e641d9e3369c00e3c584a2709a235c7124746f016ee04ab49847fae76405b7c&w=740",
+    count: "700",
+  },
+];
+
+
+const achievmentsData = [
+  {
+    title: "Roundtables",
+    img: "https://previews.123rf.com/images/sabelskaya/sabelskaya1908/sabelskaya190800765/128900118-team-of-colleagues-holding-giant-golden-cup-trophy-and-celebrating-goal-achievement-flat-vector.jpg",
+    count: "21",
+  },
+  {
+    title: "Summits",
+    img: "https://previews.123rf.com/images/sabelskaya/sabelskaya1908/sabelskaya190800765/128900118-team-of-colleagues-holding-giant-golden-cup-trophy-and-celebrating-goal-achievement-flat-vector.jpg",
+    count: "5",
+  },
+];
 function About() {
   const navigate = useNavigate();
   const aboutData = [
@@ -259,6 +295,144 @@ function About() {
           </Box>
         </Box>
       </Grid>
+          <Box
+            display={"flex"}
+            justifyContent={"center"}
+            width={"100%"}
+            flexDirection={"column"}
+            alignItems={"center"}
+          >
+            <Grid
+              container
+              m={3}
+              gap={{ xs: 4, md: 0 }}
+              py={3}
+              bgcolor={"#3034BB"}
+              borderRadius={3}
+              width={{ md: "70%", xs: "90%" }}
+            >
+              <Grid item xs={12} py={1} mb={2}>
+                <Typography
+                  textAlign={"center"}
+                  fontSize={"20px"}
+                  fontWeight={700}
+                  color={"#FF8126"}
+                >
+                  Join Helping Gurus Network!
+                </Typography>
+              </Grid>
+              {aboutusData.map((data) => (
+                <Grid
+                  item
+                  xs={12}
+                  md={3}
+                  display={"flex"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <Box
+                    display={"flex"}
+                    flexDirection={"column"}
+                    alignItems={"center"}
+                    gap={"4px"}
+                  >
+                    <img
+                      style={{
+                        borderRadius: "50%",
+                        height: "80px",
+                        width: "80px",
+                        objectFit: "cover",
+                        background:
+                          "linear-gradient(to right, #6D7BFE, #3034BB)",
+                      }}
+                      src={data.img}
+                    />
+                    <Typography
+                      color={"#FF8126"}
+                      fontWeight={700}
+                      fontSize={"25px"}
+                    >
+                      {data.count}
+                    </Typography>
+                    <Typography
+                      color={"#fff"}
+                      fontWeight={600}
+                      fontSize={"15px"}
+                    >
+                      {data.title}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+              <Grid item xs={12} mt={3} mb={2}>
+                <Typography
+                  textAlign={"center"}
+                  fontSize={"20px"}
+                  fontWeight={700}
+                  color={"#FF8126"}
+                >
+                  Achievments
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                md={12}
+                gap={{ md: 22, xs: 4 }}
+                display={"flex"}
+                flexDirection={{ md: "row", xs: "column" }}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                {achievmentsData.map((data) => (
+                  <Box
+                    display={"flex"}
+                    flexDirection={"column"}
+                    alignItems={"center"}
+                    gap={"4px"}
+                  >
+                    <img
+                      style={{
+                        borderRadius: "50%",
+                        height: "80px",
+                        width: "80px",
+                        objectFit: "cover",
+                        background:
+                          "linear-gradient(to right, #6D7BFE, #3034BB)",
+                      }}
+                      src={data.img}
+                    />
+                    <Typography
+                      color={"#FF8126"}
+                      fontWeight={700}
+                      fontSize={"25px"}
+                    >
+                      {data.count}
+                    </Typography>
+                    <Typography
+                      color={"#fff"}
+                      fontWeight={600}
+                      fontSize={"15px"}
+                    >
+                      {data.title}
+                    </Typography>
+                  </Box>
+                ))}
+              </Grid>
+              <Grid item xs={12} mt={4}>
+                <Typography
+                  textAlign={"center"}
+                  fontSize={"15px"}
+                  fontWeight={600}
+                  color={"#FF8126"}
+                >
+                  Experience the difference with us!
+                </Typography>
+              </Grid>
+            </Grid>
+
+      
+          </Box>
     </Grid>
   );
 }

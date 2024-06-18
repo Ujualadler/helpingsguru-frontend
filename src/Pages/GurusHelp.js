@@ -77,6 +77,10 @@ const erpData = [
     name: "CampusPro",
     img: "/images/campuspro.jpeg",
   },
+  {
+    name: "Franciscan",
+    img: "/images/franciscan.jpeg",
+  },
 ];
 
 function GurusHelp() {
@@ -110,6 +114,7 @@ function GurusHelp() {
           fontWeight={700}
           textAlign={"center"}
           fontSize={"30px"}
+          mt={2}
         >
           {serviceName.replace(/-/g, " ")}
         </Typography>
