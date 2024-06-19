@@ -101,9 +101,9 @@ function Navbar() {
           bgcolor="white"
           px={2}
           py={1}
-          ml={2}
+          ml={{md:2,xs:0}}
           borderRadius={3}
-          width={{ lg: "100px", xs: "60px" }}
+          width={{ lg: "100px", xs: "100px" }}
           onClick={() => navigate("/")}
         >
           <img
@@ -394,9 +394,11 @@ function MobileMenu({ show, open }) {
           )}
           {data.name === "Gurus Help" && (
             <Box
+            maxHeight={'40vh'} overflow={'auto'}
               sx={{
                 position: "absolute",
                 zIndex: 10,
+                
                 background: "#FF8126",
                 transform:
                   showServices === "Gurus Help"
@@ -406,7 +408,7 @@ function MobileMenu({ show, open }) {
               }}
             >
               {data.services.map((service, idx) => (
-                <Box key={idx} width={{ xs: "100vw", sm: "60vw" }}>
+                <Box key={idx} width={{ xs: "100vw", sm: "60vw" }} >
                   <Button
                     onClick={(e) => {
                       e.stopPropagation();
