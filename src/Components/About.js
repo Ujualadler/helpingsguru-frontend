@@ -141,7 +141,7 @@ function About() {
                 borderRadius: "20px",
                 background: "grey",
               }}
-              src="/images/home3.jpg"
+              src="/images/home3.JPG"
             />
           </Box>
           <Box
@@ -162,7 +162,7 @@ function About() {
                 borderRadius: "20px",
                 background: "grey",
               }}
-              src="/images/home2.jpg"
+              src="/images/home2.JPG"
             />
           </Box>
           <Box
@@ -183,7 +183,7 @@ function About() {
                 borderRadius: "20px",
                 background: "linear-gradient(to right, #6D7BFE, #3034BB)",
               }}
-              src="/images/home4.jpg"
+              src="/images/home4.JPG"
             />
           </Box>
         </Box>
