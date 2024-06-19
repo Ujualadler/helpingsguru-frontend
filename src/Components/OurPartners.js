@@ -22,6 +22,9 @@ const partnersData = [
   "/images/Wisetime.png",
   "/images/hitbullseye.jpeg",
   "/images/franciscan.jpeg",
+  "/images/onmyown.jpeg",
+  "/images/brightchamps.jpeg",
+  "/images/adventure.jpeg",
   "/images/campuspro.jpeg",
 ];
 

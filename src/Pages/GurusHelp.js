@@ -82,6 +82,18 @@ const erpData = [
     name: "Franciscan",
     img: "/images/franciscan.jpeg",
   },
+  {
+    name: "On My Own Technology",
+    img: "/images/onmyown.jpeg", 
+  },
+  {
+    name: "BrightChamps",
+    img: "/images/brightchamps.jpeg", 
+  },
+  {
+    name: "Adventure",
+    img: "/images/adventure.jpeg", 
+  },
 ];
 
 function GurusHelp() {

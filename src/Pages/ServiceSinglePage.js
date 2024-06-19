@@ -22,6 +22,25 @@ const bounce = keyframes`
   }
 `;
 
+
+const gurusImages=[
+  '/images/gurus1.jpeg',
+  '/images/gurus2.jpeg',
+  '/images/gurus3.jpeg',
+  '/images/gurus4.jpeg',
+  '/images/gurus5.jpeg',
+  '/images/gurus7.jpeg',
+  '/images/gurus8.jpeg',
+  '/images/gurus9.jpeg',
+  '/images/gurus10.jpeg',
+  '/images/gurus11.jpeg',
+  // '/images/gurus12.jpeg',
+  '/images/gurus13.jpeg',
+  '/images/gurus14.jpeg',
+  '/images/gurus15.jpeg',
+  '/images/gurus16.jpeg',
+]
+
 function ServiceSinglePage() {
   const { serviceName } = useParams();
   const navigate = useNavigate();
@@ -1143,6 +1162,26 @@ function ServiceSinglePage() {
                 </Box>
               </Box>
             </Box>
+            
+            <Grid container spacing={1} mt={4}>
+              {gurusImages.length > 0 &&
+                gurusImages.map((img, index) => (
+                  <Grid item md={3} sm={4} xs={6}>
+                    <img
+                      // onClick={() => openGallery(index)}
+                      src={img}
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "cover",
+                        background:
+                          "linear-gradient(to right, #6D7BFE, #3034BB)",
+                      }}
+                    />
+                  </Grid>
+                ))}
+            </Grid>
           </Box>
         )}
       </Box>
