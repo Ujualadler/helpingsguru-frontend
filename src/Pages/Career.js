@@ -43,7 +43,7 @@ function Career() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Typography mt={2} color={"white"} fontWeight={700} fontSize={"30px"}>
+        <Typography mt={2} color={"white"} fontWeight={700} fontSize={{md:"30px",xs:'20px'}}>
           Careers
         </Typography>
       </Box>

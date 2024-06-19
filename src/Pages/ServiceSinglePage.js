@@ -104,7 +104,7 @@ function ServiceSinglePage() {
           color={"white"}
           fontWeight={700}
           textAlign={"center"}
-          fontSize={"30px"}
+          fontSize={{md:"30px",xs:'20px'}}
           mt={2}
         >
           {serviceName.replace(/-/g, " ")}

@@ -35,7 +35,7 @@ function EdtechB2B() {
           color={"white"}
           fontWeight={700}
           textAlign={"center"}
-          fontSize={"30px"}
+          fontSize={{md:"30px",xs:'20px'}}
         >
           Edtech B2B Lead Generation
         </Typography>

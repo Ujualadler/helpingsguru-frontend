@@ -55,7 +55,7 @@ function AboutUs() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Typography mt={5} color={"white"} fontWeight={700} fontSize={"30px"}>
+        <Typography mt={5} color={"white"} fontWeight={700} fontSize={{md:"30px",xs:'20px'}}>
           {serviceName ? serviceName.replace(/-/g, " ") : "About Us"}
         </Typography>
       </Box>
@@ -343,7 +343,7 @@ function AboutUs() {
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <Grid container width={"100%"} mt={{xs:5,md:0}}>
+          <Grid container width={"100%"} mt={{ xs: 5, md: 0 }}>
             <Grid
               item
               xs={12}
@@ -459,7 +459,7 @@ function AboutUs() {
             container
             xs={12}
             md={12}
-            width={{ md: "70%", xs: "90%" }}
+            width={{ md: "70%", xs: "100%" }}
             mt={{ md: 5, xs: 0 }}
             p={{ md: 4, xs: 3 }}
             pl={{ md: 0, xs: 4 }}
@@ -517,7 +517,7 @@ function AboutUs() {
             container
             xs={12}
             md={12}
-            width={{ md: "70%", xs: "90%" }}
+            width={{ md: "70%", xs: "100%" }}
             mt={{ md: 5, xs: 0 }}
             p={{ md: 4, xs: 3 }}
             pl={{ md: 0, xs: 4 }}
