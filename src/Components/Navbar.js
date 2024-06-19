@@ -11,21 +11,17 @@ const menuItems = [
   {
     name: "About Us",
     url: "/about-us",
-    services: [
-      "Founders Voice",
-      "Our Mission And Vision",
-      "Our Family",
-    ],
+    services: ["Founders Voice", "Our Mission And Vision", "Our Family"],
   },
   {
     name: "Our Services",
     url: "/our-service",
     services: [
       "Educational Events & Roundtables",
-      "Staff Recruitment Solutions",
-      "Inspiring Speakers for Educational Institutions",
       "Educational Magazine Hub",
       "Teacher Training Certification Programme",
+      "Staff Recruitment Solutions",
+      "Inspiring Speakers for Educational Institutions",
       "Talks With Gurus",
     ],
   },
@@ -98,9 +94,7 @@ function Navbar() {
         zIndex={10000}
         sx={{
           transition: "background-color .5s ease-in-out",
-          background: scrolled
-            ? "white"
-            : "white",
+          background: scrolled ? "white" : "white",
         }}
       >
         <Box
