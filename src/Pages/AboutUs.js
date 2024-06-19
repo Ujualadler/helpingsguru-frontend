@@ -389,7 +389,7 @@ function AboutUs() {
                 my={1}
                 maxWidth={{ md: "70%", xs: "100%" }}
               >
-                गु चरण मशत शत नमन !!!
+                गुरु चरणों में शत शत नमन !!!
               </Typography>
               <Typography
                 fontWeight={400}
