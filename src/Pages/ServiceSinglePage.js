@@ -105,7 +105,7 @@ function ServiceSinglePage() {
           fontWeight={700}
           textAlign={"center"}
           fontSize={"30px"}
-          mt={2} 
+          mt={2}
         >
           {serviceName.replace(/-/g, " ")}
         </Typography>
@@ -582,7 +582,10 @@ function ServiceSinglePage() {
                   </Typography>
                 </Box>
                 <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm type={"Our Services"} service={'Staff Recruitment Solutions'} />
+                  <ServiceForm
+                    type={"Our Services"}
+                    service={"Staff Recruitment Solutions"}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -1023,7 +1026,120 @@ function ServiceSinglePage() {
                   <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
                     <ServiceForm
                       type={"Our Services"}
-                      service={'Inspiring Speakers for Educational Institutions'}
+                      service={
+                        "Inspiring Speakers for Educational Institutions"
+                      }
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        )}
+        {serviceName.replace(/-/g, " ") === "Talks With Gurus" && (
+          <Box width={'100%'}>
+            <Typography
+              fontWeight={"400"}
+              fontSize={{ md: "16px", xs: "14px" }}
+              mt={2}
+            >
+              In the fast-paced world of education, it is crucial to have a
+              platform where educators can come together to share their
+              experiences, ideas, and best practices. Talks with Gurus, a
+              segment of <strong>Helping Gurus</strong> , aims to do just that by providing a
+              space for top educators from India and abroad to express their
+              viewpoints on important topics related to education.
+            </Typography>
+            <Typography
+              fontWeight={"400"}
+              fontSize={{ md: "16px", xs: "14px" }}
+              mt={2}
+            >
+              Education is not just about teaching lessons from textbooks; it is
+              about shaping the minds of the future generation, uplifting the
+              standards of education, and inspiring students to reach their full
+              potential. Talks with Gurus brings to light the personal
+              experiences and thought-provoking ideas of educators who have
+              dedicated their lives to the field of education.
+            </Typography>
+            <Typography
+              fontWeight={"400"}
+              fontSize={{ md: "16px", xs: "14px" }}
+              mt={2}
+            >
+              Through our online webinars, we have successfully connected with
+              over<strong>500 top educationists across the globe</strong> . These webinars have
+              provided a platform for educators to share their stories of
+              <strong>struggle, efforts, and successes</strong>, and have allowed them to learn
+              from each other's experiences.
+            </Typography>
+            <Typography
+              fontWeight={"400"}
+              fontSize={{ md: "16px", xs: "14px" }}
+              mt={2}
+            >
+              <strong>At Talks with Gurus</strong>, we believe that by coming together and
+              sharing our knowledge and experiences, we can uplift the level of
+              education and inspire a new generation of learners. Join us in
+              this initiative, and together, we can make a difference in the
+              world of education. Let's start a conversation, share our stories,
+              and learn from each other to create a brighter future for our
+              students.
+            </Typography>
+
+            <Box >
+
+              <Box
+                sx={{ background: "#3034BB" }}
+                color={"white"}
+                position={"relative"}
+                borderRadius={2}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                mt={3}
+                py={2}
+                pb={5}
+                px={3}
+              >
+                <Box
+                  component="img"
+                  src="/images/dot-svg.png"
+                  sx={{
+                    position: "absolute",
+                    top: "15%",
+                    right: "2%",
+                    height: "120px",
+                    opacity: "20%",
+                    width: "150px",
+                    animation: `${bounce} 2s infinite`,
+                  }}
+                />
+                <Box px={{ md: 4, xs: 0 }}>
+                  <Typography
+                    fontWeight={700}
+                    fontSize={{ md: "28px", xs: "20px" }}
+                    color={"#FF8126"}
+                    mt={4}
+                  >
+                    Contact Us for Bookings
+                  </Typography>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <Typography
+                      fontWeight={600}
+                      color={"#fff"}
+                      fontSize={"16px"}
+                    >
+                      If you are an educator and wish to be part of our initiative, please
+                      share your details below:
+                    </Typography>
+                  </Box>
+                  <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
+                    <ServiceForm
+                      type={"Our Services"}
+                      service={
+                        "Talks with Gurus"
+                      }
                     />
                   </Box>
                 </Box>

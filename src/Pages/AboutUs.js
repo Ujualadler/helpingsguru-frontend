@@ -61,7 +61,7 @@ function AboutUs() {
       </Box>
       {!serviceName ? (
         <>
-          <Box
+          {/* <Box
             mt={5}
             display={"flex"}
             justifyContent={"center"}
@@ -113,8 +113,8 @@ function AboutUs() {
                 }}
               ></iframe>
             </Box>
-          </Box>
-          <Grid container width={"100%"} mt={""}>
+          </Box> */}
+          <Grid container width={"100%"}>
             <Grid
               item
               xs={12}
@@ -330,8 +330,6 @@ function AboutUs() {
                 </Typography>
               </Grid>
             </Grid>
-
-      
           </Box>
         </>
       ) : (
@@ -345,11 +343,11 @@ function AboutUs() {
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <Grid container width={"100%"} mt={""}>
+          <Grid container width={"100%"} mt={{xs:5,md:0}}>
             <Grid
               item
               xs={12}
-              md={6}
+              md={5}
               py={{ md: 4, xs: 0 }}
               display={"flex"}
               justifyContent={{ md: "end", xs: "center" }}
@@ -380,47 +378,69 @@ function AboutUs() {
             <Grid
               item
               xs={12}
-              md={6}
+              md={7}
               mt={{ md: 5, xs: 0 }}
               p={{ md: 4, xs: 3 }}
               pl={{ md: 8, xs: 4 }}
             >
               <Typography
                 fontWeight={600}
-                fontSize={{ md: "35px", xs: "20px" }}
+                fontSize={{ md: "25px", xs: "15px" }}
                 my={1}
                 maxWidth={{ md: "70%", xs: "100%" }}
               >
-                {/* Gurus Happiness is our Happiness and Gurus pain is our pain */}
+                गु चरण मशत शत नमन !!!
               </Typography>
               <Typography
                 fontWeight={400}
                 fontSize={"15px"}
                 my={1}
-                maxWidth={{ md: "70%", xs: "100%" }}
+                maxWidth={{ md: "85%", xs: "100%" }}
                 color={"#100854"}
               >
-                "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
-                dedicated himself to improving the educational landscape by
-                providing support and services to schools and colleges across
-                India. With a background in Computer Application from Manav
-                Rachna International University, Mr. Bahl has quickly
-                established personal connections with over 3,000 school
-                authorities nationwide." Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. The Helping Gurus team is always
-                prepared to support schools and colleges, ensuring that
-                educators receive the assistance they need to succeed.
+                As the Founder and CEO of Helping Gurus, Mr. Rajiv Bahl has
+                built a company that is dedicated to supporting educators and
+                schools across India. With years of experience and a passion for
+                making a difference in the education sector, Mr. Bahl and his
+                team are committed to ensuring the happiness and success of
+                every educator they work with. One of the key aspects of Helping
+                Gurus' founder message is their motto,{" "}
+                <strong>
+                  "Gurus Happiness is our Happiness and Gurus pain is our pain."
+                </strong>{" "}
+                This reflects their deep understanding of the challenges that
+                educators face on a daily basis and their commitment to
+                addressing those challenges in a timely and effective manner. By
+                putting the needs of educators first, Helping Gurus has been
+                able to build strong and lasting relationships with over 5,000
+                educational institutions across the country.
+                <br />
+                <br />
+                One of the main objections that educators often face is the lack
+                of support and resources available to them. Mr. Bahl and his
+                team at Helping Gurus have made it their mission to provide
+                educators with the tools and assistance they need to succeed.
+                Whether it's through marketing strategy, relationship building,
+                influencer outreach, or lead generation, Helping Gurus is always
+                there to offer support and guidance to educators who are looking
+                to improve their teaching practices.
+                <br />
+                <br /> Another key objection that educators face is the feeling
+                of being overwhelmed and overworked. With the demands of
+                teaching, lesson planning, and grading, educators often find
+                themselves struggling to balance their workload and personal
+                life. Helping Gurus recognizes this challenge and works with
+                educators to find solutions that will help them manage their
+                time more effectively and reduce their stress levels.
+                <br />
+                <br /> Ultimately, Mr. Bahl's vision for Helping Gurus is to
+                bring a smile to the face of every educator they work with. By
+                addressing the pain points and challenges that educators face on
+                a daily basis, Helping Gurus is helping to improve the
+                educational landscape and ensure that educators have the support
+                they need to thrive. Through their dedication, passion, and
+                commitment to excellence, Mr. Bahl and his team are truly making
+                a difference in the lives of educators across India.
               </Typography>
             </Grid>
           </Grid>

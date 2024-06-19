@@ -74,7 +74,7 @@ function OurPartners() {
   }
 `;
   return (
-    <Box mt={5}>
+    <Box mt={{md:8,xs:5}}>
       <Typography
         textAlign={"center"}
         fontWeight={800}
