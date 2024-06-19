@@ -126,7 +126,7 @@ function OurPartners() {
                       border: `
                          "1px"
                        solid #cfd4dc`,
-                      height: { lg: "40vh", md: "40vh", xs: "50vh" },
+                      height: { lg: "30vh", md: "30vh", xs: "20vh" },
                       // borderRadius: 3,
                       position: "relative",
                       display: "flex",
