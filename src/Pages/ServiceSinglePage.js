@@ -104,7 +104,7 @@ function ServiceSinglePage() {
           color={"white"}
           fontWeight={700}
           textAlign={"center"}
-          fontSize={{md:"30px",xs:'20px'}}
+          fontSize={{ md: "30px", xs: "20px" }}
           mt={2}
         >
           {serviceName.replace(/-/g, " ")}
@@ -1037,7 +1037,7 @@ function ServiceSinglePage() {
           </Box>
         )}
         {serviceName.replace(/-/g, " ") === "Talks With Gurus" && (
-          <Box width={'100%'}>
+          <Box width={"100%"}>
             <Typography
               fontWeight={"400"}
               fontSize={{ md: "16px", xs: "14px" }}
@@ -1046,9 +1046,9 @@ function ServiceSinglePage() {
               In the fast-paced world of education, it is crucial to have a
               platform where educators can come together to share their
               experiences, ideas, and best practices. Talks with Gurus, a
-              segment of <strong>Helping Gurus</strong> , aims to do just that by providing a
-              space for top educators from India and abroad to express their
-              viewpoints on important topics related to education.
+              segment of <strong>Helping Gurus</strong> , aims to do just that
+              by providing a space for top educators from India and abroad to
+              express their viewpoints on important topics related to education.
             </Typography>
             <Typography
               fontWeight={"400"}
@@ -1068,27 +1068,27 @@ function ServiceSinglePage() {
               mt={2}
             >
               Through our online webinars, we have successfully connected with
-              over<strong>500 top educationists across the globe</strong> . These webinars have
-              provided a platform for educators to share their stories of
-              <strong>struggle, efforts, and successes</strong>, and have allowed them to learn
-              from each other's experiences.
+              over<strong>500 top educationists across the globe</strong> .
+              These webinars have provided a platform for educators to share
+              their stories of
+              <strong>struggle, efforts, and successes</strong>, and have
+              allowed them to learn from each other's experiences.
             </Typography>
             <Typography
               fontWeight={"400"}
               fontSize={{ md: "16px", xs: "14px" }}
               mt={2}
             >
-              <strong>At Talks with Gurus</strong>, we believe that by coming together and
-              sharing our knowledge and experiences, we can uplift the level of
-              education and inspire a new generation of learners. Join us in
-              this initiative, and together, we can make a difference in the
-              world of education. Let's start a conversation, share our stories,
-              and learn from each other to create a brighter future for our
-              students.
+              <strong>At Talks with Gurus</strong>, we believe that by coming
+              together and sharing our knowledge and experiences, we can uplift
+              the level of education and inspire a new generation of learners.
+              Join us in this initiative, and together, we can make a difference
+              in the world of education. Let's start a conversation, share our
+              stories, and learn from each other to create a brighter future for
+              our students.
             </Typography>
 
-            <Box >
-
+            <Box>
               <Box
                 sx={{ background: "#3034BB" }}
                 color={"white"}
@@ -1130,16 +1130,14 @@ function ServiceSinglePage() {
                       color={"#fff"}
                       fontSize={"16px"}
                     >
-                      If you are an educator and wish to be part of our initiative, please
-                      share your details below:
+                      If you are an educator and wish to be part of our
+                      initiative, please share your details below:
                     </Typography>
                   </Box>
                   <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
                     <ServiceForm
                       type={"Our Services"}
-                      service={
-                        "Talks with Gurus"
-                      }
+                      service={"Talks with Gurus"}
                     />
                   </Box>
                 </Box>
