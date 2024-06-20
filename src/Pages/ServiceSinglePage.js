@@ -46,11 +46,16 @@ function ServiceSinglePage() {
   const navigate = useNavigate();
   const [teacherGalleryData, setTeachergallery] = useState([]);
   const [showGallery, setShowGallery] = useState(false);
+  const [showGuruGallery, setShowGuruGallery] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const educationRound = "Educational Events & Roundtables";
 
   const openGallery = (index) => {
     setShowGallery(true);
+    setCurrentIndex(index);
+  };
+  const openGuruGallery = (index) => {
+    setShowGuruGallery(true);
     setCurrentIndex(index);
   };
 
@@ -106,6 +111,16 @@ function ServiceSinglePage() {
           data={teacherGalleryData}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
+        />
+      )}
+      {showGuruGallery && (
+        <GallerySlider
+          show={setShowGuruGallery}
+          open={showGuruGallery}
+          data={gurusImages}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          s3={false}
         />
       )}
       <Box
@@ -1168,7 +1183,7 @@ function ServiceSinglePage() {
                 gurusImages.map((img, index) => (
                   <Grid item md={3} sm={4} xs={6}>
                     <img
-                      // onClick={() => openGallery(index)}
+                      onClick={() => openGuruGallery(index)}
                       src={img}
                       loading="lazy"
                       style={{

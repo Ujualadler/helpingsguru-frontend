@@ -28,6 +28,7 @@ export default function GallerySlider({
   data,
   currentIndex,
   setCurrentIndex,
+  s3=true
 }) {
   const handleClose = () => show(false);
 
@@ -68,11 +69,16 @@ export default function GallerySlider({
         >
           <ArrowBackIosIcon fontSize="large" />
         </IconButton>
-        <img
+        {!s3? <img
+          src={data[currentIndex]}
+          style={{ width: "100%", height: "100%", objectFit: "contain",background:'linear-gradient(to right, #6D7BFE, #3034BB)' }}
+          loading="lazy"
+        />: <img
           src={`${API_URL}api/v1/image/${data[currentIndex]}`}
           style={{ width: "100%", height: "100%", objectFit: "contain",background:'linear-gradient(to right, #6D7BFE, #3034BB)' }}
           loading="lazy"
-        />
+        />}
+       
         <IconButton
           onClick={handleNext}
           sx={{
