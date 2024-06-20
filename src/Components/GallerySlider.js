@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Modal, IconButton } from "@mui/material";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { API_URL } from "../Services/url";
 import Close from "@mui/icons-material/Close";
 
@@ -28,7 +28,7 @@ export default function GallerySlider({
   data,
   currentIndex,
   setCurrentIndex,
-  s3=true
+  s3 = true,
 }) {
   const handleClose = () => show(false);
 
@@ -52,7 +52,7 @@ export default function GallerySlider({
       <Box sx={style}>
         <IconButton
           onClick={() => show(false)}
-          sx={{ position: "absolute", top: 0, right:0,color:'#FF8126' }}
+          sx={{ position: "absolute", top: 0, right: 0, color: "#FF8126" }}
         >
           <Close fontSize="large" />
         </IconButton>
@@ -69,16 +69,30 @@ export default function GallerySlider({
         >
           <ArrowBackIosIcon fontSize="large" />
         </IconButton>
-        {!s3? <img
-          src={data[currentIndex]}
-          style={{ width: "100%", height: "100%", objectFit: "contain",background:'linear-gradient(to right, #6D7BFE, #3034BB)' }}
-          loading="lazy"
-        />: <img
-          src={`${API_URL}api/v1/image/${data[currentIndex]}`}
-          style={{ width: "100%", height: "100%", objectFit: "contain",background:'linear-gradient(to right, #6D7BFE, #3034BB)' }}
-          loading="lazy"
-        />}
-       
+        {!s3 ? (
+          <img
+            src={data[currentIndex]}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              background: "linear-gradient(to right, #6D7BFE, #3034BB)",
+            }}
+            loading="lazy"
+          />
+        ) : (
+          <img
+            src={`${API_URL}api/v1/image/${data[currentIndex]}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              background: "linear-gradient(to right, #6D7BFE, #3034BB)",
+            }}
+            loading="lazy"
+          />
+        )}
+
         <IconButton
           onClick={handleNext}
           sx={{
@@ -89,7 +103,7 @@ export default function GallerySlider({
             color: "#FF8126",
           }}
         >
-          <ArrowForwardIosIcon fontSize="large" sx={{fontWeight:'bold'}} />
+          <ArrowForwardIosIcon fontSize="large" sx={{ fontWeight: "bold" }} />
         </IconButton>
       </Box>
     </Modal>
