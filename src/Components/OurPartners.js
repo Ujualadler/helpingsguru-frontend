@@ -48,7 +48,6 @@ function OurPartners() {
           // Quickly reset scroll to the beginning to simulate infinite scroll
           container.scrollTo({ left: 0, behavior: "auto" });
         } else {
-         
           container.scrollBy({ left: cardWidth, behavior: "smooth" });
         }
       } else {
