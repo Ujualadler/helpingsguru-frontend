@@ -41,7 +41,6 @@ export default function CareerModal({ open, show, data }) {
       } else {
         setResume(null);
         setFileError("Please upload a PDF file.");
-  
       }
     }
   };
@@ -105,7 +104,7 @@ export default function CareerModal({ open, show, data }) {
               px={{ md: 6, xs: 2 }}
               py={{ md: 5, xs: 3 }}
               spacing={2}
-              maxHeight={{ md: "100%", xs: "71vh" }}
+              maxHeight={{ md: "100%", xs: "71vh", md: "" }}
               overflow={"auto"}
             >
               <Grid item xs={12}>
@@ -123,7 +122,7 @@ export default function CareerModal({ open, show, data }) {
                 xs={12}
                 p={{ md: 4, xs: 2 }}
                 md={6}
-                maxHeight={{ md: "80vh", xs: "100%" }}
+                maxHeight={{ md: "60vh", xs: "100%" }}
                 overflow={"auto"}
               >
                 <Typography
@@ -136,7 +135,14 @@ export default function CareerModal({ open, show, data }) {
                 <Typography fontWeight={"14px"}>{data?.description}</Typography>
               </Grid>
 
-              <Grid item container xs={12} md={6} spacing={1}>
+              <Grid
+                item
+                container
+                xs={12}
+                alignContent={"start"}
+                md={6}
+                spacing={1}
+              >
                 <Grid item md={6} xs={12}>
                   <TextField
                     fullWidth

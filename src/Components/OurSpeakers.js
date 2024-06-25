@@ -12,9 +12,20 @@ function OurSpeakers() {
   const handleScroll = (direction) => {
     const container = scrollRef.current;
     if (container) {
-      const cardWidth = container.querySelector("[data-card]").offsetWidth; // Assuming each card has a data-card attribute
-      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      // Retrieve the first card element to determine its width
+      const card = container.querySelector("[data-card]");
+      if (card) {
+        const cardWidth = card.offsetWidth;
+
+        // Determine the scroll amount based on the direction
+        const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+
+        // Use the scrollBy method with smooth behavior
+        container.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
@@ -23,9 +34,7 @@ function OurSpeakers() {
     const getOurSpeakers = async () => {
       try {
         const result = await ourSpeakersService.getOurSpeakers();
-        console.log(result.data);
         if (result.data.success === true) {
-          console.log(result.data.data);
           setOurSpeakerData(result.data.data);
         }
       } catch (error) {
@@ -114,7 +123,7 @@ function OurSpeakers() {
                         objectFit: "cover",
                         background:
                           "linear-gradient(to right, #6D7BFE, #3034BB)",
-                          objectPosition:'top'
+                        objectPosition: "top",
                       }}
                       src={`${API_URL}api/v1/image/${data?.img}`}
                       loading="lazy"

@@ -25,6 +25,12 @@ const partnersData = [
   "/images/onmyown.jpeg",
   "/images/brightchamps.jpeg",
   "/images/adventure.jpeg",
+  "/images/torrins.jpeg",
+  "/images/jupsoft.jpeg",
+  "/images/ict360.jpeg",
+  "/images/greyquest.jpeg",
+  "/images/quest.jpeg",
+  "/images/loglrids.jpeg",
   "/images/campuspro.jpeg",
 ];
 

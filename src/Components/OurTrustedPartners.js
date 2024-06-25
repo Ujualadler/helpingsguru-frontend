@@ -16,7 +16,7 @@ function OurTrustedPartners() {
     if (container) {
       const cardWidth = container.querySelector("[data-card]").offsetWidth; // Assuming each card has a data-card attribute
       const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      container.scrollLeft += scrollAmount; // Directly manipulating scrollLeft to move the scrollbar
     }
   };
 
@@ -71,7 +71,13 @@ function OurTrustedPartners() {
             width={{
               xs: "100vw",
             }}
-            sx={{ scrollbarWidth: "none" }}
+            sx={{
+              '&::-webkit-scrollbar': {
+                display: 'none'
+              },
+              scrollbarWidth: 'none', // This is for Firefox
+              msOverflowStyle: 'none',  // This is for Internet Explorer 11
+            }}
             ref={scrollRef}
           >
             {ourSpeakerData.length > 0 &&

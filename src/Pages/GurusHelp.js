@@ -84,15 +84,39 @@ const erpData = [
   },
   {
     name: "On My Own Technology",
-    img: "/images/onmyown.jpeg", 
+    img: "/images/onmyown.jpeg",
   },
   {
     name: "BrightChamps",
-    img: "/images/brightchamps.jpeg", 
+    img: "/images/brightchamps.jpeg",
   },
   {
     name: "Adventure",
-    img: "/images/adventure.jpeg", 
+    img: "/images/adventure.jpeg",
+  },
+  {
+    name: "Singhania Quest",
+    img: "/images/quest.jpeg",
+  },
+  {
+    name: "Gray Quest",
+    img: "/images/greyquest.jpeg",
+  },
+  {
+    name: "Torrins",
+    img: "/images/torrins.jpeg",
+  },
+  {
+    name: "Ict360",
+    img: "/images/ict360.jpeg",
+  },
+  {
+    name: "JupSoft",
+    img: "/images/jupsoft.jpeg",
+  },
+  {
+    name: "LogiQuids",
+    img: "/images/loglrids.jpeg",
   },
 ];
 
@@ -126,7 +150,7 @@ function GurusHelp() {
           color={"white"}
           fontWeight={700}
           textAlign={"center"}
-          fontSize={{md:"30px",xs:'20px'}}
+          fontSize={{ md: "30px", xs: "20px" }}
           mt={2}
         >
           {serviceName.replace(/-/g, " ")}
@@ -285,7 +309,7 @@ function GurusHelp() {
           </Box>
         )}
         {serviceName.replace(/-/g, " ") === "Innovative IFP Panels" && (
-            <Box>
+          <Box>
             <Typography
               fontWeight={700}
               fontSize={{ sm: "25px", xs: "20px" }}
@@ -305,10 +329,11 @@ function GurusHelp() {
               fontSize={{ md: "16px", xs: "14px" }}
               mt={2}
             >
-              HelpingGurus is all about making education exciting with Interactive
-              Flat Panels (IFP) designed for schools and colleges. These panels
-              come packed with cool K-12 digital stuff that helps teachers spice
-              up their lessons and create a fun learning environment.
+              HelpingGurus is all about making education exciting with
+              Interactive Flat Panels (IFP) designed for schools and colleges.
+              These panels come packed with cool K-12 digital stuff that helps
+              teachers spice up their lessons and create a fun learning
+              environment.
             </Typography>
             <Typography
               fontWeight={700}
@@ -325,8 +350,8 @@ function GurusHelp() {
               As part of the HelpingGurus team, we team up with big brands to
               bring awesome technology to schools. Our partnerships with top
               Indian IFP companies mean schools get the best interactive tools.
-              Our aim is to be the go-to support for schools and colleges, making
-              learning more engaging and enjoyable.
+              Our aim is to be the go-to support for schools and colleges,
+              making learning more engaging and enjoyable.
             </Typography>
             <Typography
               fontWeight={700}
@@ -340,13 +365,13 @@ function GurusHelp() {
               fontSize={{ md: "16px", xs: "14px" }}
               mt={2}
             >
-              We want to be the top service provider for educational institutions,
-              offering top-notch support and expertise to enhance the learning
-              experience. By working closely with leading IFP companies in India,
-              we hope to create an interactive educational world that benefits
-              everyone involved.
+              We want to be the top service provider for educational
+              institutions, offering top-notch support and expertise to enhance
+              the learning experience. By working closely with leading IFP
+              companies in India, we hope to create an interactive educational
+              world that benefits everyone involved.
             </Typography>
-  
+
             <Box
               sx={{ background: "#3034BB" }}
               color={"white"}
@@ -394,7 +419,10 @@ function GurusHelp() {
                   </Typography>
                 </Box>
                 <Box display={"flex"} alignItems={"center"} mt={3} gap={2}>
-                  <ServiceForm service={"Innovative IFP Panels"} type={'Gurus Help'} />
+                  <ServiceForm
+                    service={"Innovative IFP Panels"}
+                    type={"Gurus Help"}
+                  />
                 </Box>
               </Box>
             </Box>

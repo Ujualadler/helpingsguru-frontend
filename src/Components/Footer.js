@@ -24,7 +24,7 @@ function Footer() {
           >
             <Box bgcolor={"white"} px={2} py={1} borderRadius={3}>
               <img
-                src="/images/logo1.png"
+                src="/images/reallogo.jpeg"
                 style={{
                   marginTop: "10px",
                   width: "120px",
