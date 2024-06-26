@@ -355,24 +355,21 @@ function Slider() {
       {eventbook && bookingData && (
         <EventDetails data={bookingData} open={eventbook} show={setEventBook} />
       )}
-      <Box
-        height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
-        sx={{
-          transition: "background-image 1s ease-in-out",
-          background: `url(${data.img})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          opacity: ".8",
-
-          // backgroundPosition: "bottom",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          position: "relative",
-          opacity: fade ? 1 : 0, // Fade effect
-          transition: "opacity 0.5s ease-in-out",
-        }}
-      >
+       <Box
+      height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
+      sx={{
+        transition: "background-image 1s ease-in-out, opacity 0.5s ease-in-out",
+        background: `linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8)), url(${data.img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        // backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        position: "relative",
+        opacity: fade ? 1 : 0, // Fade effect
+      }}
+    >
         <Box
           display={"flex"}
           flexDirection={"column"}
@@ -384,7 +381,7 @@ function Slider() {
             fontWeight={800}
             width={"100%"}
             fontSize={{ md: "6vw", xs: "11vw" }}
-            color={"#FF8126"}
+            color={"#ffff"}
           >
             {data?.name}
           </Typography>
