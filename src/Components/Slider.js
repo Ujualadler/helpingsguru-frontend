@@ -355,21 +355,22 @@ function Slider() {
       {eventbook && bookingData && (
         <EventDetails data={bookingData} open={eventbook} show={setEventBook} />
       )}
-       <Box
-      height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
-      sx={{
-        transition: "background-image 1s ease-in-out, opacity 0.5s ease-in-out",
-        background: `linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8)), url(${data.img})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        // backgroundPosition: "center",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        position: "relative",
-        opacity: fade ? 1 : 0, // Fade effect
-      }}
-    >
+      <Box
+        height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
+        sx={{
+          transition:
+            "background-image 1s ease-in-out, opacity 0.5s ease-in-out",
+          background: `linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8)), url(${data.img})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          // backgroundPosition: "center",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          position: "relative",
+          opacity: fade ? 1 : 0, // Fade effect
+        }}
+      >
         <Box
           display={"flex"}
           flexDirection={"column"}
