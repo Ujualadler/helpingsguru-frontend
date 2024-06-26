@@ -293,7 +293,6 @@
 
 // export default Slider;
 
-
 import { Box, Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
@@ -313,12 +312,11 @@ function Slider() {
   const themes = useTheme();
   const [eventbook, setEventBook] = useState(false);
 
-  const eventsData =[
-    {name:'Helping Gurus',img:'/images/gurus11.jpeg'},
-    {name:'Helping Gurus',img:'/images/gurus9.jpeg'},
-    {name:'Helping Gurus',img:'/images/gurus10.jpeg'},
-
-  ]
+  const eventsData = [
+    { name: "Helping Gurus", img: "/images/home2.jpg" },
+    { name: "Helping Gurus", img: "/images/gurus9.jpeg" },
+    { name: "Helping Gurus", img: "/images/gurus10.jpeg" },
+  ];
 
   const handleSelectSlide = (index) => {
     setFade(false);
@@ -361,35 +359,43 @@ function Slider() {
         height={{ md: "95vh", sm: "90vh", xs: "85vh" }}
         sx={{
           transition: "background-image 1s ease-in-out",
-          background: `linear-gradient(rgba(0, 0, 255, 0.5), rgba(0, 0, 255, 0.5)), url(${data.img})`,
+          background: `url(${data.img})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          opacity: ".8",
+
           // backgroundPosition: "bottom",
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "space-between",
           alignItems: "center",
           position: "relative",
           opacity: fade ? 1 : 0, // Fade effect
           transition: "opacity 0.5s ease-in-out",
         }}
       >
-        <Typography
-          fontWeight={800}
-          width={"70%"}
-          fontSize={{ md: "7vw", xs: "10vw" }}
-          color={"white"}
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          ml={{ md: 15, xs: 5 }}
+          mt={{ md: 40, xs: 20 }}
+          alignItems={"start"}
         >
-          {data?.name?.split(" ")[0]}
-          <br />
           <Typography
-            ml={{ sm: "30%", xs: "10%" }}
             fontWeight={800}
-            fontSize={{ md: "7vw", xs: "10vw" }}
+            width={"100%"}
+            fontSize={{ md: "6vw", xs: "11vw" }}
+            color={"#FF8126"}
+          >
+            {data?.name}
+          </Typography>
+          <Typography
+            fontWeight={600}
+            fontSize={{ md: "4vw", xs: "6vw" }}
             color={"white"}
           >
-            {data?.name?.split(" ")[1]}
+            {data?.name}
           </Typography>
-        </Typography>
+        </Box>
         <Box
           display={"flex"}
           gap={2}
@@ -403,29 +409,14 @@ function Slider() {
               width: "20vw",
               height: { lg: "30vh", sm: "18vh", md: "20vh", xl: "32vh" },
             }}
-          >
-            <img
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: "15px",
-                objectFit: "cover",
-                background:'linear-gradient(to right, #6D7BFE, #3034BB)'
-              }}
-              loading="lazy"
-              src={data.img}
-            />
-          </Box>
+          ></Box>
           <Box
             ml={1}
             display={"flex"}
             alignItems={"center"}
             gap={2}
             mt={{ sm: "22%", xs: "32%" }}
-          >
-        
-          </Box>
+          ></Box>
         </Box>
         <Box
           display={"flex"}
@@ -526,4 +517,3 @@ function Slider() {
 }
 
 export default Slider;
-

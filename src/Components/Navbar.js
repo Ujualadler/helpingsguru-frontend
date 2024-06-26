@@ -103,7 +103,7 @@ function Navbar() {
           py={1}
           ml={{ md: 2, xs: 0 }}
           borderRadius={3}
-          width={{ lg: "100px", xs: "100px" }}
+          width={{ lg: "130px", xs: "100px" }}
           onClick={() => navigate("/")}
         >
           <img
