@@ -31,6 +31,7 @@ const partnersData = [
   "/images/greyquest.jpeg",
   "/images/quest.jpeg",
   "/images/loglrids.jpeg",
+  "/images/geeta.jpeg",
   "/images/campuspro.jpeg",
 ];
 

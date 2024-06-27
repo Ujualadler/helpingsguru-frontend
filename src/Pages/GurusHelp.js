@@ -118,6 +118,10 @@ const erpData = [
     name: "LogiQuids",
     img: "/images/loglrids.jpeg",
   },
+  {
+    name: "Geeta University",
+    img: "/images/geeta.jpeg",
+  },
 ];
 
 function GurusHelp() {

@@ -107,7 +107,7 @@ function Navbar() {
           onClick={() => navigate("/")}
         >
           <img
-            src="/images/reallogo.jpeg"
+            src="/images/logoHelpingGuru.jpeg"
             style={{
               width: "100%",
               objectFit: "contain",
