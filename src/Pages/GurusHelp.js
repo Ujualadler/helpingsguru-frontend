@@ -19,12 +19,32 @@ const bounce = keyframes`
 
 const erpData = [
   {
-    name: "Brainwonders",
-    img: "/images/brainwonders.jpeg",
-  },
-  {
     name: "Entab infotech",
     img: "/images/entab.jpeg",
+  },
+  {
+    name: "JupSoft",
+    img: "/images/jupsoft.jpeg",
+  },
+  {
+    name: "Skolaro",
+    img: "/images/skolaro.jpeg",
+  },
+  {
+    name: "Sonet",
+    img: "/images/sonet.jpeg",
+  },
+  {
+    name: "Franciscan",
+    img: "/images/franciscan.jpeg",
+  },
+  {
+    name: "CampusPro",
+    img: "/images/campuspro.jpeg",
+  },
+  {
+    name: "Brainwonders",
+    img: "/images/brainwonders.jpeg",
   },
   {
     name: "Brio Touch",
@@ -42,14 +62,7 @@ const erpData = [
     name: "NTT DATA",
     img: "/images/nttdata.jpeg",
   },
-  {
-    name: "Skolaro",
-    img: "/images/skolaro.jpeg",
-  },
-  {
-    name: "Sonet",
-    img: "/images/sonet.jpeg",
-  },
+
   {
     name: "Sprouts",
     img: "/images/sprouts.jpeg",
@@ -74,14 +87,7 @@ const erpData = [
     name: "Wisetime",
     img: "/images/Wisetime.png",
   },
-  {
-    name: "CampusPro",
-    img: "/images/campuspro.jpeg",
-  },
-  {
-    name: "Franciscan",
-    img: "/images/franciscan.jpeg",
-  },
+
   {
     name: "On My Own Technology",
     img: "/images/onmyown.jpeg",
@@ -110,10 +116,7 @@ const erpData = [
     name: "Ict360",
     img: "/images/ict360.jpeg",
   },
-  {
-    name: "JupSoft",
-    img: "/images/jupsoft.jpeg",
-  },
+
   {
     name: "LogiQuids",
     img: "/images/loglrids.jpeg",

@@ -8,9 +8,6 @@ import { magazineService } from "../Services/magazineService";
 import { API_URL } from "../Services/url";
 import PdfShowing from "./PdfShowing";
 
-
-
-
 function OurSpeakers() {
   const scrollRef = useRef(null);
   const handleScroll = (direction) => {
@@ -24,9 +21,7 @@ function OurSpeakers() {
 
   const [ourMagazine, setOurMagazine] = useState([]);
   const [pdf, setPdf] = useState(false);
-  const [url, setUrl] = useState('');
-
-  
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     const getMagazine = async () => {
@@ -44,12 +39,11 @@ function OurSpeakers() {
     getMagazine();
   }, []);
 
-
-  const handlePdf =(data)=>{
-    console.log(data)
-    setUrl(data)
-    setPdf(true)
-  }
+  const handlePdf = (data) => {
+    console.log(data);
+    setUrl(data);
+    setPdf(true);
+  };
 
   const fadeInAnimation = keyframes`
   0% {
@@ -61,7 +55,7 @@ function OurSpeakers() {
 `;
   return (
     <Box mt={5}>
-      {pdf&& url!=='' &&<PdfShowing show={setPdf} open={pdf} url={url}/>}
+      {pdf && url !== "" && <PdfShowing show={setPdf} open={pdf} url={url} />}
       <Typography
         textAlign={"center"}
         fontWeight={800}
@@ -79,84 +73,101 @@ function OurSpeakers() {
           width={"100%"}
           display={"flex"}
           justifyContent={"center"}
-          alignItems={'center'}
-          flexDirection={'column'}
+          alignItems={"center"}
+          flexDirection={"column"}
         >
           <Box
             display={"flex"}
-            justifyContent={{xs: "start", sm:"center"}}
+            justifyContent={{ xs: "start", sm: "center" }}
             overflow={"auto"}
             width={{
               xs: "90%",
-              md:'70%'
+              md: "70%",
             }}
             sx={{ scrollbarWidth: "none" }}
             ref={scrollRef}
           >
-            {ourMagazine.length>0 && ourMagazine.map((data, index) => (
-              <Box
-                key={index}
-                data-card
-                sx={{
-                  flex: "0 0 auto",
-                  justifyContent:'center',
-                  display:'flex',
-                  width: { xs: "100%", sm: "50%", md: "25%" },
-                  animation: `${fadeInAnimation} ease 0.8s`,
-              
-                }}
-                className="fade-in"
-              >
-                <Box  display={'flex'} justifyContent={'center'} width={'80%'} flexDirection={'column'} alignItems={'center'}>
-                 <Box borderRadius={4} width={'100%'} position={"relative"} overflow={"hidden"}>
-                <img
-                  src={`${API_URL}api/v1/image/${data.img}`}
-                  style={{
-                    width: "100%",
-                    height: "35vh",
-                    borderRadius: "8px",
-                    filter: "brightness(80%)",
-                    objectFit:'cover',
-                    background:'linear-gradient(to right, #6D7BFE, #3034BB)',
-              
-                  }}
-                  loading="lazy"
-                />
-                <Typography
-                  position={"absolute"}
-                  bottom={0}
-                  color={"white"}
+            {ourMagazine.length > 0 &&
+              ourMagazine.map((data, index) => (
+                <Box
+                  key={index}
+                  data-card
                   sx={{
-                    background:
-                      "linear-gradient(145deg, rgba(0, 0, 128, 0.8), rgba(0, 0, 255, 0.6))", // Gradient from navy to transparent blue
-                    width: "100%",
-                    textAlign: "center",
-                    py: 1,
+                    flex: "0 0 auto",
+                    justifyContent: "center",
+                    display: "flex",
+                    width: { xs: "100%", sm: "50%", md: "25%" },
+                    animation: `${fadeInAnimation} ease 0.8s`,
                   }}
+                  className="fade-in"
                 >
-                  {data?.name}
-                </Typography>
-              </Box>
-              <Box display={"flex"} width={'100%'} justifyContent={'center'} alignItems={"center"} mt={1} gap={"4px"}>
-                <Button
-                // onClick={() => window.open(`${API_URL}api/v1/image/${data?.pdf}`, '_blank')}
-                variant="contained"
-                onClick={()=>handlePdf(data)}
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: 2,
-                    width: "90%",
-                    background: "#FF8126",
-                    color: "white",
-                    
-                  }}
-                >
-                  Read More
-                </Button>
-              </Box>
-              </Box>
-              </Box>
-            ))}
+                  <Box
+                    display={"flex"}
+                    justifyContent={"center"}
+                    width={"80%"}
+                    flexDirection={"column"}
+                    alignItems={"center"}
+                  >
+                    <Box
+                      borderRadius={4}
+                      width={"100%"}
+                      position={"relative"}
+                      overflow={"hidden"}
+                    >
+                      <img
+                        src={`${API_URL}api/v1/image/${data.img}`}
+                        style={{
+                          width: "100%",
+                          height: "35vh",
+                          borderRadius: "8px",
+                          filter: "brightness(80%)",
+                          objectFit: "cover",
+                          background:
+                            "linear-gradient(to right, #6D7BFE, #3034BB)",
+                        }}
+                        loading="lazy"
+                      />
+                      <Typography
+                        position={"absolute"}
+                        bottom={0}
+                        color={"white"}
+                        sx={{
+                          background:
+                            "linear-gradient(145deg, rgba(0, 0, 128, 0.8), rgba(0, 0, 255, 0.6))", // Gradient from navy to transparent blue
+                          width: "100%",
+                          textAlign: "center",
+                          py: 1,
+                        }}
+                      >
+                        {data?.name}
+                      </Typography>
+                    </Box>
+                    <Box
+                      display={"flex"}
+                      width={"100%"}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      mt={1}
+                      gap={"4px"}
+                    >
+                      <Button
+                        // onClick={() => window.open(`${API_URL}api/v1/image/${data?.pdf}`, '_blank')}
+                        variant="contained"
+                        onClick={() => handlePdf(data)}
+                        sx={{
+                          textTransform: "none",
+                          borderRadius: 2,
+                          width: "90%",
+                          background: "#FF8126",
+                          color: "white",
+                        }}
+                      >
+                        Read More
+                      </Button>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
           </Box>
 
           {/* Navigation buttons overlay */}
