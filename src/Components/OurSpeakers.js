@@ -61,7 +61,7 @@ function OurSpeakers() {
         color={"#100854"}
         mb={3}
       >
-        Our Speakers
+        Meet Our Inspiring Speakers
       </Typography>
       <Grid container borderRadius={3}>
         {/* <Title title={"Experiential Learning"} /> */}
