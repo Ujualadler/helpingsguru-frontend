@@ -132,7 +132,10 @@ export default function CareerModal({ open, show, data }) {
                 >
                   Description
                 </Typography>
-                <Typography fontWeight={"14px"}>{data?.description}</Typography>
+                <div
+                  style={{ fontSize:'16px' ,fontWeight:600}}
+                  dangerouslySetInnerHTML={{ __html: data?.description }}
+                ></div>
               </Grid>
 
               <Grid

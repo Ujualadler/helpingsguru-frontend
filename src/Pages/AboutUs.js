@@ -1,6 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 
 const aboutusData = [
   {
@@ -55,7 +59,12 @@ function AboutUs() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Typography mt={5} color={"white"} fontWeight={700} fontSize={{md:"30px",xs:'20px'}}>
+        <Typography
+          mt={5}
+          color={"white"}
+          fontWeight={700}
+          fontSize={{ md: "30px", xs: "20px" }}
+        >
           {serviceName ? serviceName.replace(/-/g, " ") : "About Us"}
         </Typography>
       </Box>
@@ -141,7 +150,7 @@ function AboutUs() {
                     // background: "linear-gradient(to right, #6D7BFE, #3034BB)",
                   }}
                   loading="lazy"
-                  src="/images/logo1.png"
+                  src="/images/gurulogo.png"
                 />
               </Box>
             </Grid>
@@ -171,27 +180,38 @@ function AboutUs() {
                 maxWidth={{ md: "70%", xs: "100%" }}
                 color={"#100854"}
               >
-                "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
-                dedicated himself to improving the educational landscape by
-                providing support and services to schools and colleges across
-                India. With a background in Computer Application from Manav
-                Rachna International University, Mr. Bahl has quickly
-                established personal connections with over 3,000 school
-                authorities nationwide." Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. The Helping Gurus team is always
-                prepared to support schools and colleges, ensuring that
-                educators receive the assistance they need to succeed.
+                Helping Gurus is an innovative platform that serves as a bridge
+                between Edtech partners and a vast network of educational
+                institutions across India. Our goal is to help you establish a
+                strong presence in schools and universities, making it easier
+                for educators to access the resources they need. With our
+                extensive connections, we enable you to reach a wide range of
+                institutions, including 10,000 CBSE schools, 400 ICSE schools,
+                50 IB schools, and 700 State Board schools.
+                <br />
+                <br />
+                Joining our network means unlocking a plethora of opportunities
+                to showcase your brand and connect with educators nationwide.
+                Whether you are a startup Edtech company looking to expand your
+                reach or an established player seeking to strengthen your
+                presence, Helping Gurus offers the perfect platform for growth
+                and success.
+                <br />
+                <br />
+                At Helping Gurus, our mission is simple yet powerful: to bring
+                joy to educators by providing the support and resources they
+                need. We understand the challenges and pain points faced by
+                educators in today's fast-paced and ever-evolving educational
+                landscape. That's why our motto is centered around the happiness
+                and well-being of our Gurus – the educators who dedicate their
+                lives to shaping the minds of future generations.
+                <br />
+                <br />
+                We believe that when Gurus are happy, motivated, and
+                well-equipped, they can create a positive impact on their
+                students and communities. On the flip side, when they face
+                challenges and struggles, we feel their pain and strive to
+                provide solutions and support to help them overcome obstacles.
               </Typography>
             </Grid>
           </Grid>
@@ -404,7 +424,7 @@ function AboutUs() {
                 making a difference in the education sector, Mr. Bahl and his
                 team are committed to ensuring the happiness and success of
                 every educator they work with. One of the key aspects of Helping
-                Gurus' founder message is their motto,{" "}
+                Gurus' founder message is their motto,
                 <strong>
                   "Gurus Happiness is our Happiness and Gurus pain is our pain."
                 </strong>{" "}
@@ -423,7 +443,7 @@ function AboutUs() {
                 Whether it's through marketing strategy, relationship building,
                 influencer outreach, or lead generation, Helping Gurus is always
                 there to offer support and guidance to educators who are looking
-                to improve their teaching practices.
+                to improve their teaching practices
                 <br />
                 <br /> Another key objection that educators face is the feeling
                 of being overwhelmed and overworked. With the demands of
@@ -478,27 +498,63 @@ function AboutUs() {
                 my={1}
                 color={"#100854"}
               >
-                "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
-                dedicated himself to improving the educational landscape by
-                providing support and services to schools and colleges across
-                India. With a background in Computer Application from Manav
-                Rachna International University, Mr. Bahl has quickly
-                established personal connections with over 3,000 school
-                authorities nationwide." Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. The Helping Gurus team is always
-                prepared to support schools and colleges, ensuring that
-                educators receive the assistance they need to succeed.
+                At Helping Gurus, our mission is to bridge the gap between
+                <b>edtech partners and educational institutions</b> across
+                India. We understand the importance of establishing a strong
+                presence in schools and universities, and our vast network
+                allows us to connect you with thousands of
+                <b> CBSE, ICSE, IB, and State Board schools</b>. Our goal is to
+                make it easy for your brand to reach educators and students
+                nationwide, ensuring that you have the support and resources you
+                need to succeed in the education sector.
+                <br />
+                <br />
+                With over 10,000 CBSE schools, 400 ICSE schools, 50 IB schools,
+                <b>and 700 State Board schools in our network</b>, we are
+                dedicated to bringing joy to educators by providing them with
+                the assistance they require. We understand the challenges that
+                educators face in today's ever-evolving educational landscape,
+                and we are here to support them every step of the way.
+                <br />
+                Our motto,{" "}
+                <b>
+                  "Gurus' Happiness is Our Happiness, Gurus' Pain is Our Pain,"
+                </b>{" "}
+                reflects our commitment to prioritizing the needs of educators
+                and ensuring that they have access to the resources and support
+                they need to excel in their roles. We believe that by supporting
+                educators, we can ultimately uplift the level of education
+                across the globe and build a community of dedicated
+                professionals who are passionate about making a difference in
+                the lives of students.
+                <br />
+                <br />
+                <b>Our vision</b> at <b>Helping Gurus</b> is to create a
+                supportive and nurturing environment for educators, where they
+                can access the guidance and assistance they need to overcome any
+                challenges they may face. Whether it's addressing manpower
+                issues, school administrative problems, or enhancing the
+                knowledge of staff members, we are here to provide the necessary
+                support and assistance to ensure that educators have the tools
+                they need to succeed.
+                <br />
+                <br />
+                We understand that every educator is unique and may require
+                different types of support, which is why we are committed to
+                offering personalized assistance tailored to the specific needs
+                of each individual. Our team of experts is dedicated to
+                providing guidance, resources, and solutions to help educators
+                navigate the complexities of the education sector and achieve
+                their goals.
+                <br />
+                <br />
+                At Helping Gurus, we truly believe that no educator should have
+                to face their challenges alone. Our doors are always open, and
+                we are here to support you, no matter what the situation may be.
+                Join us in our mission to uplift the level of education across
+                the globe and build a community of empowered and supported
+                educators who are committed to making a difference in the lives
+                of students
               </Typography>
             </Grid>
           </Grid>
@@ -523,40 +579,55 @@ function AboutUs() {
             pl={{ md: 0, xs: 4 }}
           >
             <Grid item md={12} xs={12} mt={{ md: 5, xs: 0 }}>
-              <Typography
-                fontWeight={600}
-                fontSize={{ md: "35px", xs: "20px" }}
-                my={1}
-              >
-                Our Family
-              </Typography>
+              <Grid container my={4} mt={0} spacing={2}>
+                <MediaCard
+                  name={"Dheeraj Malhotra"}
+                  role={"Event Sponsorship Lead"}
+                  img={"/images/dheeraj.png"}
+                />
+              </Grid>
+
               <Typography
                 fontWeight={400}
                 fontSize={"15px"}
                 my={1}
                 color={"#100854"}
               >
-                "As the Founder and CEO of Helping Gurus, Mr.Rajiv Bahl has
-                dedicated himself to improving the educational landscape by
-                providing support and services to schools and colleges across
-                India. With a background in Computer Application from Manav
-                Rachna International University, Mr. Bahl has quickly
-                established personal connections with over 3,000 school
-                authorities nationwide." Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. Driven by a passion for identifying and
-                solving the pain points of educators, Mr. Bahl and his team at
-                Helping Gurus are committed to ensuring the happiness and
-                success of every educator they work with. Their company motto,
-                "Gurus Happiness is our Happiness and Gurus pain is our pain,"
-                reflects their dedication to going above and beyond to meet the
-                needs of their clients. The Helping Gurus team is always
-                prepared to support schools and colleges, ensuring that
-                educators receive the assistance they need to succeed.
+                <b>
+                  Meet the team behind Helping Gurus, the dedicated individuals
+                  who work tirelessly to connect Edtech partners with schools
+                  and universities across India. Our team is made up of
+                  passionate individuals who believe in the power of education
+                  and technology to shape the future.
+                </b>
+                <br />
+                <br />
+                <b>
+                  At the helm of Helping Gurus is our founder, who brings years
+                  of experience in the education industry and a strong network
+                  of contacts. Our team also includes experienced professionals
+                  in marketing, sales, and client relations. Together, we work
+                  diligently to establish strong partnerships between Edtech
+                  partners and educational institutions nationwide.
+                </b>
+                <br />
+                <br />
+                <b>
+                  Our team is driven by a common goal - to revolutionize
+                  education in India by leveraging the latest technology and
+                  innovative solutions. We believe that by connecting Edtech
+                  partners with schools and universities, we can create a more
+                  interactive and engaging learning experience for students.
+                </b>
+                <br />
+                <br />
+                <b>
+                  With Helping Gurus, you can trust that you are working with a
+                  team that is committed to your success. We are here to support
+                  you every step of the way and help you reach your goals in the
+                  ever-evolving landscape of education technology. Let us help
+                  you make a difference in education today.
+                </b>
               </Typography>
             </Grid>
           </Grid>
@@ -567,3 +638,51 @@ function AboutUs() {
 }
 
 export default AboutUs;
+
+function MediaCard({ name, role, img }) {
+  return (
+    <Grid item md={4} sm={6} xs={12}>
+      <Box
+        bgcolor={"#3034BB"}
+        height={"300px"}
+        my={{ xs: 5, md: 0 }}
+        borderRadius={2}
+        position={"relative"}
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "end",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <img
+          style={{
+            position: "absolute",
+            zIndex: 100,
+            bottom: "27%",
+            objectFit: "contain",
+          }}
+          src={img}
+          width={"100%"}
+          height={"300px"}
+        />
+        <Box position={"relative"} bgcolor={"red"} width={"100%"}>
+          <Box position={"absolute"} bottom={10} mx={1} zIndex={104}>
+            <Typography
+              color={"white"}
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
+              {name}
+            </Typography>
+            <Typography variant="body2" color="white">
+              {role}
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Grid>
+  );
+}
