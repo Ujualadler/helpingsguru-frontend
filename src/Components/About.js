@@ -61,14 +61,6 @@ function About() {
       img: "/images/talkwithgurus.png",
       name: "Talks With Gurus",
     },
-    // {
-    //   img: "/images/responsive-design.png",
-    //   name: "Innovative IFP Panels",
-    // },
-    // {
-    //   img: "/images/lead.png",
-    //   name: "Edtech B2B Lead Generation",
-    // },
     {
       img: "/images/speakers.png",
       name: "Inspiring Speakers for Educational Institutions",
