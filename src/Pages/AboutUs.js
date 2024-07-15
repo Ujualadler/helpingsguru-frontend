@@ -150,7 +150,7 @@ function AboutUs() {
                     // background: "linear-gradient(to right, #6D7BFE, #3034BB)",
                   }}
                   loading="lazy"
-                  src="/images/gurulogo.png"
+                  src="/images/finallogo.png"
                 />
               </Box>
             </Grid>

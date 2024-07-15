@@ -42,7 +42,7 @@ function About() {
   const navigate = useNavigate();
   const aboutData = [
     {
-      img: "/images/stage.png",
+      img: "/images/roundTable.png",
       name: "Educational Events & Roundtables",
     },
     {
@@ -50,7 +50,7 @@ function About() {
       name: "Staff Recruitment Solutions",
     },
     {
-      img: "/images/Certification.png",
+      img: "/images/certification.png",
       name: "Teacher Training Certification Programme",
     },
     {
@@ -58,7 +58,7 @@ function About() {
       name: "Educational Magazine Hub",
     },
     {
-      img: "/images/magazine.png",
+      img: "/images/talkwithgurus.png",
       name: "Talks With Gurus",
     },
     // {
@@ -70,7 +70,7 @@ function About() {
     //   name: "Edtech B2B Lead Generation",
     // },
     {
-      img: "/images/speech.png",
+      img: "/images/speakers.png",
       name: "Inspiring Speakers for Educational Institutions",
     },
   ];
@@ -179,7 +179,7 @@ function About() {
               style={{
                 width: "100%",
                 height: "100%",
-                borderRadius: "20px",
+                // borderRadius: "20px",
                 background: "linear-gradient(to right, #6D7BFE, #3034BB)",
               }}
               src="/images/home4.JPG"
@@ -199,7 +199,7 @@ function About() {
         >
           <Typography
             fontWeight={700}
-            fontSize={"18px"}
+            fontSize={"18px"} 
             mb={1}
             color={"#100854"}
           >
