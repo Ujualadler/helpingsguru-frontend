@@ -199,7 +199,7 @@ function About() {
         >
           <Typography
             fontWeight={700}
-            fontSize={"18px"} 
+            fontSize={"18px"}
             mb={1}
             color={"#100854"}
           >
