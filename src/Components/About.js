@@ -42,7 +42,7 @@ function About() {
   const navigate = useNavigate();
   const aboutData = [
     {
-      img: "/images/stage.png",
+      img: "/images/roundTable.png",
       name: "Educational Events & Roundtables",
     },
     {
@@ -58,7 +58,7 @@ function About() {
       name: "Educational Magazine Hub",
     },
     {
-      img: "/images/magazine.png",
+      img: "/images/talkwithgurus.png",
       name: "Talks With Gurus",
     },
     // {
@@ -70,7 +70,7 @@ function About() {
     //   name: "Edtech B2B Lead Generation",
     // },
     {
-      img: "/images/speech.png",
+      img: "/images/speakers.png",
       name: "Inspiring Speakers for Educational Institutions",
     },
   ];
