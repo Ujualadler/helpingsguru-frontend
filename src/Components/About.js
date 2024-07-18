@@ -50,7 +50,7 @@ function About() {
       name: "Staff Recruitment Solutions",
     },
     {
-      img: "/images/certification.png",
+      img: "/images/Certification.png",
       name: "Teacher Training Certification Programme",
     },
     {
