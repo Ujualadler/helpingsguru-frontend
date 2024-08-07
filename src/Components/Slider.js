@@ -313,7 +313,7 @@ function Slider() {
   const [eventbook, setEventBook] = useState(false);
 
   const eventsData = [
-    { name: "Helping Gurus", img: "/images/home2.jpg" },
+    { name: "Helping Gurus", img: "/images/gurus4.jpeg" },
     { name: "Helping Gurus", img: "/images/gurus9.jpeg" },
     { name: "Helping Gurus", img: "/images/gurus10.jpeg" },
   ];
